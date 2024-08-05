@@ -9,11 +9,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace RRHH_Proyecto
 {
-    
+
 
     public partial class Form1 : Form
     {
+        //Se llama la clase de la conexion 
         private Conexion conexion = new Conexion();
+
         public Form1()
         {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace RRHH_Proyecto
 
         private void btn_Ingresar_Click(object sender, EventArgs e)
         {
+
             try
             {
                 string query = "select usuario,contrasena from usuarios where usuario = @usuario and contrasena = @contraseña";
@@ -36,7 +39,7 @@ namespace RRHH_Proyecto
 
                 if (reader.Read())
                 {
-                    MessageBox.Show("Login Exitoso", "Sistema");
+                    MessageBox.Show($"Bienvenido  {usuario}", "Sistema");
                     Menu_Strip principal = new Menu_Strip();
                     principal.Show();
 
@@ -45,13 +48,61 @@ namespace RRHH_Proyecto
                 }
                 else
                 {
-                    MessageBox.Show("Login Incorrecto", "Sistema");
+                    MessageBox.Show("Usuario o Contraseña Incorrectos", "Sistema");
                     conexion.CerrarConexion();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al ingresar datos" + ex);
+            }
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void txt_Usuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_Usuario_Enter(object sender, EventArgs e)
+        {
+            if (txt_Usuario.Text == "USUARIO")
+            {
+                txt_Usuario.Text = "";
+                txt_Usuario.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void txt_Usuario_Leave(object sender, EventArgs e)
+        {
+            if (txt_Usuario.Text == "")
+            {
+                txt_Usuario.Text = "USUARIO";
+                txt_Usuario.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void txt_Contraseña_Enter(object sender, EventArgs e)
+        {
+            if (txt_Contraseña.Text == "CONTRASEÑA")
+            {
+                txt_Contraseña.Text = "";
+                txt_Contraseña.ForeColor = Color.DimGray;
+                txt_Contraseña.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void txt_Contraseña_Leave(object sender, EventArgs e)
+        {
+            if (txt_Contraseña.Text == "")
+            {
+                txt_Contraseña.Text = "CONTRASEÑA";
+                txt_Contraseña.ForeColor = Color.DimGray;
+                txt_Contraseña.UseSystemPasswordChar = false;
             }
         }
 

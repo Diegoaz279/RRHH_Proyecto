@@ -20,5 +20,16 @@ namespace RRHH_Proyecto
         private void aCERToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
+
+        private void Menu_Strip_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aGREGARUSUARIOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Agregar_Empleado principal = new Agregar_Empleado();
+            principal.Show();
+        }
     }
 }

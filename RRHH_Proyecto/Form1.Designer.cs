@@ -30,75 +30,91 @@
         {
             btn_Cancelar = new Button();
             btn_Ingresar = new Button();
-            lbl_Usuario = new Label();
-            lbl_Contraseña = new Label();
             txt_Usuario = new TextBox();
             txt_Contraseña = new TextBox();
+            label2 = new Label();
             SuspendLayout();
             // 
             // btn_Cancelar
             // 
-            btn_Cancelar.Location = new Point(138, 558);
+            btn_Cancelar.BackColor = Color.SkyBlue;
+            btn_Cancelar.FlatAppearance.BorderColor = Color.DimGray;
+            btn_Cancelar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_Cancelar.ForeColor = SystemColors.ActiveCaptionText;
+            btn_Cancelar.Location = new Point(82, 688);
             btn_Cancelar.Name = "btn_Cancelar";
-            btn_Cancelar.Size = new Size(129, 49);
+            btn_Cancelar.Size = new Size(151, 59);
             btn_Cancelar.TabIndex = 0;
             btn_Cancelar.Text = "CANCELAR";
-            btn_Cancelar.UseVisualStyleBackColor = true;
+            btn_Cancelar.UseVisualStyleBackColor = false;
+            btn_Cancelar.Click += btn_Cancelar_Click;
             // 
             // btn_Ingresar
             // 
-            btn_Ingresar.Location = new Point(359, 558);
+            btn_Ingresar.BackColor = Color.LightSkyBlue;
+            btn_Ingresar.FlatAppearance.BorderColor = Color.DimGray;
+            btn_Ingresar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_Ingresar.ForeColor = SystemColors.ActiveCaptionText;
+            btn_Ingresar.Location = new Point(325, 688);
             btn_Ingresar.Name = "btn_Ingresar";
-            btn_Ingresar.Size = new Size(135, 49);
+            btn_Ingresar.Size = new Size(162, 59);
             btn_Ingresar.TabIndex = 1;
             btn_Ingresar.Text = "INGRESAR";
-            btn_Ingresar.UseVisualStyleBackColor = true;
+            btn_Ingresar.UseVisualStyleBackColor = false;
             btn_Ingresar.Click += btn_Ingresar_Click;
-            // 
-            // lbl_Usuario
-            // 
-            lbl_Usuario.AutoSize = true;
-            lbl_Usuario.Location = new Point(138, 407);
-            lbl_Usuario.Name = "lbl_Usuario";
-            lbl_Usuario.Size = new Size(88, 25);
-            lbl_Usuario.TabIndex = 2;
-            lbl_Usuario.Text = "USUARIO";
-            // 
-            // lbl_Contraseña
-            // 
-            lbl_Contraseña.AutoSize = true;
-            lbl_Contraseña.Location = new Point(138, 470);
-            lbl_Contraseña.Name = "lbl_Contraseña";
-            lbl_Contraseña.Size = new Size(126, 25);
-            lbl_Contraseña.TabIndex = 3;
-            lbl_Contraseña.Text = "CONTRASEÑA";
             // 
             // txt_Usuario
             // 
-            txt_Usuario.Location = new Point(351, 400);
+            txt_Usuario.BackColor = Color.LightBlue;
+            txt_Usuario.BorderStyle = BorderStyle.FixedSingle;
+            txt_Usuario.Font = new Font("Arial Rounded MT Bold", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_Usuario.Location = new Point(110, 479);
             txt_Usuario.Name = "txt_Usuario";
-            txt_Usuario.Size = new Size(150, 31);
+            txt_Usuario.Size = new Size(353, 33);
             txt_Usuario.TabIndex = 4;
+            txt_Usuario.Text = "USUARIO";
+            txt_Usuario.TextChanged += txt_Usuario_TextChanged;
+            txt_Usuario.Enter += txt_Usuario_Enter;
+            txt_Usuario.Leave += txt_Usuario_Leave;
             // 
             // txt_Contraseña
             // 
-            txt_Contraseña.Location = new Point(351, 470);
+            txt_Contraseña.BackColor = Color.LightBlue;
+            txt_Contraseña.BorderStyle = BorderStyle.FixedSingle;
+            txt_Contraseña.Font = new Font("Arial Rounded MT Bold", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_Contraseña.Location = new Point(110, 563);
             txt_Contraseña.Name = "txt_Contraseña";
-            txt_Contraseña.Size = new Size(150, 31);
+            txt_Contraseña.Size = new Size(353, 33);
             txt_Contraseña.TabIndex = 5;
+            txt_Contraseña.Text = "CONTRASEÑA";
+            txt_Contraseña.Enter += txt_Contraseña_Enter;
+            txt_Contraseña.Leave += txt_Contraseña_Leave;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Stencil", 22F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(41, 47);
+            label2.Name = "label2";
+            label2.Size = new Size(496, 52);
+            label2.TabIndex = 7;
+            label2.Text = "GESTION DE PERSONAL";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(665, 698);
+            BackColor = Color.PowderBlue;
+            ClientSize = new Size(579, 837);
+            Controls.Add(label2);
             Controls.Add(txt_Contraseña);
             Controls.Add(txt_Usuario);
-            Controls.Add(lbl_Contraseña);
-            Controls.Add(lbl_Usuario);
             Controls.Add(btn_Ingresar);
             Controls.Add(btn_Cancelar);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
+            Opacity = 0.93D;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();
@@ -108,9 +124,8 @@
 
         private Button btn_Cancelar;
         private Button btn_Ingresar;
-        private Label lbl_Usuario;
-        private Label lbl_Contraseña;
         private TextBox txt_Usuario;
         private TextBox txt_Contraseña;
+        private Label label2;
     }
 }
