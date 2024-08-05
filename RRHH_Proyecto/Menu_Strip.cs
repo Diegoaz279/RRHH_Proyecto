@@ -12,6 +12,7 @@ namespace RRHH_Proyecto
 {
     public partial class Menu_Strip : Form
     {
+        
         public Menu_Strip()
         {
             InitializeComponent();
@@ -30,6 +31,27 @@ namespace RRHH_Proyecto
         {
             Agregar_Empleado principal = new Agregar_Empleado();
             principal.Show();
+        }
+
+        private void eNTRADAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal) this.WindowState = FormWindowState.Maximized;
+            else this.WindowState = FormWindowState.Normal;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+           this.WindowState = FormWindowState.Minimized;
         }
     }
 }

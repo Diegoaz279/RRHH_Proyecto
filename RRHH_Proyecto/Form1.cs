@@ -19,6 +19,9 @@ namespace RRHH_Proyecto
         public Form1()
         {
             InitializeComponent();
+
+            //Esto es para cuando se maximize se quede en el area de trabajo
+            this.MaximizedBounds =Screen.FromHandle(this.Handle).WorkingArea;   
         }
 
         private void btn_Ingresar_Click(object sender, EventArgs e)
@@ -39,7 +42,7 @@ namespace RRHH_Proyecto
 
                 if (reader.Read())
                 {
-                    MessageBox.Show($"Bienvenido  {usuario}", "Sistema");
+                    //MessageBox.Show($"Bienvenido  {usuario}", "Sistema");
                     Menu_Strip principal = new Menu_Strip();
                     principal.Show();
 
@@ -106,5 +109,22 @@ namespace RRHH_Proyecto
             }
         }
 
+        // Comfiguracion de los botones Cerra, Maximizar y Minimizar
+        private void btn_Cerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_Maximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal) this.WindowState = FormWindowState.Maximized;
+            else this.WindowState = FormWindowState.Normal;
+
+        }
+
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState= FormWindowState.Minimized;
+        }
     }
 }
