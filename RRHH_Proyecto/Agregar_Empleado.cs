@@ -119,7 +119,6 @@ namespace RRHH_Proyecto
     
         private void Agregar_Empleado_Load(object sender, EventArgs e)
         {
-            
         }
 
 
