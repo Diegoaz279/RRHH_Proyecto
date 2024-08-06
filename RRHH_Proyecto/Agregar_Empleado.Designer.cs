@@ -143,7 +143,7 @@
             btn_Registrar.Anchor = AnchorStyles.Top;
             btn_Registrar.Cursor = Cursors.Hand;
             btn_Registrar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btn_Registrar.Location = new Point(608, 730);
+            btn_Registrar.Location = new Point(609, 730);
             btn_Registrar.Name = "btn_Registrar";
             btn_Registrar.Size = new Size(182, 60);
             btn_Registrar.TabIndex = 18;

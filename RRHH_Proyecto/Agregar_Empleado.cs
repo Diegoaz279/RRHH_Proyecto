@@ -49,7 +49,7 @@ namespace RRHH_Proyecto
         //Evento Boton registrar
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            // Obtener valores de los TextBox
+             // Obtener valores de los TextBox
             int id;
             bool isIdValid = int.TryParse(mtb_Id.Text, out id); // Validar el ID
             string nombre = txt_Nombre.Text;

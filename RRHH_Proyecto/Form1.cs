@@ -27,6 +27,7 @@ namespace RRHH_Proyecto
         private void btn_Ingresar_Click(object sender, EventArgs e)
         {
 
+
             try
             {
                 string query = "select usuario,contrasena from usuarios where usuario = @usuario and contrasena = @contraseña";
