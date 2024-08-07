@@ -24,7 +24,7 @@ namespace RRHH_Proyecto
 
         private void Menu_Strip_Load(object sender, EventArgs e)
         {
-
+            //hola
         }
 
         private void aGREGARUSUARIOToolStripMenuItem_Click(object sender, EventArgs e)
