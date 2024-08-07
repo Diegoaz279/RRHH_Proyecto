@@ -27,6 +27,7 @@ namespace RRHH_Proyecto
         private void btn_Ingresar_Click(object sender, EventArgs e)
         {
             //hola
+            //klk
 
             try
             {
