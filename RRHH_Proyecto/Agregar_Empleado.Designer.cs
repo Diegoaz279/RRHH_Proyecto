@@ -51,6 +51,7 @@
             btn_Cancelar = new Button();
             label9 = new Label();
             mtb_Id = new MaskedTextBox();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)btn_Minimizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Maximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
@@ -63,7 +64,7 @@
             txt_Nombre.BorderStyle = BorderStyle.FixedSingle;
             txt_Nombre.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Nombre.ForeColor = SystemColors.WindowFrame;
-            txt_Nombre.Location = new Point(357, 263);
+            txt_Nombre.Location = new Point(342, 263);
             txt_Nombre.Name = "txt_Nombre";
             txt_Nombre.Size = new Size(448, 33);
             txt_Nombre.TabIndex = 8;
@@ -77,7 +78,7 @@
             txt_Apellido.BorderStyle = BorderStyle.FixedSingle;
             txt_Apellido.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Apellido.ForeColor = SystemColors.WindowFrame;
-            txt_Apellido.Location = new Point(357, 326);
+            txt_Apellido.Location = new Point(342, 326);
             txt_Apellido.Name = "txt_Apellido";
             txt_Apellido.Size = new Size(448, 33);
             txt_Apellido.TabIndex = 9;
@@ -91,7 +92,7 @@
             txt_Nacimiento.BorderStyle = BorderStyle.FixedSingle;
             txt_Nacimiento.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Nacimiento.ForeColor = SystemColors.WindowFrame;
-            txt_Nacimiento.Location = new Point(357, 451);
+            txt_Nacimiento.Location = new Point(342, 451);
             txt_Nacimiento.Name = "txt_Nacimiento";
             txt_Nacimiento.Size = new Size(448, 33);
             txt_Nacimiento.TabIndex = 11;
@@ -105,7 +106,7 @@
             txt_Correo.BorderStyle = BorderStyle.FixedSingle;
             txt_Correo.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Correo.ForeColor = SystemColors.WindowFrame;
-            txt_Correo.Location = new Point(357, 570);
+            txt_Correo.Location = new Point(342, 570);
             txt_Correo.Name = "txt_Correo";
             txt_Correo.Size = new Size(448, 33);
             txt_Correo.TabIndex = 14;
@@ -119,10 +120,10 @@
             mtb_Cedula.BorderStyle = BorderStyle.FixedSingle;
             mtb_Cedula.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             mtb_Cedula.ForeColor = SystemColors.WindowFrame;
-            mtb_Cedula.Location = new Point(357, 390);
+            mtb_Cedula.Location = new Point(342, 390);
             mtb_Cedula.Mask = "000-0000000-0";
             mtb_Cedula.Name = "mtb_Cedula";
-            mtb_Cedula.Size = new Size(448, 33);
+            mtb_Cedula.Size = new Size(172, 33);
             mtb_Cedula.TabIndex = 16;
             // 
             // mtb_Telefono
@@ -132,10 +133,10 @@
             mtb_Telefono.BorderStyle = BorderStyle.FixedSingle;
             mtb_Telefono.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             mtb_Telefono.ForeColor = SystemColors.WindowFrame;
-            mtb_Telefono.Location = new Point(357, 511);
+            mtb_Telefono.Location = new Point(342, 511);
             mtb_Telefono.Mask = "000-000-0000";
             mtb_Telefono.Name = "mtb_Telefono";
-            mtb_Telefono.Size = new Size(448, 33);
+            mtb_Telefono.Size = new Size(159, 33);
             mtb_Telefono.TabIndex = 17;
             // 
             // btn_Registrar
@@ -143,7 +144,7 @@
             btn_Registrar.Anchor = AnchorStyles.Top;
             btn_Registrar.Cursor = Cursors.Hand;
             btn_Registrar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btn_Registrar.Location = new Point(609, 730);
+            btn_Registrar.Location = new Point(594, 730);
             btn_Registrar.Name = "btn_Registrar";
             btn_Registrar.Size = new Size(182, 60);
             btn_Registrar.TabIndex = 18;
@@ -154,9 +155,10 @@
             // btn_Minimizar
             // 
             btn_Minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_Minimizar.BackColor = Color.Transparent;
             btn_Minimizar.Cursor = Cursors.Hand;
             btn_Minimizar.Image = (Image)resources.GetObject("btn_Minimizar.Image");
-            btn_Minimizar.Location = new Point(736, 12);
+            btn_Minimizar.Location = new Point(705, 12);
             btn_Minimizar.Name = "btn_Minimizar";
             btn_Minimizar.Size = new Size(43, 40);
             btn_Minimizar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -167,9 +169,10 @@
             // btn_Maximizar
             // 
             btn_Maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_Maximizar.BackColor = Color.Transparent;
             btn_Maximizar.Cursor = Cursors.Hand;
             btn_Maximizar.Image = (Image)resources.GetObject("btn_Maximizar.Image");
-            btn_Maximizar.Location = new Point(792, 12);
+            btn_Maximizar.Location = new Point(761, 12);
             btn_Maximizar.Name = "btn_Maximizar";
             btn_Maximizar.Size = new Size(43, 40);
             btn_Maximizar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -180,9 +183,10 @@
             // btn_Cerrar
             // 
             btn_Cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_Cerrar.BackColor = Color.Transparent;
             btn_Cerrar.Cursor = Cursors.Hand;
             btn_Cerrar.Image = (Image)resources.GetObject("btn_Cerrar.Image");
-            btn_Cerrar.Location = new Point(848, 12);
+            btn_Cerrar.Location = new Point(817, 12);
             btn_Cerrar.Name = "btn_Cerrar";
             btn_Cerrar.Size = new Size(43, 40);
             btn_Cerrar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -197,7 +201,7 @@
             txt_Cargo.BorderStyle = BorderStyle.FixedSingle;
             txt_Cargo.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Cargo.ForeColor = SystemColors.WindowFrame;
-            txt_Cargo.Location = new Point(357, 648);
+            txt_Cargo.Location = new Point(342, 648);
             txt_Cargo.Name = "txt_Cargo";
             txt_Cargo.Size = new Size(448, 33);
             txt_Cargo.TabIndex = 22;
@@ -207,7 +211,7 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Stencil", 22F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(223, 86);
+            label1.Location = new Point(208, 86);
             label1.Name = "label1";
             label1.Size = new Size(448, 52);
             label1.TabIndex = 23;
@@ -218,7 +222,7 @@
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(83, 270);
+            label2.Location = new Point(68, 270);
             label2.Name = "label2";
             label2.Size = new Size(113, 28);
             label2.TabIndex = 24;
@@ -229,7 +233,7 @@
             label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(83, 333);
+            label3.Location = new Point(68, 333);
             label3.Name = "label3";
             label3.Size = new Size(116, 28);
             label3.TabIndex = 25;
@@ -240,7 +244,7 @@
             label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
             label4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(83, 452);
+            label4.Location = new Point(68, 452);
             label4.Name = "label4";
             label4.Size = new Size(263, 28);
             label4.TabIndex = 27;
@@ -251,7 +255,7 @@
             label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
             label5.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(83, 389);
+            label5.Location = new Point(68, 389);
             label5.Name = "label5";
             label5.Size = new Size(102, 28);
             label5.TabIndex = 26;
@@ -262,7 +266,7 @@
             label6.Anchor = AnchorStyles.Top;
             label6.AutoSize = true;
             label6.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(83, 577);
+            label6.Location = new Point(68, 577);
             label6.Name = "label6";
             label6.Size = new Size(213, 28);
             label6.TabIndex = 30;
@@ -273,7 +277,7 @@
             label7.Anchor = AnchorStyles.Top;
             label7.AutoSize = true;
             label7.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(83, 510);
+            label7.Location = new Point(68, 510);
             label7.Name = "label7";
             label7.Size = new Size(239, 28);
             label7.TabIndex = 29;
@@ -284,7 +288,7 @@
             label8.Anchor = AnchorStyles.Top;
             label8.AutoSize = true;
             label8.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(83, 647);
+            label8.Location = new Point(68, 647);
             label8.Name = "label8";
             label8.Size = new Size(92, 28);
             label8.TabIndex = 28;
@@ -295,7 +299,7 @@
             btn_Cancelar.Anchor = AnchorStyles.Top;
             btn_Cancelar.Cursor = Cursors.Hand;
             btn_Cancelar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btn_Cancelar.Location = new Point(374, 730);
+            btn_Cancelar.Location = new Point(359, 730);
             btn_Cancelar.Name = "btn_Cancelar";
             btn_Cancelar.Size = new Size(182, 60);
             btn_Cancelar.TabIndex = 31;
@@ -308,7 +312,7 @@
             label9.Anchor = AnchorStyles.Top;
             label9.AutoSize = true;
             label9.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(83, 207);
+            label9.Location = new Point(68, 207);
             label9.Name = "label9";
             label9.Size = new Size(46, 28);
             label9.TabIndex = 33;
@@ -321,19 +325,28 @@
             mtb_Id.BorderStyle = BorderStyle.FixedSingle;
             mtb_Id.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             mtb_Id.ForeColor = SystemColors.WindowFrame;
-            mtb_Id.Location = new Point(357, 202);
+            mtb_Id.Location = new Point(342, 202);
             mtb_Id.Mask = "00000";
             mtb_Id.Name = "mtb_Id";
             mtb_Id.PromptChar = ' ';
-            mtb_Id.Size = new Size(448, 33);
+            mtb_Id.Size = new Size(98, 33);
             mtb_Id.TabIndex = 34;
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BackColor = Color.PowderBlue;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(875, 62);
+            panel1.TabIndex = 35;
             // 
             // Agregar_Empleado
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.PaleTurquoise;
-            ClientSize = new Size(903, 836);
+            BackColor = Color.White;
+            ClientSize = new Size(872, 845);
             Controls.Add(mtb_Id);
             Controls.Add(label9);
             Controls.Add(btn_Cancelar);
@@ -356,6 +369,7 @@
             Controls.Add(txt_Nacimiento);
             Controls.Add(txt_Apellido);
             Controls.Add(txt_Nombre);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Agregar_Empleado";
             Opacity = 0.95D;
@@ -392,5 +406,6 @@
         private Button btn_Cancelar;
         private Label label9;
         private MaskedTextBox mtb_Id;
+        private Panel panel1;
     }
 }
