@@ -47,6 +47,7 @@ namespace RRHH_Proyecto
         }
 
         //Evento Boton registrar
+        //h
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
              // Obtener valores de los TextBox
