@@ -12,10 +12,13 @@ namespace RRHH_Proyecto
 {
     public partial class Menu_Strip : Form
     {
-        
+
         public Menu_Strip()
         {
             InitializeComponent();
+
+            //Para tener la ventana en el area de trabajo
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
         private void aCERToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,7 +35,11 @@ namespace RRHH_Proyecto
             Agregar_Empleado principal = new Agregar_Empleado();
             principal.Show();
         }
-
+        private void aUSENCIAToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Agregar_Ausencia principal = new Agregar_Ausencia();
+            principal.Show();
+        }
         private void eNTRADAToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -41,7 +48,7 @@ namespace RRHH_Proyecto
         private void btnCerrar_Click(object sender, EventArgs e)
 
         {
-            Application.Exit();
+           Application.Exit();
         }
 
         private void btnMaximizar_Click(object sender, EventArgs e)
@@ -52,7 +59,9 @@ namespace RRHH_Proyecto
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
-           this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Minimized;
         }
+
+       
     }
 }

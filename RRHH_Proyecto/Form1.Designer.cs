@@ -38,6 +38,7 @@
             btn_Maximizar = new PictureBox();
             btn_Minimizar = new PictureBox();
             pictureBox4 = new PictureBox();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Maximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Minimizar).BeginInit();
@@ -52,7 +53,7 @@
             btn_Cancelar.FlatAppearance.BorderColor = Color.Black;
             btn_Cancelar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Cancelar.ForeColor = SystemColors.ActiveCaptionText;
-            btn_Cancelar.Location = new Point(153, 746);
+            btn_Cancelar.Location = new Point(108, 742);
             btn_Cancelar.Name = "btn_Cancelar";
             btn_Cancelar.Size = new Size(157, 58);
             btn_Cancelar.TabIndex = 0;
@@ -68,7 +69,7 @@
             btn_Ingresar.FlatAppearance.BorderColor = Color.Black;
             btn_Ingresar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Ingresar.ForeColor = SystemColors.ActiveCaptionText;
-            btn_Ingresar.Location = new Point(349, 746);
+            btn_Ingresar.Location = new Point(304, 742);
             btn_Ingresar.Name = "btn_Ingresar";
             btn_Ingresar.Size = new Size(157, 58);
             btn_Ingresar.TabIndex = 1;
@@ -82,8 +83,8 @@
             txt_Usuario.BackColor = Color.LightBlue;
             txt_Usuario.BorderStyle = BorderStyle.FixedSingle;
             txt_Usuario.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_Usuario.ForeColor = Color.Black;
-            txt_Usuario.Location = new Point(153, 577);
+            txt_Usuario.ForeColor = Color.DimGray;
+            txt_Usuario.Location = new Point(108, 560);
             txt_Usuario.Name = "txt_Usuario";
             txt_Usuario.Size = new Size(353, 40);
             txt_Usuario.TabIndex = 4;
@@ -98,12 +99,13 @@
             txt_Contraseña.BackColor = Color.LightBlue;
             txt_Contraseña.BorderStyle = BorderStyle.FixedSingle;
             txt_Contraseña.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_Contraseña.ForeColor = Color.Black;
-            txt_Contraseña.Location = new Point(153, 660);
+            txt_Contraseña.ForeColor = Color.DimGray;
+            txt_Contraseña.Location = new Point(108, 643);
             txt_Contraseña.Name = "txt_Contraseña";
             txt_Contraseña.Size = new Size(353, 40);
             txt_Contraseña.TabIndex = 5;
             txt_Contraseña.Text = "CONTRASEÑA";
+            txt_Contraseña.TextChanged += txt_Contraseña_TextChanged;
             txt_Contraseña.Enter += txt_Contraseña_Enter;
             txt_Contraseña.Leave += txt_Contraseña_Leave;
             // 
@@ -112,7 +114,7 @@
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Stencil", 22F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(110, 103);
+            label2.Location = new Point(65, 86);
             label2.Name = "label2";
             label2.Size = new Size(441, 52);
             label2.TabIndex = 7;
@@ -123,7 +125,7 @@
             btn_Cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Cerrar.Cursor = Cursors.Hand;
             btn_Cerrar.Image = (Image)resources.GetObject("btn_Cerrar.Image");
-            btn_Cerrar.Location = new Point(590, 12);
+            btn_Cerrar.Location = new Point(491, 12);
             btn_Cerrar.Name = "btn_Cerrar";
             btn_Cerrar.Size = new Size(43, 40);
             btn_Cerrar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -136,7 +138,7 @@
             btn_Maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Maximizar.Cursor = Cursors.Hand;
             btn_Maximizar.Image = (Image)resources.GetObject("btn_Maximizar.Image");
-            btn_Maximizar.Location = new Point(534, 12);
+            btn_Maximizar.Location = new Point(435, 12);
             btn_Maximizar.Name = "btn_Maximizar";
             btn_Maximizar.Size = new Size(43, 40);
             btn_Maximizar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -149,7 +151,7 @@
             btn_Minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Minimizar.Cursor = Cursors.Hand;
             btn_Minimizar.Image = (Image)resources.GetObject("btn_Minimizar.Image");
-            btn_Minimizar.Location = new Point(478, 12);
+            btn_Minimizar.Location = new Point(379, 12);
             btn_Minimizar.Name = "btn_Minimizar";
             btn_Minimizar.Size = new Size(43, 40);
             btn_Minimizar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -161,7 +163,7 @@
             // 
             pictureBox4.Anchor = AnchorStyles.Top;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(143, 175);
+            pictureBox4.Location = new Point(98, 158);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(353, 362);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -173,7 +175,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
-            ClientSize = new Size(656, 886);
+            ClientSize = new Size(557, 842);
             Controls.Add(pictureBox4);
             Controls.Add(btn_Minimizar);
             Controls.Add(btn_Maximizar);
@@ -188,6 +190,7 @@
             Opacity = 0.93D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            KeyDown += Form1_KeyDown;
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Maximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Minimizar).EndInit();
@@ -207,5 +210,6 @@
         private PictureBox btn_Maximizar;
         private PictureBox btn_Minimizar;
         private PictureBox pictureBox4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

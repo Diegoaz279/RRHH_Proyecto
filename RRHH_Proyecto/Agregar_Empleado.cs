@@ -18,6 +18,8 @@ namespace RRHH_Proyecto
         public Agregar_Empleado()
         {   
             InitializeComponent();
+
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
         //APARTADO PARA QUE APAREZCAN Y DESAPAREZCAN LAS LETRAS DE INFO DE LOS TEXT BOX
@@ -47,12 +49,9 @@ namespace RRHH_Proyecto
         }
 
         //Evento Boton registrar
-        //h
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-             // Obtener valores de los TextBox
-            int id;
-            bool isIdValid = int.TryParse(mtb_Id.Text, out id); // Validar el ID
+            // Obtiene los valores de los textbox y lo almacena en una variable local
             string nombre = txt_Nombre.Text;
             string apellido = txt_Apellido.Text;
             string cedula = mtb_Cedula.Text;
@@ -61,13 +60,7 @@ namespace RRHH_Proyecto
             string telefono = mtb_Telefono.Text;
             string correoElectronico = txt_Correo.Text;
 
-            // Validaciones
-            if (!isIdValid)
-            {
-                MessageBox.Show("El ID ingresado no es válido.", "Error");
-                return;
-            }
-
+            // Valida que no Haya un spacio en blanco o con un spacio
             if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido) ||
                 string.IsNullOrWhiteSpace(cedula) || string.IsNullOrWhiteSpace(lugarNacimiento) ||
                 string.IsNullOrWhiteSpace(cargo) || string.IsNullOrWhiteSpace(telefono) ||
@@ -77,16 +70,15 @@ namespace RRHH_Proyecto
                 return;
             }
 
-            // Consulta de inserción
-            string query = "INSERT INTO Empleados (CI, Nombre, Apellido, Cédula, LugarNacimiento, Cargo, Telefono, CorreoElectronico) VALUES (@CI, @Nombre, @Apellido, @Cedula, @LugarNacimiento, @Cargo, @Telefono, @CorreoElectronico)";
+            // Consulta en la base de datos la isercion de los datos
+            string query = "INSERT INTO Empleados (Nombre, Apellido, Cedula, LugarNacimiento, Cargo, Telefono, CorreoElectronico) VALUES (@Nombre, @Apellido, @Cedula, @LugarNacimiento, @Cargo, @Telefono, @CorreoElectronico)";
 
             SqlConnection conexion_bd = null;
             try
             {
-                // Llamada a tu método para abrir la conexión
+                // Llama al metodo de la conexion 
                 conexion_bd = conexion.AbrirConexion();
                 SqlCommand comando = new SqlCommand(query, conexion_bd);
-                comando.Parameters.AddWithValue("@CI", id); // Usar el valor ingresado en txt_Id
                 comando.Parameters.AddWithValue("@Nombre", nombre);
                 comando.Parameters.AddWithValue("@Apellido", apellido);
                 comando.Parameters.AddWithValue("@Cedula", cedula);
@@ -98,7 +90,7 @@ namespace RRHH_Proyecto
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Empleado registrado exitosamente");
 
-                // Reiniciar el formulario actual
+                // Reiniciar el formulario para que no se quede con los datos ya ingresados
                 this.Controls.Clear();
                 InitializeComponent();
             }
@@ -108,9 +100,9 @@ namespace RRHH_Proyecto
             }
             finally
             {
+                //Cierra la conexion
                 if (conexion_bd != null)
                 {
-                    // Llamada a tu método para cerrar la conexión
                     conexion.CerrarConexion();
                 }
             }
@@ -131,7 +123,7 @@ namespace RRHH_Proyecto
 
         private void btn_Cerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void btn_Maximizar_Click(object sender, EventArgs e)

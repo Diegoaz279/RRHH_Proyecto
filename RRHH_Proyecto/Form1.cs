@@ -20,18 +20,26 @@ namespace RRHH_Proyecto
         {
             InitializeComponent();
 
-            //Esto es para cuando se maximize se quede en el area de trabajo
-            this.MaximizedBounds =Screen.FromHandle(this.Handle).WorkingArea;   
-        }
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
+            // Asociar el evento KeyDown a los TextBox
+            txt_Usuario.KeyDown += new KeyEventHandler(txt_KeyDown);
+            txt_Contraseña.KeyDown += new KeyEventHandler(txt_KeyDown);
+        }
+        private void txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Para evitar el sonido al salir el mensaje
+                btn_Ingresar_Click(sender, e);
+            }
+        }
         private void btn_Ingresar_Click(object sender, EventArgs e)
         {
-            //hola
-            //klk
 
             try
             {
-                string query = "select usuario,contrasena from usuarios where usuario = @usuario and contrasena = @contraseña";
+                string query = "select usuario, contrasena from usuarios where usuario = @usuario and contrasena = @contraseña";
                 string usuario = txt_Usuario.Text;
                 string contraseña = txt_Contraseña.Text;
 
@@ -44,22 +52,21 @@ namespace RRHH_Proyecto
 
                 if (reader.Read())
                 {
-                    //MessageBox.Show($"Bienvenido  {usuario}", "Sistema");
                     Menu_Strip principal = new Menu_Strip();
                     principal.Show();
-
                     this.Hide();
                     conexion.CerrarConexion();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o Contraseña Incorrectos", "Sistema");
+                    MessageBox.Show("Usuario o contraseña incorrectos.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conexion.CerrarConexion();
                 }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al ingresar datos" + ex);
+                MessageBox.Show("Error al ingresar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -126,7 +133,20 @@ namespace RRHH_Proyecto
 
         private void btn_Minimizar_Click(object sender, EventArgs e)
         {
-            this.WindowState= FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)//NO TERMINADO
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Evita el comportamiento predeterminado
+            }
+        }
+
+        private void txt_Contraseña_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
