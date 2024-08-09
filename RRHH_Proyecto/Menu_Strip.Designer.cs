@@ -156,6 +156,7 @@
             aGREGARDEPARTAMENTOToolStripMenuItem.Name = "aGREGARDEPARTAMENTOToolStripMenuItem";
             aGREGARDEPARTAMENTOToolStripMenuItem.Size = new Size(414, 38);
             aGREGARDEPARTAMENTOToolStripMenuItem.Text = "AGREGAR DEPARTAMENTO";
+            aGREGARDEPARTAMENTOToolStripMenuItem.Click += aGREGARDEPARTAMENTOToolStripMenuItem_Click;
             // 
             // cONSULTAToolStripMenuItem
             // 
@@ -297,9 +298,9 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Bottom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(32, 27);
+            pictureBox1.Location = new Point(32, 45);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1381, 1312);
+            pictureBox1.Size = new Size(1381, 1294);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 14;
             pictureBox1.TabStop = false;

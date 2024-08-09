@@ -31,8 +31,8 @@ namespace RRHH_Proyecto
 
         private void CargarEmpleados()
         {
-            // Consulta para seleccionar el nombre completo de los empleados
-            string query = "SELECT Nombre + ' ' + Apellido AS NombreCompleto FROM Empleados";
+            // Consulta para seleccionar el ID y el nombre completo de los empleados
+            string query = "SELECT ID, Nombre + ' ' + Apellido AS NombreCompleto FROM Empleados";
 
             using (SqlConnection conexion_bd = conexion.AbrirConexion())
             {
@@ -40,8 +40,9 @@ namespace RRHH_Proyecto
                 DataTable empleados = new DataTable();
                 adapter.Fill(empleados);
 
-                // Configurar el ComboBox para mostrar solo el nombre completo
+                // Configurar el ComboBox para mostrar el nombre completo y almacenar el ID
                 cmb_Empleado.DisplayMember = "NombreCompleto";
+                cmb_Empleado.ValueMember = "ID"; // Esto guarda el ID pero muestra el nombre completo
                 cmb_Empleado.DataSource = empleados;
 
                 conexion.CerrarConexion();
@@ -89,6 +90,7 @@ namespace RRHH_Proyecto
         }
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
+
             // Verificar si se ha seleccionado un empleado
             if (cmb_Empleado.SelectedItem == null)
             {
@@ -98,24 +100,28 @@ namespace RRHH_Proyecto
 
             string TipoAusencia = cmb_TipoAusencia.Text;
 
-            // Valida que no Haya un spacio en blanco o con un spacio
+            // Valida que no haya un espacio en blanco o que esté vacío
             if (string.IsNullOrWhiteSpace(TipoAusencia))
-               
             {
                 MessageBox.Show("Por favor, seleccione un tipo de ausencia.", "Error");
                 return;
             }
+
             // Obtener datos del formulario
-            string Empleado = cmb_Empleado.SelectedItem.ToString(); // Ajusta según cómo obtienes el CI
+            int empleadoID = (int)cmb_Empleado.SelectedValue; // Obtiene el ID del empleado seleccionado
             string tipoAusencia = cmb_TipoAusencia.SelectedItem.ToString();
             DateTime inicioAusencia = dt_InicioAusencia.Value;
             DateTime finAusencia = dt_FinAusencia.Value;
 
-            // Conectar a la base de datos
-            using (SqlConnection conexion_bd = conexion.AbrirConexion())
+            string queryInsertEmpleadoAusencia = "INSERT INTO EmpleadoAusencia (Empleado_ID, IdAusencia, FInicio, FFin) VALUES (@Empleado_ID, @IdAusencia, @FInicio, @FFin)";
+            SqlConnection conexion_bd = null;
+
+            try
             {
-                // Insertar el tipo de ausencia si es "Otras"
+                // Llama al metodo de la conexión
+                conexion_bd = conexion.AbrirConexion();
                 int idTipoAusencia = -1;
+
                 if (tipoAusencia == "Otras")
                 {
                     string descripcion = txt_OtraAusencia.Text;
@@ -149,19 +155,35 @@ namespace RRHH_Proyecto
                 }
 
                 // Insertar en la tabla EmpleadoAusencia
-                string queryInsertEmpleadoAusencia = "INSERT INTO EmpleadoAusencia (Empleado, FInicio, FFin) VALUES (@Empleado, @FInicio, @FFin)";
                 SqlCommand comandoInsertEmpleadoAusencia = new SqlCommand(queryInsertEmpleadoAusencia, conexion_bd);
-                comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@Empleado", Empleado);
-
+                comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@Empleado_ID", empleadoID);
+                comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@IdAusencia", idTipoAusencia);
                 comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@FInicio", inicioAusencia);
                 comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@FFin", finAusencia);
 
                 comandoInsertEmpleadoAusencia.ExecuteNonQuery();
                 MessageBox.Show("Ausencia agregada exitosamente.", "Éxito");
 
-                // Cerrar la conexión
-                conexion.CerrarConexion();
+                // Limpiar campos despues de agregar la ausencia
+                cmb_Empleado.SelectedIndex = -1;
+                cmb_TipoAusencia.SelectedIndex = -1;
+                txt_OtraAusencia.Clear();
+                dt_InicioAusencia.Value = DateTime.Now;
+                dt_FinAusencia.Value = DateTime.Now;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar ausencia: {ex.Message}", "Error");
+            }
+            finally
+            {
+                // Cierra la conexión
+                if (conexion_bd != null && conexion_bd.State == ConnectionState.Open)
+                {
+                    conexion_bd.Close();
+                }
+            }
+
         }
 
         private void cmb_Empleado_SelectedIndexChanged(object sender, EventArgs e)

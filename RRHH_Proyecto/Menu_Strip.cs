@@ -48,7 +48,7 @@ namespace RRHH_Proyecto
         private void btnCerrar_Click(object sender, EventArgs e)
 
         {
-           Application.Exit();
+            Application.Exit();
         }
 
         private void btnMaximizar_Click(object sender, EventArgs e)
@@ -62,6 +62,10 @@ namespace RRHH_Proyecto
             this.WindowState = FormWindowState.Minimized;
         }
 
-       
+        private void aGREGARDEPARTAMENTOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           Agregar_Departamento principal = new Agregar_Departamento();
+            principal.Show();   
+        }
     }
 }
