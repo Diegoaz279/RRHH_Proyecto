@@ -41,10 +41,10 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            dt_InicioAusencia = new DateTimePicker();
             txt_OtraAusencia = new TextBox();
             btn_Cancelar = new Button();
-            dt_FinAusencia = new DateTimePicker();
+            mb_FechaInicio = new MaskedTextBox();
+            mb_FechaFinal = new MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)btn_Minimizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Maximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
@@ -188,15 +188,6 @@
             label5.TabIndex = 44;
             label5.Text = "Fin Ausencia";
             // 
-            // dt_InicioAusencia
-            // 
-            dt_InicioAusencia.Anchor = AnchorStyles.Top;
-            dt_InicioAusencia.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
-            dt_InicioAusencia.Location = new Point(286, 449);
-            dt_InicioAusencia.Name = "dt_InicioAusencia";
-            dt_InicioAusencia.Size = new Size(414, 33);
-            dt_InicioAusencia.TabIndex = 45;
-            // 
             // txt_OtraAusencia
             // 
             txt_OtraAusencia.Anchor = AnchorStyles.Top;
@@ -224,24 +215,31 @@
             btn_Cancelar.UseVisualStyleBackColor = true;
             btn_Cancelar.Click += btn_Cancelar_Click;
             // 
-            // dt_FinAusencia
+            // mb_FechaInicio
             // 
-            dt_FinAusencia.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
-            dt_FinAusencia.Location = new Point(286, 557);
-            dt_FinAusencia.Name = "dt_FinAusencia";
-            dt_FinAusencia.Size = new Size(412, 33);
-            dt_FinAusencia.TabIndex = 49;
-            dt_FinAusencia.ValueChanged += dt_FinAusencia_ValueChanged;
+            mb_FechaInicio.BorderStyle = BorderStyle.FixedSingle;
+            mb_FechaInicio.Location = new Point(288, 451);
+            mb_FechaInicio.Name = "mb_FechaInicio";
+            mb_FechaInicio.Size = new Size(302, 31);
+            mb_FechaInicio.TabIndex = 49;
+            // 
+            // mb_FechaFinal
+            // 
+            mb_FechaFinal.BorderStyle = BorderStyle.FixedSingle;
+            mb_FechaFinal.Location = new Point(288, 554);
+            mb_FechaFinal.Name = "mb_FechaFinal";
+            mb_FechaFinal.Size = new Size(302, 31);
+            mb_FechaFinal.TabIndex = 50;
             // 
             // Agregar_Ausencia
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(768, 812);
-            Controls.Add(dt_FinAusencia);
+            Controls.Add(mb_FechaFinal);
+            Controls.Add(mb_FechaInicio);
             Controls.Add(btn_Cancelar);
             Controls.Add(txt_OtraAusencia);
-            Controls.Add(dt_InicioAusencia);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -281,9 +279,9 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private DateTimePicker dt_InicioAusencia;
         private TextBox txt_OtraAusencia;
         private Button btn_Cancelar;
-        private DateTimePicker dt_FinAusencia;
+        private MaskedTextBox mb_FechaInicio;
+        private MaskedTextBox mb_FechaFinal;
     }
 }

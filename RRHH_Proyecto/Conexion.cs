@@ -11,7 +11,13 @@ namespace RRHH_Proyecto
     public class Conexion
     {
 
-        private SqlConnection Conexion_2 = new SqlConnection("Server=.;DataBase=RRHH;Integrated Security=true");
+        public Conexion() 
+        { 
+        
+        
+        }
+       //connection = new SqlConnection(@"Data Source=.;Initial Catalog=InventoryHall;Integrated Security=True;TrustServerCertificate=true");
+        public SqlConnection Conexion_2 = new SqlConnection("Server=.;DataBase=RRHH;Integrated Security=true");
         public SqlConnection AbrirConexion()
         {
             if (Conexion_2.State == ConnectionState.Closed)

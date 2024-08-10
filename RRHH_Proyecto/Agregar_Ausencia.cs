@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using RRHH_Proyecto;
+
 
 namespace RRHH_Proyecto
 {
@@ -90,8 +92,6 @@ namespace RRHH_Proyecto
         }
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
-
-            // Verificar si se ha seleccionado un empleado
             if (cmb_Empleado.SelectedItem == null)
             {
                 MessageBox.Show("Por favor, seleccione un empleado.", "Error");
@@ -100,76 +100,54 @@ namespace RRHH_Proyecto
 
             string TipoAusencia = cmb_TipoAusencia.Text;
 
-            // Valida que no haya un espacio en blanco o que esté vacío
             if (string.IsNullOrWhiteSpace(TipoAusencia))
             {
                 MessageBox.Show("Por favor, seleccione un tipo de ausencia.", "Error");
                 return;
             }
 
-            // Obtener datos del formulario
             int empleadoID = (int)cmb_Empleado.SelectedValue; // Obtiene el ID del empleado seleccionado
-            string tipoAusencia = cmb_TipoAusencia.SelectedItem.ToString();
-            DateTime inicioAusencia = dt_InicioAusencia.Value;
+            DateTime inicioAusencia = mb_FechaInicio.tex;
             DateTime finAusencia = dt_FinAusencia.Value;
 
-            string queryInsertEmpleadoAusencia = "INSERT INTO EmpleadoAusencia (Empleado_ID, IdAusencia, FInicio, FFin) VALUES (@Empleado_ID, @IdAusencia, @FInicio, @FFin)";
+            Conexion0 conexion = new Conexion0();
             SqlConnection conexion_bd = null;
 
             try
             {
-                // Llama al metodo de la conexión
-                conexion_bd = conexion.AbrirConexion();
-                int idTipoAusencia = -1;
+                conexion_bd = conexion.GetConnection();
 
-                if (tipoAusencia == "Otras")
+                // Insertar directamente el tipo de ausencia ingresado
+                string queryInsertAusencia = "INSERT INTO Ausencia (TipoAusencia) VALUES (@TipoAusencia); SELECT SCOPE_IDENTITY();";
+                SqlCommand comandoInsertAusencia = new SqlCommand(queryInsertAusencia, conexion_bd);
+                comandoInsertAusencia.Parameters.AddWithValue("@TipoAusencia", TipoAusencia);
+                int idTipoAusencia = Convert.ToInt32(comandoInsertAusencia.ExecuteScalar());
+
+                // Verifica que idTipoAusencia sea válido antes de insertar
+                if (idTipoAusencia > 0)
                 {
-                    string descripcion = txt_OtraAusencia.Text;
+                    // Insertar en la tabla EmpleadoAusencia
+                    string queryInsertEmpleadoAusencia = "INSERT INTO EmpleadoAusencia (Empleado_ID, IdAusencia, FInicio, FFin) VALUES (@Empleado_ID, @IdAusencia, @FInicio, @FFin)";
+                    SqlCommand comandoInsertEmpleadoAusencia = new SqlCommand(queryInsertEmpleadoAusencia, conexion_bd);
+                    comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@Empleado_ID", empleadoID);
+                    comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@IdAusencia", idTipoAusencia);
+                    comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@FInicio", inicioAusencia);
+                    comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@FFin", finAusencia);
 
-                    // Verificar si la descripción ya existe
-                    string queryCheck = "SELECT IdAusencia FROM Ausencia WHERE TipoAusencia = @TipoAusencia";
-                    SqlCommand comandoCheck = new SqlCommand(queryCheck, conexion_bd);
-                    comandoCheck.Parameters.AddWithValue("@TipoAusencia", descripcion);
-                    object result = comandoCheck.ExecuteScalar();
+                    comandoInsertEmpleadoAusencia.ExecuteNonQuery();
+                    MessageBox.Show("Ausencia agregada exitosamente.", "Éxito");
 
-                    if (result == null)
-                    {
-                        // Insertar nueva ausencia
-                        string queryInsertAusencia = "INSERT INTO Ausencia (TipoAusencia) VALUES (@TipoAusencia); SELECT SCOPE_IDENTITY();";
-                        SqlCommand comandoInsertAusencia = new SqlCommand(queryInsertAusencia, conexion_bd);
-                        comandoInsertAusencia.Parameters.AddWithValue("@TipoAusencia", descripcion);
-                        idTipoAusencia = Convert.ToInt32(comandoInsertAusencia.ExecuteScalar());
-                    }
-                    else
-                    {
-                        idTipoAusencia = Convert.ToInt32(result);
-                    }
+                    // Limpiar campos después de agregar la ausencia
+                    cmb_Empleado.SelectedIndex = -1;
+                    cmb_TipoAusencia.SelectedIndex = -1;
+                    txt_OtraAusencia.Clear();
+                    dt_InicioAusencia.Value = DateTime.Now;
+                    dt_FinAusencia.Value = DateTime.Now;
                 }
                 else
                 {
-                    // Obtener el ID del tipo de ausencia seleccionado
-                    string queryTipoAusencia = "SELECT IdAusencia FROM Ausencia WHERE TipoAusencia = @TipoAusencia";
-                    SqlCommand comandoTipoAusencia = new SqlCommand(queryTipoAusencia, conexion_bd);
-                    comandoTipoAusencia.Parameters.AddWithValue("@TipoAusencia", tipoAusencia);
-                    idTipoAusencia = Convert.ToInt32(comandoTipoAusencia.ExecuteScalar());
+                    MessageBox.Show("Error al obtener el Id del tipo de ausencia.", "Error");
                 }
-
-                // Insertar en la tabla EmpleadoAusencia
-                SqlCommand comandoInsertEmpleadoAusencia = new SqlCommand(queryInsertEmpleadoAusencia, conexion_bd);
-                comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@Empleado_ID", empleadoID);
-                comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@IdAusencia", idTipoAusencia);
-                comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@FInicio", inicioAusencia);
-                comandoInsertEmpleadoAusencia.Parameters.AddWithValue("@FFin", finAusencia);
-
-                comandoInsertEmpleadoAusencia.ExecuteNonQuery();
-                MessageBox.Show("Ausencia agregada exitosamente.", "Éxito");
-
-                // Limpiar campos despues de agregar la ausencia
-                cmb_Empleado.SelectedIndex = -1;
-                cmb_TipoAusencia.SelectedIndex = -1;
-                txt_OtraAusencia.Clear();
-                dt_InicioAusencia.Value = DateTime.Now;
-                dt_FinAusencia.Value = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -177,11 +155,7 @@ namespace RRHH_Proyecto
             }
             finally
             {
-                // Cierra la conexión
-                if (conexion_bd != null && conexion_bd.State == ConnectionState.Open)
-                {
-                    conexion_bd.Close();
-                }
+                conexion.CloseConnection();
             }
 
         }

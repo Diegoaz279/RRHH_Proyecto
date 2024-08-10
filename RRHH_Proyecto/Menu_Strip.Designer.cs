@@ -35,7 +35,6 @@
             aGREGARUSUARIOToolStripMenuItem = new ToolStripMenuItem();
             rETRASOToolStripMenuItem1 = new ToolStripMenuItem();
             aUSENCIAToolStripMenuItem1 = new ToolStripMenuItem();
-            pASEEMPLEADOToolStripMenuItem1 = new ToolStripMenuItem();
             aGREGARHORASEXTRASToolStripMenuItem = new ToolStripMenuItem();
             hORARIOToolStripMenuItem = new ToolStripMenuItem();
             aSIGNARHORARIOToolStripMenuItem = new ToolStripMenuItem();
@@ -59,6 +58,8 @@
             btnMaximizar = new PictureBox();
             btnCerrar = new PictureBox();
             pictureBox1 = new PictureBox();
+            mOTIVODEPASEToolStripMenuItem1 = new ToolStripMenuItem();
+            pASEEMPLEADOToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnMinimizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMaximizar).BeginInit();
@@ -91,7 +92,7 @@
             // 
             // aGREGARUSToolStripMenuItem
             // 
-            aGREGARUSToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aGREGARUSUARIOToolStripMenuItem, rETRASOToolStripMenuItem1, aUSENCIAToolStripMenuItem1, pASEEMPLEADOToolStripMenuItem1, aGREGARHORASEXTRASToolStripMenuItem });
+            aGREGARUSToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aGREGARUSUARIOToolStripMenuItem, rETRASOToolStripMenuItem1, aUSENCIAToolStripMenuItem1, aGREGARHORASEXTRASToolStripMenuItem });
             aGREGARUSToolStripMenuItem.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
             aGREGARUSToolStripMenuItem.Name = "aGREGARUSToolStripMenuItem";
             aGREGARUSToolStripMenuItem.Size = new Size(317, 38);
@@ -117,12 +118,6 @@
             aUSENCIAToolStripMenuItem1.Text = "AUSENCIA";
             aUSENCIAToolStripMenuItem1.Click += aUSENCIAToolStripMenuItem1_Click;
             // 
-            // pASEEMPLEADOToolStripMenuItem1
-            // 
-            pASEEMPLEADOToolStripMenuItem1.Name = "pASEEMPLEADOToolStripMenuItem1";
-            pASEEMPLEADOToolStripMenuItem1.Size = new Size(402, 38);
-            pASEEMPLEADOToolStripMenuItem1.Text = "PASE EMPLEADO";
-            // 
             // aGREGARHORASEXTRASToolStripMenuItem
             // 
             aGREGARHORASEXTRASToolStripMenuItem.Name = "aGREGARHORASEXTRASToolStripMenuItem";
@@ -145,7 +140,7 @@
             // 
             // dEPARTAMENTOToolStripMenuItem
             // 
-            dEPARTAMENTOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aGREGARDEPARTAMENTOToolStripMenuItem });
+            dEPARTAMENTOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aGREGARDEPARTAMENTOToolStripMenuItem, pASEEMPLEADOToolStripMenuItem });
             dEPARTAMENTOToolStripMenuItem.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dEPARTAMENTOToolStripMenuItem.Name = "dEPARTAMENTOToolStripMenuItem";
             dEPARTAMENTOToolStripMenuItem.Size = new Size(317, 38);
@@ -224,7 +219,7 @@
             // 
             // dEPARTAMENTOToolStripMenuItem1
             // 
-            dEPARTAMENTOToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { vERDEPARTAMENTOSToolStripMenuItem });
+            dEPARTAMENTOToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { vERDEPARTAMENTOSToolStripMenuItem, mOTIVODEPASEToolStripMenuItem1 });
             dEPARTAMENTOToolStripMenuItem1.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dEPARTAMENTOToolStripMenuItem1.Name = "dEPARTAMENTOToolStripMenuItem1";
             dEPARTAMENTOToolStripMenuItem1.Size = new Size(304, 38);
@@ -248,7 +243,7 @@
             // 
             aCERToolStripMenuItem.Font = new Font("Sylfaen", 11F, FontStyle.Regular, GraphicsUnit.Point);
             aCERToolStripMenuItem.Name = "aCERToolStripMenuItem";
-            aCERToolStripMenuItem.Size = new Size(210, 36);
+            aCERToolStripMenuItem.Size = new Size(270, 36);
             aCERToolStripMenuItem.Text = "Acerca de";
             aCERToolStripMenuItem.Click += aCERToolStripMenuItem_Click;
             // 
@@ -305,6 +300,18 @@
             pictureBox1.TabIndex = 14;
             pictureBox1.TabStop = false;
             // 
+            // mOTIVODEPASEToolStripMenuItem1
+            // 
+            mOTIVODEPASEToolStripMenuItem1.Name = "mOTIVODEPASEToolStripMenuItem1";
+            mOTIVODEPASEToolStripMenuItem1.Size = new Size(364, 38);
+            mOTIVODEPASEToolStripMenuItem1.Text = "MOTIVO DE PASE";
+            // 
+            // pASEEMPLEADOToolStripMenuItem
+            // 
+            pASEEMPLEADOToolStripMenuItem.Name = "pASEEMPLEADOToolStripMenuItem";
+            pASEEMPLEADOToolStripMenuItem.Size = new Size(414, 38);
+            pASEEMPLEADOToolStripMenuItem.Text = "PASE EMPLEADO";
+            // 
             // Menu_Strip
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -350,7 +357,6 @@
         private PictureBox pictureBox1;
         private ToolStripMenuItem rETRASOToolStripMenuItem1;
         private ToolStripMenuItem aUSENCIAToolStripMenuItem1;
-        private ToolStripMenuItem pASEEMPLEADOToolStripMenuItem1;
         private ToolStripMenuItem eDITAREMPLEADOToolStripMenuItem;
         private ToolStripMenuItem aGREGARHORASEXTRASToolStripMenuItem;
         private ToolStripMenuItem vEREMPLEADOSToolStripMenuItem;
@@ -365,5 +371,7 @@
         private ToolStripMenuItem vERAUSENCIADEUNEMPLEADOToolStripMenuItem;
         private ToolStripMenuItem vERLOSTIPOSDERETRASOToolStripMenuItem;
         private ToolStripMenuItem mOTIVODEPASEToolStripMenuItem;
+        private ToolStripMenuItem mOTIVODEPASEToolStripMenuItem1;
+        private ToolStripMenuItem pASEEMPLEADOToolStripMenuItem;
     }
 }

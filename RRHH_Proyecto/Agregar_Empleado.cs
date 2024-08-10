@@ -51,7 +51,7 @@ namespace RRHH_Proyecto
         //Evento Boton registrar
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            // Obtiene los valores de los textbox y lo almacena en una variable local
+            // Obtiene los valores de los textbox y lo almacena en variables locales
             string nombre = txt_Nombre.Text;
             string apellido = txt_Apellido.Text;
             string cedula = mtb_Cedula.Text;
@@ -60,7 +60,7 @@ namespace RRHH_Proyecto
             string telefono = mtb_Telefono.Text;
             string correoElectronico = txt_Correo.Text;
 
-            // Valida que no Haya un spacio en blanco o con un spacio
+            // Valida que no haya un espacio en blanco o que esté vacío
             if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido) ||
                 string.IsNullOrWhiteSpace(cedula) || string.IsNullOrWhiteSpace(lugarNacimiento) ||
                 string.IsNullOrWhiteSpace(cargo) || string.IsNullOrWhiteSpace(telefono) ||
@@ -70,41 +70,41 @@ namespace RRHH_Proyecto
                 return;
             }
 
-            // Consulta en la base de datos la isercion de los datos
-            string query = "INSERT INTO Empleados (Nombre, Apellido, Cedula, LugarNacimiento, Cargo, Telefono, CorreoElectronico) VALUES (@Nombre, @Apellido, @Cedula, @LugarNacimiento, @Cargo, @Telefono, @CorreoElectronico)";
+            // Consulta para insertar un nuevo empleado
+            string query = "INSERT INTO Empleados (Nombre, Apellido, Cedula, LugarNacimiento, Cargo, Telefono, CorreoElectronico) " +
+                           "VALUES (@Nombre, @Apellido, @Cedula, @LugarNacimiento, @Cargo, @Telefono, @CorreoElectronico)";
 
-            SqlConnection conexion_bd = null;
+            Conexion0 conexion = new Conexion0();
+
             try
             {
-                // Llama al metodo de la conexion 
-                conexion_bd = conexion.AbrirConexion();
-                SqlCommand comando = new SqlCommand(query, conexion_bd);
-                comando.Parameters.AddWithValue("@Nombre", nombre);
-                comando.Parameters.AddWithValue("@Apellido", apellido);
-                comando.Parameters.AddWithValue("@Cedula", cedula);
-                comando.Parameters.AddWithValue("@LugarNacimiento", lugarNacimiento);
-                comando.Parameters.AddWithValue("@Cargo", cargo);
-                comando.Parameters.AddWithValue("@Telefono", telefono);
-                comando.Parameters.AddWithValue("@CorreoElectronico", correoElectronico);
+                using (SqlCommand comando = new SqlCommand(query, conexion.GetConnection()))
+                {
+                    // Asigna los valores a los parámetros de la consulta
+                    comando.Parameters.AddWithValue("@Nombre", nombre);
+                    comando.Parameters.AddWithValue("@Apellido", apellido);
+                    comando.Parameters.AddWithValue("@Cedula", cedula);
+                    comando.Parameters.AddWithValue("@LugarNacimiento", lugarNacimiento);
+                    comando.Parameters.AddWithValue("@Cargo", cargo);
+                    comando.Parameters.AddWithValue("@Telefono", telefono);
+                    comando.Parameters.AddWithValue("@CorreoElectronico", correoElectronico);
 
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Empleado registrado exitosamente");
+                    // Ejecuta la consulta
+                    comando.ExecuteNonQuery();
+                    MessageBox.Show("Empleado registrado exitosamente.", "Éxito");
 
-                // Reiniciar el formulario para que no se quede con los datos ya ingresados
-                this.Controls.Clear();
-                InitializeComponent();
+                    // Reinicia el formulario para que no se quede con los datos ya ingresados
+                    this.Controls.Clear();
+                    InitializeComponent();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error al registrar el empleado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                //Cierra la conexion
-                if (conexion_bd != null)
-                {
-                    conexion.CerrarConexion();
-                }
+                conexion.CloseConnection(); // Cierra la conexión
             }
 
         }

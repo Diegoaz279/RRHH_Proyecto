@@ -1,3 +1,4 @@
+using RRHH_Proyecto;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -14,7 +15,7 @@ namespace RRHH_Proyecto
     public partial class Form1 : Form
     {
         //Se llama la clase de la conexion 
-        private Conexion conexion = new Conexion();
+        Conexion0 conexion = new Conexion0();
 
         public Form1()
         {
@@ -36,37 +37,42 @@ namespace RRHH_Proyecto
         }
         private void btn_Ingresar_Click(object sender, EventArgs e)
         {
+            Conexion0 conexion = new Conexion0();
 
             try
             {
-                string query = "select usuario, contrasena from usuarios where usuario = @usuario and contrasena = @contraseña";
+                string query = "SELECT usuario, contrasena FROM usuarios WHERE usuario = @usuario AND contrasena = @contrasena";
                 string usuario = txt_Usuario.Text;
-                string contraseña = txt_Contraseña.Text;
+                string contrasena = txt_Contraseña.Text;
 
-                SqlConnection conexion_bd = conexion.AbrirConexion();
-                SqlCommand comando = new SqlCommand(query, conexion_bd);
-                comando.Parameters.AddWithValue("@usuario", usuario);
-                comando.Parameters.AddWithValue("@contraseña", contraseña);
-
-                SqlDataReader reader = comando.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand comando = new SqlCommand(query, conexion.GetConnection()))
                 {
-                    Menu_Strip principal = new Menu_Strip();
-                    principal.Show();
-                    this.Hide();
-                    conexion.CerrarConexion();
-                }
-                else
-                {
-                    MessageBox.Show("Usuario o contraseña incorrectos.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conexion.CerrarConexion();
-                }
+                    comando.Parameters.AddWithValue("@usuario", usuario);
+                    comando.Parameters.AddWithValue("@contrasena", contrasena);
 
+                    SqlDataReader reader = comando.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        // Usuario y contraseña correctos, abrir el menú principal
+                        Menu_Strip principal = new Menu_Strip();
+                        principal.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        // Usuario o contraseña incorrectos
+                        MessageBox.Show("Usuario o contraseña incorrectos.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al ingresar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexion.CloseConnection();
             }
         }
 
@@ -150,3 +156,6 @@ namespace RRHH_Proyecto
         }
     }
 }
+
+
+
