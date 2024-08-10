@@ -13,7 +13,7 @@ namespace RRHH_Proyecto
 {
     public partial class Agregar_Empleado : Form
     {
-        // Declaración de la clase de conexión
+        //Declaracion de la clase de conexion
         private Conexion conexion = new Conexion();
         public Agregar_Empleado()
         {   
@@ -51,7 +51,7 @@ namespace RRHH_Proyecto
         //Evento Boton registrar
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            // Obtiene los valores de los textbox y lo almacena en variables locales
+            //Aqui se Obtienen los valores de los textbox y lo almacena en variables locales
             string nombre = txt_Nombre.Text;
             string apellido = txt_Apellido.Text;
             string cedula = mtb_Cedula.Text;
@@ -60,7 +60,7 @@ namespace RRHH_Proyecto
             string telefono = mtb_Telefono.Text;
             string correoElectronico = txt_Correo.Text;
 
-            // Valida que no haya un espacio en blanco o que esté vacío
+            //Valida que no haya un espacio en blanco o que este vacio
             if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido) ||
                 string.IsNullOrWhiteSpace(cedula) || string.IsNullOrWhiteSpace(lugarNacimiento) ||
                 string.IsNullOrWhiteSpace(cargo) || string.IsNullOrWhiteSpace(telefono) ||
@@ -70,7 +70,7 @@ namespace RRHH_Proyecto
                 return;
             }
 
-            // Consulta para insertar un nuevo empleado
+            //Consulta para insertar un nuevo empleado
             string query = "INSERT INTO Empleados (Nombre, Apellido, Cedula, LugarNacimiento, Cargo, Telefono, CorreoElectronico) " +
                            "VALUES (@Nombre, @Apellido, @Cedula, @LugarNacimiento, @Cargo, @Telefono, @CorreoElectronico)";
 
@@ -80,7 +80,7 @@ namespace RRHH_Proyecto
             {
                 using (SqlCommand comando = new SqlCommand(query, conexion.GetConnection()))
                 {
-                    // Asigna los valores a los parámetros de la consulta
+                    //Asigna los valores a los parametros de la consulta
                     comando.Parameters.AddWithValue("@Nombre", nombre);
                     comando.Parameters.AddWithValue("@Apellido", apellido);
                     comando.Parameters.AddWithValue("@Cedula", cedula);
@@ -89,11 +89,11 @@ namespace RRHH_Proyecto
                     comando.Parameters.AddWithValue("@Telefono", telefono);
                     comando.Parameters.AddWithValue("@CorreoElectronico", correoElectronico);
 
-                    // Ejecuta la consulta
+                    //Ejecuta la consulta
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Empleado registrado exitosamente.", "Éxito");
 
-                    // Reinicia el formulario para que no se quede con los datos ya ingresados
+                    //Reinicia el formulario para que no se quede con los datos ya ingresados
                     this.Controls.Clear();
                     InitializeComponent();
                 }
@@ -104,7 +104,7 @@ namespace RRHH_Proyecto
             }
             finally
             {
-                conexion.CloseConnection(); // Cierra la conexión
+                conexion.CloseConnection(); //Cierra la conexion
             }
 
         }
@@ -115,7 +115,7 @@ namespace RRHH_Proyecto
         }
 
 
-        // Comfiguracion de los botones Cerra, Maximizar, Cancelar y Minimizar
+        //Comfiguracion de los botones Cerra, Maximizar, Cancelar y Minimizar
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();

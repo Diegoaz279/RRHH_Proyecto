@@ -219,17 +219,21 @@
             // 
             mb_FechaInicio.BorderStyle = BorderStyle.FixedSingle;
             mb_FechaInicio.Location = new Point(288, 451);
+            mb_FechaInicio.Mask = "00/00/0000";
             mb_FechaInicio.Name = "mb_FechaInicio";
             mb_FechaInicio.Size = new Size(302, 31);
             mb_FechaInicio.TabIndex = 49;
+            mb_FechaInicio.ValidatingType = typeof(DateTime);
             // 
             // mb_FechaFinal
             // 
             mb_FechaFinal.BorderStyle = BorderStyle.FixedSingle;
             mb_FechaFinal.Location = new Point(288, 554);
+            mb_FechaFinal.Mask = "00/00/0000";
             mb_FechaFinal.Name = "mb_FechaFinal";
             mb_FechaFinal.Size = new Size(302, 31);
             mb_FechaFinal.TabIndex = 50;
+            mb_FechaFinal.ValidatingType = typeof(DateTime);
             // 
             // Agregar_Ausencia
             // 

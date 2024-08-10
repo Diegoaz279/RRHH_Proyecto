@@ -53,7 +53,7 @@
             btn_Minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Minimizar.Cursor = Cursors.Hand;
             btn_Minimizar.Image = (Image)resources.GetObject("btn_Minimizar.Image");
-            btn_Minimizar.Location = new Point(794, 12);
+            btn_Minimizar.Location = new Point(817, 12);
             btn_Minimizar.Name = "btn_Minimizar";
             btn_Minimizar.Size = new Size(43, 40);
             btn_Minimizar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -66,7 +66,7 @@
             btn_Maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Maximizar.Cursor = Cursors.Hand;
             btn_Maximizar.Image = (Image)resources.GetObject("btn_Maximizar.Image");
-            btn_Maximizar.Location = new Point(850, 12);
+            btn_Maximizar.Location = new Point(873, 12);
             btn_Maximizar.Name = "btn_Maximizar";
             btn_Maximizar.Size = new Size(43, 40);
             btn_Maximizar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -79,7 +79,7 @@
             btn_Cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Cerrar.Cursor = Cursors.Hand;
             btn_Cerrar.Image = (Image)resources.GetObject("btn_Cerrar.Image");
-            btn_Cerrar.Location = new Point(906, 12);
+            btn_Cerrar.Location = new Point(929, 12);
             btn_Cerrar.Name = "btn_Cerrar";
             btn_Cerrar.Size = new Size(43, 40);
             btn_Cerrar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -96,7 +96,7 @@
             panel1.Controls.Add(btn_Maximizar);
             panel1.Location = new Point(1, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(962, 63);
+            panel1.Size = new Size(985, 63);
             panel1.TabIndex = 37;
             // 
             // label1
@@ -104,7 +104,7 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(35, 275);
+            label1.Location = new Point(46, 275);
             label1.Name = "label1";
             label1.Size = new Size(318, 28);
             label1.TabIndex = 38;
@@ -115,7 +115,7 @@
             label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(35, 481);
+            label3.Location = new Point(46, 481);
             label3.Name = "label3";
             label3.Size = new Size(452, 28);
             label3.TabIndex = 40;
@@ -126,7 +126,7 @@
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(35, 377);
+            label2.Location = new Point(46, 377);
             label2.Name = "label2";
             label2.Size = new Size(203, 28);
             label2.TabIndex = 41;
@@ -136,7 +136,7 @@
             // 
             txt_NomDepartamento.Anchor = AnchorStyles.Top;
             txt_NomDepartamento.BorderStyle = BorderStyle.FixedSingle;
-            txt_NomDepartamento.Location = new Point(532, 272);
+            txt_NomDepartamento.Location = new Point(543, 272);
             txt_NomDepartamento.Name = "txt_NomDepartamento";
             txt_NomDepartamento.Size = new Size(398, 31);
             txt_NomDepartamento.TabIndex = 42;
@@ -144,37 +144,39 @@
             // cb_Jefe
             // 
             cb_Jefe.Anchor = AnchorStyles.Top;
+            cb_Jefe.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             cb_Jefe.FormattingEnabled = true;
-            cb_Jefe.Location = new Point(532, 377);
+            cb_Jefe.Location = new Point(543, 377);
             cb_Jefe.Name = "cb_Jefe";
-            cb_Jefe.Size = new Size(398, 33);
+            cb_Jefe.Size = new Size(398, 37);
             cb_Jefe.TabIndex = 43;
             // 
             // txt_CorreoDep
             // 
             txt_CorreoDep.Anchor = AnchorStyles.Top;
             txt_CorreoDep.BorderStyle = BorderStyle.FixedSingle;
-            txt_CorreoDep.Location = new Point(532, 481);
+            txt_CorreoDep.Location = new Point(543, 481);
             txt_CorreoDep.Name = "txt_CorreoDep";
             txt_CorreoDep.Size = new Size(398, 31);
             txt_CorreoDep.TabIndex = 44;
             // 
             // btn_Registrar
             // 
-            btn_Registrar.FlatStyle = FlatStyle.Popup;
-            btn_Registrar.Location = new Point(517, 615);
+            btn_Registrar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            btn_Registrar.Location = new Point(517, 607);
             btn_Registrar.Name = "btn_Registrar";
-            btn_Registrar.Size = new Size(170, 57);
+            btn_Registrar.Size = new Size(170, 65);
             btn_Registrar.TabIndex = 45;
             btn_Registrar.Text = "REGISTRAR";
             btn_Registrar.UseVisualStyleBackColor = true;
+            btn_Registrar.Click += btn_Registrar_Click;
             // 
             // btn_Cancelar
             // 
-            btn_Cancelar.FlatStyle = FlatStyle.Popup;
-            btn_Cancelar.Location = new Point(248, 615);
+            btn_Cancelar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            btn_Cancelar.Location = new Point(248, 607);
             btn_Cancelar.Name = "btn_Cancelar";
-            btn_Cancelar.Size = new Size(175, 57);
+            btn_Cancelar.Size = new Size(175, 65);
             btn_Cancelar.TabIndex = 46;
             btn_Cancelar.Text = "CANCELAR";
             btn_Cancelar.UseVisualStyleBackColor = true;
@@ -194,7 +196,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(962, 736);
+            ClientSize = new Size(985, 736);
             Controls.Add(label4);
             Controls.Add(btn_Cancelar);
             Controls.Add(btn_Registrar);
@@ -209,6 +211,7 @@
             Name = "Agregar_Departamento";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Agregar_Departamento";
+            Load += Agregar_Departamento_Load;
             ((System.ComponentModel.ISupportInitialize)btn_Minimizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Maximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).EndInit();
