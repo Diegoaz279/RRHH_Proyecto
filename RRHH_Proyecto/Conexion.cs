@@ -10,7 +10,7 @@ namespace RRHH_Proyecto
 {
     public class Conexion
     {
-        //clary
+        //clary j
         public Conexion() 
         { 
         
