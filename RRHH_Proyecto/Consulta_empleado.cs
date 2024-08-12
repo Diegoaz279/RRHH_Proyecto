@@ -128,7 +128,7 @@ namespace RRHH_Proyecto
             }
             else
             {
-                MessageBox.Show("No hay cambios para guardar.");
+                MessageBox.Show("No hay cambios para guardar.");//hola
             }
         }
     }
