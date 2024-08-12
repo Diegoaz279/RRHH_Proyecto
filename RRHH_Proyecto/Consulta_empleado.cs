@@ -77,7 +77,7 @@ namespace RRHH_Proyecto
         {
             // Habilitar la edición en el DataGridView
             dataGridView1.ReadOnly = false;
-            dataGridView1.AllowUserToAddRows = true;
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = true;
 
             // Permitir edición de todas las celdas
