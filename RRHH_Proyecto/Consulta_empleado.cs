@@ -101,7 +101,7 @@ namespace RRHH_Proyecto
             }
         }
 
-   
+
         private void btnFiltrar_Click_1(object sender, EventArgs e)
         {
             BuscarDatos();
@@ -130,6 +130,22 @@ namespace RRHH_Proyecto
             {
                 MessageBox.Show("No hay cambios para guardar.");//hola
             }
+        }
+
+        private void btn_Cerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btn_Maximizar_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal) this.WindowState = FormWindowState.Maximized;
+            else WindowState = FormWindowState.Normal;
+        }
+
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
