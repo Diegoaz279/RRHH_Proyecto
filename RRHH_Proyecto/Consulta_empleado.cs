@@ -113,6 +113,8 @@ namespace RRHH_Proyecto
         private void btnGuardarCambios_Click_1(object sender, EventArgs e)
         {
 
+            if (dt.GetChanges() != null)
+            {
                 try
                 {
                     // Guardar los cambios en la base de datos
@@ -123,7 +125,11 @@ namespace RRHH_Proyecto
                 {
                     MessageBox.Show("Error al guardar los cambios: " + ex.Message);
                 }
-            
+            }
+            else
+            {
+                MessageBox.Show("No hay cambios para guardar.");
+            }
         }
     }
 }
