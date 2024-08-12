@@ -80,11 +80,11 @@ namespace RRHH_Proyecto
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = true;
 
-            // Permitir edición de todas las celdas
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                column.ReadOnly = false;
+                column.ReadOnly = column.Name == "ID"; // Configurar solo la columna ID como no editable
             }
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
