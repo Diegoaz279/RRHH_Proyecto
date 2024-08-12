@@ -64,8 +64,14 @@ namespace RRHH_Proyecto
 
         private void aGREGARDEPARTAMENTOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           Agregar_Departamento principal = new Agregar_Departamento();
-            principal.Show();   
+            Agregar_Departamento principal = new Agregar_Departamento();
+            principal.ShowDialog();
+        }
+
+        private void vEREMPLEADOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consulta_empleado _Empleado = new Consulta_empleado();
+            _Empleado.ShowDialog();
         }
     }
 }
