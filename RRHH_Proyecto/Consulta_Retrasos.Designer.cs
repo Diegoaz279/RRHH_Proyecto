@@ -35,13 +35,13 @@
             comboBox1 = new ComboBox();
             btnAgregar = new Button();
             btnEditar = new Button();
-            btnGuardar = new Button();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             comboBoxEmpleado = new ComboBox();
+            btnGuardar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -105,16 +105,6 @@
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
-            // btnGuardar
-            // 
-            btnGuardar.Location = new Point(367, 369);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 23);
-            btnGuardar.TabIndex = 8;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
-            btnGuardar.Click += btnGuardar_Click;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -168,18 +158,28 @@
             comboBoxEmpleado.Size = new Size(121, 23);
             comboBoxEmpleado.TabIndex = 13;
             // 
+            // btnGuardar
+            // 
+            btnGuardar.Location = new Point(367, 369);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.TabIndex = 14;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
             // Consulta_Retrasos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnGuardar);
             Controls.Add(comboBoxEmpleado);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btnGuardar);
             Controls.Add(btnEditar);
             Controls.Add(btnAgregar);
             Controls.Add(comboBox1);
@@ -204,12 +204,12 @@
         private ComboBox comboBox1;
         private Button btnAgregar;
         private Button btnEditar;
-        private Button btnGuardar;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
         private ComboBox comboBoxEmpleado;
+        private Button btnGuardar;
     }
 }

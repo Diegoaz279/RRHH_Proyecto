@@ -23,77 +23,79 @@ namespace RRHH_Proyecto
             CargarDatosRetraso();
             CargarTiposDeRetraso();
             CargarEmpleados();
+
+            dataGridView1.ReadOnly = true;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
         }
 
         private void CargarEmpleados()
         {
-            try
+            using (SqlConnection conexion = new SqlConnection("Server=.;DataBase=RRHH;Integrated Security=true"))
             {
-                conexion.Open();
-                SqlCommand cmd = new SqlCommand("SELECT ID, Nombre FROM Empleados", conexion); // Asegúrate de que 'Nombre' sea el campo adecuado
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable dtEmpleados = new DataTable();
-                dtEmpleados.Load(reader);
-                comboBoxEmpleado.DataSource = dtEmpleados;
-                comboBoxEmpleado.DisplayMember = "Nombre"; // Campo para mostrar
-                comboBoxEmpleado.ValueMember = "ID"; // Campo para valor
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los empleados: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Close();
+                try
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT ID, Nombre FROM Empleados", conexion);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dtEmpleados = new DataTable();
+                    dtEmpleados.Load(reader);
+                    comboBoxEmpleado.DataSource = dtEmpleados;
+                    comboBoxEmpleado.DisplayMember = "Nombre";
+                    comboBoxEmpleado.ValueMember = "ID";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar los empleados: " + ex.Message);
+                }
             }
         }
-
-
         private void CargarDatosRetraso()
         {
-            try
+            using (SqlConnection conexion = new SqlConnection("Server=.;DataBase=RRHH;Integrated Security=true"))
             {
-                conexion.Open();
+                try
+                {
+                    conexion.Open();
+                    string query = "SELECT IdRetraso, ID, IdTipoRetraso, Fecha, Minutos, Observacion FROM Retraso";
+                    adaptador = new SqlDataAdapter(query, conexion);
 
-                // Especifica las columnas explícitamente en la consulta
-                string query = "SELECT IdRetraso, ID, IdTipoRetraso, Fecha, Minutos, Observacion FROM Retraso";
-                adaptador = new SqlDataAdapter(query, conexion);
+                    dt = new DataTable();
+                    adaptador.Fill(dt);
+                    dataGridView1.DataSource = dt;
 
-                dt = new DataTable();
-                adaptador.Fill(dt);
-                dataGridView1.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los datos: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Close();
+                    // Configuración para permitir edición
+                    dataGridView1.AllowUserToAddRows = false; // No permitir agregar filas nuevas
+                    dataGridView1.AllowUserToDeleteRows = false; // No permitir eliminar filas
+                    dataGridView1.ReadOnly = false; // Permitir edición
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar los datos: " + ex.Message);
+                }
             }
         }
 
 
         private void CargarTiposDeRetraso()
         {
-            try
+            using (SqlConnection conexion = new SqlConnection("Server=.;DataBase=RRHH;Integrated Security=true"))
             {
-                conexion.Open();
-                SqlCommand cmd = new SqlCommand("SELECT IdTipoRetraso, TipoDeRetraso FROM TipoRetraso", conexion);
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable dtTipoRetraso = new DataTable();
-                dtTipoRetraso.Load(reader);
-                comboBox1.DataSource = dtTipoRetraso;
-                comboBox1.DisplayMember = "TipoDeRetraso";
-                comboBox1.ValueMember = "IdTipoRetraso";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los tipos de retraso: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Close();
+                try
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT IdTipoRetraso, TipoDeRetraso FROM TipoRetraso", conexion);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dtTipoRetraso = new DataTable();
+                    dtTipoRetraso.Load(reader);
+                    comboBox1.DataSource = dtTipoRetraso;
+                    comboBox1.DisplayMember = "TipoDeRetraso";
+                    comboBox1.ValueMember = "IdTipoRetraso";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar los tipos de retraso: " + ex.Message);
+                }
             }
         }
         private void Consulta_Retrasos_Load(object sender, EventArgs e)
@@ -108,118 +110,114 @@ namespace RRHH_Proyecto
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            // Habilitar edición de celdas
             dataGridView1.ReadOnly = false;
             dataGridView1.AllowUserToAddRows = false; // No permitir agregar nuevas filas
-            dataGridView1.AllowUserToDeleteRows = false; // No permitir eliminar filas
+            dataGridView1.AllowUserToDeleteRows = false; // 
+        }
 
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conexion = new SqlConnection("Server=.;DataBase=RRHH;Integrated Security=true"))
             {
-                column.ReadOnly = false; // Permitir la edición de todas las celdas, excepto las columnas que no quieres editar
-            }
+                try
+                {
+                    // Validar que todos los campos estén completos
+                    if (comboBoxEmpleado.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Debes seleccionar un empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-            // Hacer que la columna de IdRetraso no sea editable
-            dataGridView1.Columns["IdRetraso"].ReadOnly = true;
+                    if (comboBox1.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Debes seleccionar un Tipo de Retraso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(txtFecha.Text))
+                    {
+                        MessageBox.Show("El campo Fecha no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(txtMinutos.Text))
+                    {
+                        MessageBox.Show("El campo Minutos no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(txtObservacion.Text))
+                    {
+                        MessageBox.Show("El campo Observación no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    conexion.Open();
+                    string query = "INSERT INTO Retraso (ID, IdTipoRetraso, Fecha, Minutos, Observacion) VALUES (@ID, @IdTipoRetraso, @Fecha, @Minutos, @Observacion)";
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    cmd.Parameters.AddWithValue("@ID", (int)comboBoxEmpleado.SelectedValue);
+                    cmd.Parameters.AddWithValue("@IdTipoRetraso", (int)comboBox1.SelectedValue);
+                    cmd.Parameters.AddWithValue("@Fecha", txtFecha.Text);
+                    cmd.Parameters.AddWithValue("@Minutos", int.Parse(txtMinutos.Text));
+                    cmd.Parameters.AddWithValue("@Observacion", txtObservacion.Text);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Registro agregado correctamente.");
+
+                    // Actualizar el DataGridView
+                    CargarDatosRetraso();
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Error de formato: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Error de SQL: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al agregar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            // Guardar cambios cuando se termina de editar una celda
+            btnGuardar.PerformClick(); // Simular clic en el botón de guardar
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            using (SqlConnection conexion = new SqlConnection("Server=.;DataBase=RRHH;Integrated Security=true"))
             {
-                conexion.Open();
-
-                foreach (DataRow row in dt.Rows)
+                try
                 {
-                    if (row.RowState == DataRowState.Modified)
+                    conexion.Open();
+                    foreach (DataRow row in dt.Rows)
                     {
-                        string query = "UPDATE Retraso SET ID = @ID, IdTipoRetraso = @IdTipoRetraso, Fecha = @Fecha, Minutos = @Minutos, Observacion = @Observacion WHERE IdRetraso = @IdRetraso";
-                        SqlCommand cmd = new SqlCommand(query, conexion);
-                        cmd.Parameters.AddWithValue("@ID", row["ID"]);
-                        cmd.Parameters.AddWithValue("@IdTipoRetraso", row["IdTipoRetraso"]);
-                        cmd.Parameters.AddWithValue("@Fecha", row["Fecha"]);
-                        cmd.Parameters.AddWithValue("@Minutos", row["Minutos"]);
-                        cmd.Parameters.AddWithValue("@Observacion", row["Observacion"]);
-                        cmd.Parameters.AddWithValue("@IdRetraso", row["IdRetraso"]);
-                        cmd.ExecuteNonQuery();
+                        if (row.RowState == DataRowState.Modified)
+                        {
+                            string query = "UPDATE Retraso SET ID = @ID, IdTipoRetraso = @IdTipoRetraso, Fecha = @Fecha, Minutos = @Minutos, Observacion = @Observacion WHERE IdRetraso = @IdRetraso";
+                            SqlCommand cmd = new SqlCommand(query, conexion);
+                            cmd.Parameters.AddWithValue("@ID", row["ID"]);
+                            cmd.Parameters.AddWithValue("@IdTipoRetraso", row["IdTipoRetraso"]);
+                            cmd.Parameters.AddWithValue("@Fecha", row["Fecha"]);
+                            cmd.Parameters.AddWithValue("@Minutos", row["Minutos"]);
+                            cmd.Parameters.AddWithValue("@Observacion", row["Observacion"]);
+                            cmd.Parameters.AddWithValue("@IdRetraso", row["IdRetraso"]);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
+                    MessageBox.Show("Cambios guardados correctamente.");
+                    dt.AcceptChanges(); // Aceptar los cambios en el DataTable
                 }
-
-                MessageBox.Show("Cambios guardados correctamente.");
-                dt.AcceptChanges(); // Aceptar los cambios en el DataTable
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al guardar los cambios: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Close();
-            }
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Validar que todos los campos estén completos
-                if (comboBoxEmpleado.SelectedIndex == -1)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Debes seleccionar un empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("Error al guardar los cambios: " + ex.Message);
                 }
-
-                if (comboBox1.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Debes seleccionar un Tipo de Retraso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtFecha.Text))
-                {
-                    MessageBox.Show("El campo Fecha no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtMinutos.Text))
-                {
-                    MessageBox.Show("El campo Minutos no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtObservacion.Text))
-                {
-                    MessageBox.Show("El campo Observación no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                conexion.Open();
-                string query = "INSERT INTO Retraso (ID, IdTipoRetraso, Fecha, Minutos, Observacion) VALUES (@ID, @IdTipoRetraso, @Fecha, @Minutos, @Observacion)";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                cmd.Parameters.AddWithValue("@ID", (int)comboBoxEmpleado.SelectedValue);
-                cmd.Parameters.AddWithValue("@IdTipoRetraso", (int)comboBox1.SelectedValue);
-                cmd.Parameters.AddWithValue("@Fecha", txtFecha.Text);
-                cmd.Parameters.AddWithValue("@Minutos", int.Parse(txtMinutos.Text));
-                cmd.Parameters.AddWithValue("@Observacion", txtObservacion.Text);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Registro agregado correctamente.");
-
-                // Actualizar el DataGridView
-                CargarDatosRetraso();
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Error de formato: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Error de SQL: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conexion.Close();
             }
         }
     }
