@@ -16,7 +16,5 @@ namespace RRHH_Proyecto
         {
             InitializeComponent();
         }
-
-       
     }
 }

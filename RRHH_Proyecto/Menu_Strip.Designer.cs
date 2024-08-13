@@ -158,6 +158,7 @@
             pASEEMPLEADOToolStripMenuItem.Name = "pASEEMPLEADOToolStripMenuItem";
             pASEEMPLEADOToolStripMenuItem.Size = new Size(414, 38);
             pASEEMPLEADOToolStripMenuItem.Text = "PASE EMPLEADO";
+            pASEEMPLEADOToolStripMenuItem.Click += pASEEMPLEADOToolStripMenuItem_Click;
             // 
             // cONSULTAToolStripMenuItem
             // 

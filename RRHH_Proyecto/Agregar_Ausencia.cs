@@ -131,6 +131,7 @@ namespace RRHH_Proyecto
             string inicioAusencia = mb_FechaInicio.Text;
             string finAusencia = mb_FechaFinal.Text;
 
+
             //Aqui se instancia la clase de conexion y la almacenamos en una variable
             Conexion0 conexion = new Conexion0();
             SqlConnection conexion_bd = null;
