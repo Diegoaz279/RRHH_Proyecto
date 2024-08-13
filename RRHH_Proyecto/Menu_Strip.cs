@@ -73,5 +73,11 @@ namespace RRHH_Proyecto
             Consulta_empleado _Empleado = new Consulta_empleado();
             _Empleado.ShowDialog();
         }
+
+        private void vERRETRASOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consulta_Retrasos consulta_Retrasos = new Consulta_Retrasos();
+            consulta_Retrasos.ShowDialog();
+        }
     }
 }
