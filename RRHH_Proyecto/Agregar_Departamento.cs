@@ -20,7 +20,7 @@ namespace RRHH_Proyecto
         public Agregar_Departamento()
         {
             InitializeComponent();
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea; // Esto es para que si maxzimizamos la ventana se quede en el area de tabajo
+            
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
@@ -31,17 +31,6 @@ namespace RRHH_Proyecto
         private void btn_Cerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
-        }
-
-        private void btn_Maximizar_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal) this.WindowState = FormWindowState.Maximized;
-            else WindowState = FormWindowState.Normal;
-        }
-
-        private void btn_Minimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
         }
 
         private void Agregar_Departamento_Load(object sender, EventArgs e)

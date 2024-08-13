@@ -137,15 +137,6 @@ namespace RRHH_Proyecto
             this.Dispose();
         }
 
-        private void btn_Maximizar_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal) this.WindowState = FormWindowState.Maximized;
-            else WindowState = FormWindowState.Normal;
-        }
-
-        private void btn_Minimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
+   
     }
 }

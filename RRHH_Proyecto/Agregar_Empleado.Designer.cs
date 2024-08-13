@@ -36,8 +36,6 @@
             mtb_Cedula = new MaskedTextBox();
             mtb_Telefono = new MaskedTextBox();
             btn_Registrar = new Button();
-            btn_Minimizar = new PictureBox();
-            btn_Maximizar = new PictureBox();
             btn_Cerrar = new PictureBox();
             txt_Cargo = new TextBox();
             label1 = new Label();
@@ -50,8 +48,6 @@
             label8 = new Label();
             btn_Cancelar = new Button();
             panel1 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)btn_Minimizar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
             SuspendLayout();
             // 
@@ -149,34 +145,6 @@
             btn_Registrar.Text = "REGISTRAR";
             btn_Registrar.UseVisualStyleBackColor = true;
             btn_Registrar.Click += btnRegistrar_Click;
-            // 
-            // btn_Minimizar
-            // 
-            btn_Minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Minimizar.BackColor = Color.Transparent;
-            btn_Minimizar.Cursor = Cursors.Hand;
-            btn_Minimizar.Image = (Image)resources.GetObject("btn_Minimizar.Image");
-            btn_Minimizar.Location = new Point(705, 12);
-            btn_Minimizar.Name = "btn_Minimizar";
-            btn_Minimizar.Size = new Size(43, 40);
-            btn_Minimizar.SizeMode = PictureBoxSizeMode.StretchImage;
-            btn_Minimizar.TabIndex = 21;
-            btn_Minimizar.TabStop = false;
-            btn_Minimizar.Click += btn_Minimizar_Click;
-            // 
-            // btn_Maximizar
-            // 
-            btn_Maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Maximizar.BackColor = Color.Transparent;
-            btn_Maximizar.Cursor = Cursors.Hand;
-            btn_Maximizar.Image = (Image)resources.GetObject("btn_Maximizar.Image");
-            btn_Maximizar.Location = new Point(761, 12);
-            btn_Maximizar.Name = "btn_Maximizar";
-            btn_Maximizar.Size = new Size(43, 40);
-            btn_Maximizar.SizeMode = PictureBoxSizeMode.StretchImage;
-            btn_Maximizar.TabIndex = 20;
-            btn_Maximizar.TabStop = false;
-            btn_Maximizar.Click += btn_Maximizar_Click;
             // 
             // btn_Cerrar
             // 
@@ -330,8 +298,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txt_Cargo);
-            Controls.Add(btn_Minimizar);
-            Controls.Add(btn_Maximizar);
             Controls.Add(btn_Cerrar);
             Controls.Add(btn_Registrar);
             Controls.Add(mtb_Telefono);
@@ -347,8 +313,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Agregar_Empleado";
             Load += Agregar_Empleado_Load;
-            ((System.ComponentModel.ISupportInitialize)btn_Minimizar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -362,8 +326,6 @@
         private MaskedTextBox mtb_Cedula;
         private MaskedTextBox mtb_Telefono;
         private Button btn_Registrar;
-        private PictureBox btn_Minimizar;
-        private PictureBox btn_Maximizar;
         private PictureBox btn_Cerrar;
         private TextBox txt_Cargo;
         private Label label1;

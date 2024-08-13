@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agregar_Departamento));
-            btn_Minimizar = new PictureBox();
-            btn_Maximizar = new PictureBox();
             btn_Cerrar = new PictureBox();
             panel1 = new Panel();
             label1 = new Label();
@@ -42,37 +40,9 @@
             btn_Registrar = new Button();
             btn_Cancelar = new Button();
             label4 = new Label();
-            ((System.ComponentModel.ISupportInitialize)btn_Minimizar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // btn_Minimizar
-            // 
-            btn_Minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Minimizar.Cursor = Cursors.Hand;
-            btn_Minimizar.Image = (Image)resources.GetObject("btn_Minimizar.Image");
-            btn_Minimizar.Location = new Point(817, 12);
-            btn_Minimizar.Name = "btn_Minimizar";
-            btn_Minimizar.Size = new Size(43, 40);
-            btn_Minimizar.SizeMode = PictureBoxSizeMode.StretchImage;
-            btn_Minimizar.TabIndex = 16;
-            btn_Minimizar.TabStop = false;
-            btn_Minimizar.Click += btn_Minimizar_Click;
-            // 
-            // btn_Maximizar
-            // 
-            btn_Maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Maximizar.Cursor = Cursors.Hand;
-            btn_Maximizar.Image = (Image)resources.GetObject("btn_Maximizar.Image");
-            btn_Maximizar.Location = new Point(873, 12);
-            btn_Maximizar.Name = "btn_Maximizar";
-            btn_Maximizar.Size = new Size(43, 40);
-            btn_Maximizar.SizeMode = PictureBoxSizeMode.StretchImage;
-            btn_Maximizar.TabIndex = 15;
-            btn_Maximizar.TabStop = false;
-            btn_Maximizar.Click += btn_Maximizar_Click;
             // 
             // btn_Cerrar
             // 
@@ -92,8 +62,6 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.PowderBlue;
             panel1.Controls.Add(btn_Cerrar);
-            panel1.Controls.Add(btn_Minimizar);
-            panel1.Controls.Add(btn_Maximizar);
             panel1.Location = new Point(1, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(985, 63);
@@ -212,8 +180,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Agregar_Departamento";
             Load += Agregar_Departamento_Load;
-            ((System.ComponentModel.ISupportInitialize)btn_Minimizar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -221,9 +187,6 @@
         }
 
         #endregion
-
-        private PictureBox btn_Minimizar;
-        private PictureBox btn_Maximizar;
         private PictureBox btn_Cerrar;
         private Panel panel1;
         private Label label1;

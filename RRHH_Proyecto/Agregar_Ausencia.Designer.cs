@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agregar_Ausencia));
-            btn_Minimizar = new PictureBox();
-            btn_Maximizar = new PictureBox();
             btn_Cerrar = new PictureBox();
             panel1 = new Panel();
             label1 = new Label();
@@ -45,36 +43,8 @@
             btn_Cancelar = new Button();
             mb_FechaInicio = new MaskedTextBox();
             mb_FechaFinal = new MaskedTextBox();
-            ((System.ComponentModel.ISupportInitialize)btn_Minimizar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
             SuspendLayout();
-            // 
-            // btn_Minimizar
-            // 
-            btn_Minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Minimizar.Cursor = Cursors.Hand;
-            btn_Minimizar.Image = (Image)resources.GetObject("btn_Minimizar.Image");
-            btn_Minimizar.Location = new Point(601, 8);
-            btn_Minimizar.Name = "btn_Minimizar";
-            btn_Minimizar.Size = new Size(43, 40);
-            btn_Minimizar.SizeMode = PictureBoxSizeMode.StretchImage;
-            btn_Minimizar.TabIndex = 13;
-            btn_Minimizar.TabStop = false;
-            btn_Minimizar.Click += btn_Minimizar_Click;
-            // 
-            // btn_Maximizar
-            // 
-            btn_Maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Maximizar.Cursor = Cursors.Hand;
-            btn_Maximizar.Image = (Image)resources.GetObject("btn_Maximizar.Image");
-            btn_Maximizar.Location = new Point(657, 8);
-            btn_Maximizar.Name = "btn_Maximizar";
-            btn_Maximizar.Size = new Size(43, 40);
-            btn_Maximizar.SizeMode = PictureBoxSizeMode.StretchImage;
-            btn_Maximizar.TabIndex = 12;
-            btn_Maximizar.TabStop = false;
-            btn_Maximizar.Click += btn_Maximizar_Click;
             // 
             // btn_Cerrar
             // 
@@ -252,8 +222,6 @@
             Controls.Add(label2);
             Controls.Add(cmb_Empleado);
             Controls.Add(label1);
-            Controls.Add(btn_Minimizar);
-            Controls.Add(btn_Maximizar);
             Controls.Add(btn_Cerrar);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -262,17 +230,12 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Agregar_Ausencia";
             Load += Agregar_Ausencia_Load;
-            ((System.ComponentModel.ISupportInitialize)btn_Minimizar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox btn_Minimizar;
-        private PictureBox btn_Maximizar;
         private PictureBox btn_Cerrar;
         private Panel panel1;
         private Label label1;

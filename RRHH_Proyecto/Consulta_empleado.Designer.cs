@@ -42,13 +42,9 @@
             btnFiltrar = new Button();
             btnGuardarCambios = new Button();
             label2 = new Label();
-            btn_Minimizar = new PictureBox();
-            btn_Maximizar = new PictureBox();
             btn_Cerrar = new PictureBox();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Minimizar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -215,34 +211,6 @@
             label2.TabIndex = 15;
             label2.Text = "CONSULTA UN EMPLEADO";
             // 
-            // btn_Minimizar
-            // 
-            btn_Minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Minimizar.BackColor = Color.Transparent;
-            btn_Minimizar.Cursor = Cursors.Hand;
-            btn_Minimizar.Image = (Image)resources.GetObject("btn_Minimizar.Image");
-            btn_Minimizar.Location = new Point(1180, 16);
-            btn_Minimizar.Name = "btn_Minimizar";
-            btn_Minimizar.Size = new Size(43, 40);
-            btn_Minimizar.SizeMode = PictureBoxSizeMode.StretchImage;
-            btn_Minimizar.TabIndex = 38;
-            btn_Minimizar.TabStop = false;
-            btn_Minimizar.Click += btn_Minimizar_Click;
-            // 
-            // btn_Maximizar
-            // 
-            btn_Maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Maximizar.BackColor = Color.Transparent;
-            btn_Maximizar.Cursor = Cursors.Hand;
-            btn_Maximizar.Image = (Image)resources.GetObject("btn_Maximizar.Image");
-            btn_Maximizar.Location = new Point(1236, 16);
-            btn_Maximizar.Name = "btn_Maximizar";
-            btn_Maximizar.Size = new Size(43, 40);
-            btn_Maximizar.SizeMode = PictureBoxSizeMode.StretchImage;
-            btn_Maximizar.TabIndex = 37;
-            btn_Maximizar.TabStop = false;
-            btn_Maximizar.Click += btn_Maximizar_Click;
-            // 
             // btn_Cerrar
             // 
             btn_Cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -261,8 +229,6 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.PowderBlue;
-            panel1.Controls.Add(btn_Minimizar);
-            panel1.Controls.Add(btn_Maximizar);
             panel1.Controls.Add(btn_Cerrar);
             panel1.Location = new Point(-4, -4);
             panel1.Name = "panel1";
@@ -294,8 +260,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Consulta_empleado";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Minimizar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -317,8 +281,6 @@
         private Button btnFiltrar;
         private Button btnGuardarCambios;
         private Label label2;
-        private PictureBox btn_Minimizar;
-        private PictureBox btn_Maximizar;
         private PictureBox btn_Cerrar;
         private Panel panel1;
     }

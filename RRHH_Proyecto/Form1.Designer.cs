@@ -35,12 +35,10 @@
             txt_Contraseña = new TextBox();
             label2 = new Label();
             btn_Cerrar = new PictureBox();
-            btn_Maximizar = new PictureBox();
             btn_Minimizar = new PictureBox();
             pictureBox4 = new PictureBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Minimizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
@@ -133,25 +131,12 @@
             btn_Cerrar.TabStop = false;
             btn_Cerrar.Click += btn_Cerrar_Click;
             // 
-            // btn_Maximizar
-            // 
-            btn_Maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Maximizar.Cursor = Cursors.Hand;
-            btn_Maximizar.Image = (Image)resources.GetObject("btn_Maximizar.Image");
-            btn_Maximizar.Location = new Point(435, 12);
-            btn_Maximizar.Name = "btn_Maximizar";
-            btn_Maximizar.Size = new Size(43, 40);
-            btn_Maximizar.SizeMode = PictureBoxSizeMode.StretchImage;
-            btn_Maximizar.TabIndex = 9;
-            btn_Maximizar.TabStop = false;
-            btn_Maximizar.Click += btn_Maximizar_Click;
-            // 
             // btn_Minimizar
             // 
             btn_Minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Minimizar.Cursor = Cursors.Hand;
             btn_Minimizar.Image = (Image)resources.GetObject("btn_Minimizar.Image");
-            btn_Minimizar.Location = new Point(379, 12);
+            btn_Minimizar.Location = new Point(432, 12);
             btn_Minimizar.Name = "btn_Minimizar";
             btn_Minimizar.Size = new Size(43, 40);
             btn_Minimizar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -178,7 +163,6 @@
             ClientSize = new Size(557, 842);
             Controls.Add(pictureBox4);
             Controls.Add(btn_Minimizar);
-            Controls.Add(btn_Maximizar);
             Controls.Add(btn_Cerrar);
             Controls.Add(label2);
             Controls.Add(txt_Contraseña);
@@ -192,7 +176,6 @@
             Text = "Form1";
             KeyDown += Form1_KeyDown;
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btn_Maximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Minimizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
@@ -207,7 +190,6 @@
         private TextBox txt_Contraseña;
         private Label label2;
         private PictureBox btn_Cerrar;
-        private PictureBox btn_Maximizar;
         private PictureBox btn_Minimizar;
         private PictureBox pictureBox4;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
