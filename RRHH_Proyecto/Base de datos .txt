@@ -1,0 +1,203 @@
+﻿CREATE DATABASE RRHH;
+GO
+
+/*use master;
+drop database RRHH;
+go*/
+
+-- USAR LA BASE DE DATOS CREADA
+USE RRHH;
+GO
+
+-- CREACION DE Tabla del Login
+CREATE TABLE usuarios (
+    usuario NVARCHAR(50) NOT NULL,
+    contrasena NVARCHAR(50) NOT NULL
+);
+
+INSERT INTO usuarios(usuario, contrasena) VALUES ('d', '12');
+
+SELECT * FROM usuarios;
+GO
+
+-- CREACION DE Tabla: Empleados
+CREATE TABLE Empleados (
+    ID INT IDENTITY PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL,
+    Apellido VARCHAR(50) NOT NULL,
+    Cedula VARCHAR (15) NOT NULL,
+    LugarNacimiento VARCHAR(100) NOT NULL,
+    Cargo VARCHAR(50) NOT NULL,
+    Telefono VARCHAR(15) NOT NULL,
+    CorreoElectronico VARCHAR(100) NOT NULL
+);
+
+
+
+
+SELECT * FROM Empleados;
+GO
+
+-- CREACION DE Tabla: TrabExtraboLaboral
+CREATE TABLE TrabExtraboLaboral (
+    IdTrabajoExtrabLaboral INT PRIMARY KEY,
+    DescripcionTrabajo VARCHAR(255),
+    HInicio VARCHAR(50),
+    HFin VARCHAR(50),
+    Empleado_ID INT,
+    CONSTRAINT FK_TrabExtraboLaboral_Empleados
+        FOREIGN KEY (Empleado_ID) REFERENCES Empleados(ID)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+GO
+
+-- CREACION DE Tabla: Horario
+CREATE TABLE Horario (
+    IdHorario INT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    HEntrada VARCHAR(50),
+    HSalida VARCHAR(50),
+    HEnt VARCHAR(50),
+    HSal VARCHAR(50)
+);
+GO
+
+-- CREACION DE Tabla: EntradaSalida
+CREATE TABLE EntradaSalida (
+    IdES INT PRIMARY KEY,
+    ID INT,
+    Fecha VARCHAR(50),
+	Hora VARCHAR(50),
+    CONSTRAINT FK_Empleado_EntradaSalida
+        FOREIGN KEY (ID) REFERENCES Empleados(ID)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+GO
+
+-- CREACION DE Tabla: HorarioAsignado
+CREATE TABLE HorarioAsignado (
+    ID INT,
+    IdHorario INT,
+    FAsignacion VARCHAR (50),
+    CausaHorario VARCHAR(255),
+    PRIMARY KEY (ID, IdHorario),
+    CONSTRAINT FK_HorarioAsignado_Empleados
+        FOREIGN KEY (ID) REFERENCES Empleados(ID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_HorarioAsignado_Horario
+        FOREIGN KEY (IdHorario) REFERENCES Horario(IdHorario)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+GO
+ 
+ select * FROM  Departamento;
+-- CREACION DE Tabla: Departamento
+CREATE TABLE Departamento (
+    IdDpto INT IDENTITY PRIMARY KEY,
+	NombreDpto VARCHAR(100),
+	IDJefe INT,
+    NombreJefe Varchar (50),
+    CorreoElectronicoDpto VARCHAR(100),
+    
+
+    CONSTRAINT FK_Empleado_Departamento
+        FOREIGN KEY (IDjefe) REFERENCES Empleados(ID)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+GO
+
+-- CREACION DE Tabla: Ausencia
+CREATE TABLE Ausencia (
+    IdAusencia INT IDENTITY(1,1) PRIMARY KEY, 
+    TipoAusencia VARCHAR(50)
+);
+GO
+select * from Ausencia;
+-- CREACION DE Tabla: EmpleadoAusencia
+CREATE TABLE EmpleadoAusencia (
+    Empleado_ID INT,
+    IdAusencia INT,
+    Empleado VARCHAR(50),
+    FInicio VARCHAR(50),
+    FFin VARCHAR(50),
+    PRIMARY KEY (Empleado_ID, IdAusencia),
+    CONSTRAINT FK_Empleado_EmpleadoAusencia
+        FOREIGN KEY (Empleado_ID) REFERENCES Empleados(ID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_EmpleadoAusencia_Ausencia
+        FOREIGN KEY (IdAusencia) REFERENCES Ausencia(IdAusencia)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+GO--------------------------------------------------------------------------------------------------------------------------------
+
+-- CREACION DE Tabla: MotivoPase
+CREATE TABLE MotivoPase (
+    IdMotivoPase INT PRIMARY KEY,
+    MotivoPase VARCHAR(255)
+);
+
+select * from MotivoPase;
+GO
+
+drop table PaseEmpleado;
+-- CREACION DE Tabla: PaseEmpleado
+CREATE TABLE PaseEmpleado (
+    IdPaseEmpleado INT  identity PRIMARY KEY,
+    ID INT,
+    Fecha VARCHAR(50),
+    HEnt VARCHAR(50),
+    HSal VARCHAR(50),
+    Clave VARCHAR(50),
+    IdMotivoPase INT,
+    CONSTRAINT FK_Empleados_PaseEmpleado
+        FOREIGN KEY (ID) REFERENCES Empleados(ID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_PaseEmpleado_MotivoPase
+        FOREIGN KEY (IdMotivoPase) REFERENCES MotivoPase(IdMotivoPase)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+GO
+
+-- CREACION DE Tabla: TipoRetraso
+CREATE TABLE TipoRetraso (
+    IdTipoRetraso INT PRIMARY KEY,
+    TipoDeRetraso VARCHAR(50),
+    Tipo_Retraso INT
+);
+GO
+ 
+
+INSERT INTO TipoRetraso (IdTipoRetraso, TipoDeRetraso, Tipo_Retraso)
+VALUES 
+(1, 'Retraso leve', 10),
+(2, 'Retraso moderado', 20),
+(3, 'Retraso grave', 30),
+(4, 'Retraso crítico', 40);
+
+GO
+
+select * from TipoRetraso;
+
+select * from Retraso;
+
+DROP TABLE IF EXISTS Retraso;
+
+--cambie esto decirle a diego identity 
+-- CREACION DE Tabla: Retraso
+CREATE TABLE Retraso (
+    IdRetraso INT IDENTITY(1,1) PRIMARY KEY,
+    ID INT,
+    IdTipoRetraso INT,
+    Fecha VARCHAR(50),
+    Minutos INT,
+    Observacion VARCHAR(255),
+    CONSTRAINT FK_Empleado_Retraso
+        FOREIGN KEY (ID) REFERENCES Empleados(ID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_Retraso_TipoRetraso
+        FOREIGN KEY (IdTipoRetraso) REFERENCES TipoRetraso(IdTipoRetraso)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+go
+
+select * from Empleados;
