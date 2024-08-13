@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            txtFecha = new TextBox();
-            txtMinutos = new TextBox();
             txtObservacion = new TextBox();
             comboBox1 = new ComboBox();
             btnAgregar = new Button();
@@ -42,6 +40,8 @@
             label5 = new Label();
             comboBoxEmpleado = new ComboBox();
             btnGuardar = new Button();
+            maskedTextBoxfecha = new MaskedTextBox();
+            maskedTextBoxminutos = new MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -53,20 +53,6 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(486, 222);
             dataGridView1.TabIndex = 0;
-            // 
-            // txtFecha
-            // 
-            txtFecha.Location = new Point(241, 311);
-            txtFecha.Name = "txtFecha";
-            txtFecha.Size = new Size(100, 23);
-            txtFecha.TabIndex = 2;
-            // 
-            // txtMinutos
-            // 
-            txtMinutos.Location = new Point(241, 340);
-            txtMinutos.Name = "txtMinutos";
-            txtMinutos.Size = new Size(100, 23);
-            txtMinutos.TabIndex = 3;
             // 
             // txtObservacion
             // 
@@ -168,11 +154,30 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // maskedTextBoxfecha
+            // 
+            maskedTextBoxfecha.Location = new Point(220, 311);
+            maskedTextBoxfecha.Mask = "00/00/0000";
+            maskedTextBoxfecha.Name = "maskedTextBoxfecha";
+            maskedTextBoxfecha.Size = new Size(100, 23);
+            maskedTextBoxfecha.TabIndex = 15;
+            maskedTextBoxfecha.MaskInputRejected += maskedTextBoxfecha_MaskInputRejected;
+            // 
+            // maskedTextBoxminutos
+            // 
+            maskedTextBoxminutos.Location = new Point(220, 341);
+            maskedTextBoxminutos.Mask = "000";
+            maskedTextBoxminutos.Name = "maskedTextBoxminutos";
+            maskedTextBoxminutos.Size = new Size(100, 23);
+            maskedTextBoxminutos.TabIndex = 16;
+            // 
             // Consulta_Retrasos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(maskedTextBoxminutos);
+            Controls.Add(maskedTextBoxfecha);
             Controls.Add(btnGuardar);
             Controls.Add(comboBoxEmpleado);
             Controls.Add(label5);
@@ -184,8 +189,6 @@
             Controls.Add(btnAgregar);
             Controls.Add(comboBox1);
             Controls.Add(txtObservacion);
-            Controls.Add(txtMinutos);
-            Controls.Add(txtFecha);
             Controls.Add(dataGridView1);
             Name = "Consulta_Retrasos";
             Text = "Consulta_Retrasos";
@@ -198,8 +201,6 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private TextBox txtFecha;
-        private TextBox txtMinutos;
         private TextBox txtObservacion;
         private ComboBox comboBox1;
         private Button btnAgregar;
@@ -211,5 +212,7 @@
         private Label label5;
         private ComboBox comboBoxEmpleado;
         private Button btnGuardar;
+        private MaskedTextBox maskedTextBoxfecha;
+        private MaskedTextBox maskedTextBoxminutos;
     }
 }

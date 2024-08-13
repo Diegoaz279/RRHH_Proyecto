@@ -27,6 +27,9 @@ namespace RRHH_Proyecto
             dataGridView1.ReadOnly = true;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+
+            comboBox1.SelectedIndex = -1;
+            comboBoxEmpleado.SelectedIndex = -1;
         }
 
         private void CargarEmpleados()
@@ -98,6 +101,15 @@ namespace RRHH_Proyecto
                 }
             }
         }
+
+        private void LimpiarCampos()
+        {
+            comboBox1.SelectedIndex = -1;
+            comboBoxEmpleado.SelectedIndex = -1;
+            maskedTextBoxminutos.Clear();
+            maskedTextBoxfecha.Clear();
+            txtObservacion.Clear();
+        }
         private void Consulta_Retrasos_Load(object sender, EventArgs e)
         {
 
@@ -114,6 +126,8 @@ namespace RRHH_Proyecto
             dataGridView1.ReadOnly = false;
             dataGridView1.AllowUserToAddRows = false; // No permitir agregar nuevas filas
             dataGridView1.AllowUserToDeleteRows = false; // 
+
+            LimpiarCampos();
         }
 
 
@@ -136,13 +150,13 @@ namespace RRHH_Proyecto
                         return;
                     }
 
-                    if (string.IsNullOrWhiteSpace(txtFecha.Text))
+                    if (string.IsNullOrWhiteSpace(maskedTextBoxfecha.Text))
                     {
                         MessageBox.Show("El campo Fecha no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    if (string.IsNullOrWhiteSpace(txtMinutos.Text))
+                    if (string.IsNullOrWhiteSpace(maskedTextBoxminutos.Text))
                     {
                         MessageBox.Show("El campo Minutos no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -159,8 +173,8 @@ namespace RRHH_Proyecto
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     cmd.Parameters.AddWithValue("@ID", (int)comboBoxEmpleado.SelectedValue);
                     cmd.Parameters.AddWithValue("@IdTipoRetraso", (int)comboBox1.SelectedValue);
-                    cmd.Parameters.AddWithValue("@Fecha", txtFecha.Text);
-                    cmd.Parameters.AddWithValue("@Minutos", int.Parse(txtMinutos.Text));
+                    cmd.Parameters.AddWithValue("@Fecha", maskedTextBoxfecha.Text);
+                    cmd.Parameters.AddWithValue("@Minutos", int.Parse(maskedTextBoxminutos.Text));
                     cmd.Parameters.AddWithValue("@Observacion", txtObservacion.Text);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Registro agregado correctamente.");
@@ -180,6 +194,8 @@ namespace RRHH_Proyecto
                 {
                     MessageBox.Show("Error al agregar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                LimpiarCampos();
             }
         }
 
@@ -213,12 +229,22 @@ namespace RRHH_Proyecto
                     }
                     MessageBox.Show("Cambios guardados correctamente.");
                     dt.AcceptChanges(); // Aceptar los cambios en el DataTable
+                    LimpiarCampos();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error al guardar los cambios: " + ex.Message);
+
                 }
+
+
             }
+
+        }
+
+        private void maskedTextBoxfecha_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }
