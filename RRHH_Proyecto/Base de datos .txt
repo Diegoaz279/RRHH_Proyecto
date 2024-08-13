@@ -130,11 +130,15 @@ CREATE TABLE EmpleadoAusencia (
 );
 GO--------------------------------------------------------------------------------------------------------------------------------
 
+drop table MotivoPase
 -- CREACION DE Tabla: MotivoPase
 CREATE TABLE MotivoPase (
-    IdMotivoPase INT PRIMARY KEY,
+    IdMotivoPase INT identity PRIMARY KEY,
     MotivoPase VARCHAR(255)
 );
+
+insert into MotivoPase (MotivoPase)
+Values ('Limpieza');
 
 select * from MotivoPase;
 GO
