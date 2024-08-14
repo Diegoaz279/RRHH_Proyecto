@@ -211,6 +211,7 @@
             vERHORARIOASIGNADOToolStripMenuItem.Name = "vERHORARIOASIGNADOToolStripMenuItem";
             vERHORARIOASIGNADOToolStripMenuItem.Size = new Size(320, 24);
             vERHORARIOASIGNADOToolStripMenuItem.Text = "VER HORARIO ASIGNADO";
+            vERHORARIOASIGNADOToolStripMenuItem.Click += vERHORARIOASIGNADOToolStripMenuItem_Click;
             // 
             // vERAUSENCIADEUNEMPLEADOToolStripMenuItem
             // 

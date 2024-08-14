@@ -100,8 +100,14 @@ namespace RRHH_Proyecto
 
         private void hORASEXTRASToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VerHorasExtras horasExtras = new VerHorasExtras(); 
+            VerHorasExtras horasExtras = new VerHorasExtras();
             horasExtras.ShowDialog();
+        }
+
+        private void vERHORARIOASIGNADOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VerHorarioAsignado verHorarioAsignado = new VerHorarioAsignado();
+            verHorarioAsignado.ShowDialog();
         }
     }
 }
