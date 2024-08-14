@@ -91,5 +91,11 @@ namespace RRHH_Proyecto
             Agregar_Retraso retraso = new Agregar_Retraso();
             retraso.ShowDialog();
         }
+
+        private void vERAUSENCIASToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VerAusencias verAusencias = new VerAusencias();
+            verAusencias.ShowDialog();
+        }
     }
 }
