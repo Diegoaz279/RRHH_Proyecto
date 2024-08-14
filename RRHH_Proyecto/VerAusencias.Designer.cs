@@ -50,6 +50,7 @@
             // 
             // comboBoxAusencia
             // 
+            comboBoxAusencia.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxAusencia.FormattingEnabled = true;
             comboBoxAusencia.Location = new Point(45, 188);
             comboBoxAusencia.Name = "comboBoxAusencia";
@@ -58,6 +59,7 @@
             // 
             // comboBoxEmpleado
             // 
+            comboBoxEmpleado.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEmpleado.FormattingEnabled = true;
             comboBoxEmpleado.Location = new Point(45, 239);
             comboBoxEmpleado.Name = "comboBoxEmpleado";

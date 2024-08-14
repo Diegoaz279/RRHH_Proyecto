@@ -59,7 +59,9 @@ namespace RRHH_Proyecto
             CargarTipoPase();
             CargarEmpleados();
             cmb_Empleado.SelectedIndex = -1;
-            
+            cmb_MotivoPase.SelectedIndex = -1;
+
+
 
         }
         private void btn_Canclar_Click(object sender, EventArgs e)
@@ -77,9 +79,9 @@ namespace RRHH_Proyecto
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(cmb_MotivoPase.Text))
+            if (cmb_MotivoPase.SelectedItem == null)
             {
-                MessageBox.Show("Por favor, seleccione un tipo Motivo de Pase.", "Error");
+                MessageBox.Show("Por favor, seleccione un Motivo de Pase.", "Error");
                 return;
             }
 
@@ -125,7 +127,12 @@ namespace RRHH_Proyecto
 
             catch (Exception ex)
             {
+                MessageBox.Show($"Error al agregar ausencia: {ex.Message}", "Error");
+            }
 
+            finally 
+            {
+                conexion.CloseConnection();
             }
 
         }

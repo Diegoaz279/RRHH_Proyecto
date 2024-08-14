@@ -125,6 +125,7 @@
             aGREGARHORASEXTRASToolStripMenuItem.Name = "aGREGARHORASEXTRASToolStripMenuItem";
             aGREGARHORASEXTRASToolStripMenuItem.Size = new Size(268, 24);
             aGREGARHORASEXTRASToolStripMenuItem.Text = "AGREGAR HORAS EXTRAS";
+            aGREGARHORASEXTRASToolStripMenuItem.Click += aGREGARHORASEXTRASToolStripMenuItem_Click;
             // 
             // hORARIOToolStripMenuItem
             // 
@@ -139,6 +140,7 @@
             aSIGNARHORARIOToolStripMenuItem.Name = "aSIGNARHORARIOToolStripMenuItem";
             aSIGNARHORARIOToolStripMenuItem.Size = new Size(219, 24);
             aSIGNARHORARIOToolStripMenuItem.Text = "ASIGNAR HORARIO";
+            aSIGNARHORARIOToolStripMenuItem.Click += aSIGNARHORARIOToolStripMenuItem_Click;
             // 
             // dEPARTAMENTOToolStripMenuItem
             // 
@@ -276,7 +278,7 @@
             btnMinimizar.Location = new Point(934, 3);
             btnMinimizar.Margin = new Padding(2);
             btnMinimizar.Name = "btnMinimizar";
-            btnMinimizar.Size = new Size(23, 20);
+            btnMinimizar.Size = new Size(26, 26);
             btnMinimizar.SizeMode = PictureBoxSizeMode.StretchImage;
             btnMinimizar.TabIndex = 13;
             btnMinimizar.TabStop = false;
@@ -291,7 +293,7 @@
             btnMaximizar.Location = new Point(974, 3);
             btnMaximizar.Margin = new Padding(2);
             btnMaximizar.Name = "btnMaximizar";
-            btnMaximizar.Size = new Size(23, 20);
+            btnMaximizar.Size = new Size(26, 26);
             btnMaximizar.SizeMode = PictureBoxSizeMode.StretchImage;
             btnMaximizar.TabIndex = 12;
             btnMaximizar.TabStop = false;
@@ -306,7 +308,7 @@
             btnCerrar.Location = new Point(1013, 3);
             btnCerrar.Margin = new Padding(2);
             btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(23, 20);
+            btnCerrar.Size = new Size(26, 26);
             btnCerrar.SizeMode = PictureBoxSizeMode.StretchImage;
             btnCerrar.TabIndex = 11;
             btnCerrar.TabStop = false;
@@ -316,10 +318,10 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Bottom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(30, -68);
+            pictureBox1.Location = new Point(0, -218);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(960, 781);
+            pictureBox1.Size = new Size(1016, 955);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 14;
             pictureBox1.TabStop = false;
@@ -341,6 +343,7 @@
             Name = "Menu_Strip";
             StartPosition = FormStartPosition.Manual;
             Text = " ";
+            WindowState = FormWindowState.Maximized;
             Load += Menu_Strip_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

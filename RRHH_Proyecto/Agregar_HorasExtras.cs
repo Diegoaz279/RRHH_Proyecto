@@ -8,26 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace RRHH_Proyecto
 {
-    public partial class Agregar_Horario : Form
+    public partial class Agregar_HorasExtras : Form
     {
         Conexion0 conexion = new Conexion0();
-        public Agregar_Horario()
+        public Agregar_HorasExtras()
         {
             InitializeComponent();
-
-        }
-        private void Agregar_Horario_Load(object sender, EventArgs e)
-        {
-            CargarEmpleados();
-            cmb_Empleado.SelectedIndex = -1;
         }
         private void CargarEmpleados()
         {
-
-
             string query = "SELECT ID, Nombre + ' ' + Apellido AS NombreCompleto FROM Empleados";
 
             using (SqlCommand comando = new SqlCommand(query, conexion.GetConnection()))
@@ -41,12 +34,19 @@ namespace RRHH_Proyecto
                 cmb_Empleado.DataSource = empleados;
             }
         }
+        private void btn_Canclar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
 
+        private void Agregar_HorasExtras_Load(object sender, EventArgs e)
+        {
+            CargarEmpleados();
+            cmb_Empleado.SelectedIndex = -1;
+        }
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
-
-
             //Captura el error de que si no se selecciona un empleado, osea que no se dejen campos vacios
             if (cmb_Empleado.SelectedItem == null)
             {
@@ -54,55 +54,56 @@ namespace RRHH_Proyecto
                 return;
             }
 
-            //Aqui se obtiene el ID y nombre del empleado
+            string hentrada = masked_Hentrada.Text;
+            string hsalida = masked_Hsalida.Text;
+            string descripcion = txt_DescripcionTrabajo.Text;
             int empleadoID = (int)cmb_Empleado.SelectedValue;
             string empleadoNombre = cmb_Empleado.Text; //Esto obtiene el nombre completo mostrado en el ComboBox
-            string horasalida = mb_HoraSalida.Text;
-            string horaentrada = mb_HoraEntrada.Text;
 
+            if (string.IsNullOrWhiteSpace(hentrada) || string.IsNullOrWhiteSpace(hsalida) || string.IsNullOrWhiteSpace(descripcion))
+            {
+                MessageBox.Show("Todos Los Campos son Obligatorios.", "Error");
+                return;
 
+            }
+        
+            
 
-            //Aqui se instancia la clase de conexion y la almacenamos en una variable
             Conexion0 conexion = new Conexion0();
             SqlConnection conexion_bd = null;
-
             try
             {
                 conexion_bd = conexion.GetConnection();
 
-                // Insertar en la tabla Horario, incluyendo el nombre del empleado, id del empleado etc
-                string query = "INSERT INTO Horario (Nombre, IdNombre, HEntrada, HSalida) VALUES (@Nombree, @IdNOMBRE, @HEntrada, @HSalida)";
+                string query = "INSERT INTO TrabExtraboLaboral (DescripcionTrabajo, HInicio, HFin, Empleado_ID, Empleado) VALUES (@Descripcion, @HoInicio, @HoFin, @EmpleadoID, @Empleado)";
                 SqlCommand comando = new SqlCommand(query, conexion_bd);
-                comando.Parameters.AddWithValue("@Nombree", empleadoNombre);
-                comando.Parameters.AddWithValue("@IdNOMBRE", empleadoID);
-                comando.Parameters.AddWithValue("@HEntrada", horaentrada);
-                comando.Parameters.AddWithValue("@HSalida", horasalida);
+                comando.Parameters.AddWithValue("@Descripcion", descripcion);
+                comando.Parameters.AddWithValue("@HoInicio", hentrada);
+                comando.Parameters.AddWithValue("@HoFin", hsalida);
+                comando.Parameters.AddWithValue("@EmpleadoID", empleadoID);
+                comando.Parameters.AddWithValue("@Empleado", empleadoNombre);
 
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Horario agregado exitosamente.", "Éxito");
+                MessageBox.Show("Hora Extra agregada exitosamente.", "Éxito");
 
-                // cierra el formulario
+                //cierra el formulario
                 this.Dispose();
             }
 
             catch (Exception ex)
-            {
-                MessageBox.Show($"Error al agregar Horario: {ex.Message}", "Error");
+            {   
+                //muestra el error por el cual no se pudo guardar la hora extra
+                MessageBox.Show($"Error al agregar la Hora extra: {ex.Message}", "Error");
             }
 
-            finally // Finalmente cierre de la conexion 
+            finally
             {
-                conexion.CloseConnection();
+                //cierre de conexion
+                conexion.CloseConnection(); 
             }
 
 
 
-        }
-
-        private void btn_Cancelar_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
         }
     }
-
 }

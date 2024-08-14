@@ -116,6 +116,7 @@ namespace RRHH_Proyecto
                 TipoAusencia = cmb_TipoAusencia.Text; //Usa el tipo de ausencia seleccionado del ComboBox
             }
 
+
             //Captura el error de que si no se selecciona un tipo de ausencia, osea que no se dejen campos vacios
             if (string.IsNullOrWhiteSpace(TipoAusencia))
             {

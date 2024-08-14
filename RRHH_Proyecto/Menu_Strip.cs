@@ -109,5 +109,17 @@ namespace RRHH_Proyecto
             VerHorarioAsignado verHorarioAsignado = new VerHorarioAsignado();
             verHorarioAsignado.ShowDialog();
         }
+
+        private void aSIGNARHORARIOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Agregar_Horario agregar_Horario = new Agregar_Horario();
+            agregar_Horario.ShowDialog();
+        }
+
+        private void aGREGARHORASEXTRASToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Agregar_HorasExtras agregar_HorasExtras = new Agregar_HorasExtras();
+            agregar_HorasExtras.ShowDialog();
+        }
     }
 }

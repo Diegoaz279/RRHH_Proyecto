@@ -55,47 +55,7 @@ namespace RRHH_Proyecto
                 // La conexión se cierra automáticamente al salir del bloque using
             }
         }
-       
-        //Configuracion de los botones de cerrar, minimizar, maximizar
-        private void btn_Cerrar_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
 
-        private void btn_Minimizar_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void btn_Maximizar_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal) WindowState = FormWindowState.Maximized;
-            else WindowState = FormWindowState.Normal;
-        }
-
-        private void cmb_TipoRetraso_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (cmb_TipoRetraso.SelectedItem.ToString() == "Otros")
-            {
-                txt_OtroRetraso.Visible = true; // Muestra el TextBox
-                txt_OtroRetraso.Focus();      // Opcional: Enfoca el TextBox
-            }
-            else
-            {
-                txt_OtroRetraso.Visible = false;  // Oculta el TextBox
-            }
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mb_Fecha_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
@@ -162,7 +122,7 @@ namespace RRHH_Proyecto
                 else
                 {
 
-                   
+
 
                     // Obtener el ID del tipo de retraso seleccionado
                     string queryTipoRetraso = "SELECT IdRetraso FROM Retraso WHERE TipoRetraso = @TipoRetraso";
@@ -188,8 +148,8 @@ namespace RRHH_Proyecto
                     return;
                 }
 
-         
-             
+
+
                 // Reinicia el formulario para que no se quede con los datos ya ingresados
                 this.Controls.Clear();
                 InitializeComponent();
@@ -198,7 +158,7 @@ namespace RRHH_Proyecto
                 // Cerrar la conexión
                 conexion.CerrarConexion();
 
-              
+
             }
         }
 
@@ -207,14 +167,52 @@ namespace RRHH_Proyecto
 
         }
 
-        private void btn_Cancelar_Click(object sender, EventArgs e)
+        private void Retraso_Load(object sender, EventArgs e)
+        {
+            label2.Focus();
+            CargarEmpleados();
+            cmb_Empleado.SelectedIndex = -1;
+        }
+
+        private void btn_Cancelar_Click_1(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void Retraso_Load(object sender, EventArgs e)
+        private void btn_Cerrar_Click_1(object sender, EventArgs e)
         {
+            this.Dispose();
+        }
 
+        private void cmb_TipoRetraso_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cmb_TipoRetraso.SelectedItem.ToString() == "Otros")
+            {
+                txt_OtroRetraso.Visible = true; // Muestra el TextBox
+                txt_OtroRetraso.Focus();      // Opcional: Enfoca el TextBox
+            }
+            else
+            {
+                txt_OtroRetraso.Visible = false;  // Oculta el TextBox
+            }
+        }
+
+        private void txt_OtroRetraso_Enter(object sender, EventArgs e)
+        {
+            if (txt_OtroRetraso.Text == "MOTIVO DE RETRASO")
+            {
+                txt_OtroRetraso.Text = "";
+                txt_OtroRetraso.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void txt_OtroRetraso_Leave(object sender, EventArgs e)
+        {
+            if (txt_OtroRetraso.Text == "")
+            {
+                txt_OtroRetraso.Text = "MOTIVO DE RETRASO";
+                txt_OtroRetraso.ForeColor = Color.DimGray;
+            }
         }
     }
 
