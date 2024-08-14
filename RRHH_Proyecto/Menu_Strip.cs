@@ -97,5 +97,11 @@ namespace RRHH_Proyecto
             VerAusencias verAusencias = new VerAusencias();
             verAusencias.ShowDialog();
         }
+
+        private void hORASEXTRASToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VerHorasExtras horasExtras = new VerHorasExtras(); 
+            horasExtras.ShowDialog();
+        }
     }
 }

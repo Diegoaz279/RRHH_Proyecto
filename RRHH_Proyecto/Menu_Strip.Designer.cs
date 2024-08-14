@@ -204,6 +204,7 @@
             hORASEXTRASToolStripMenuItem.Name = "hORASEXTRASToolStripMenuItem";
             hORASEXTRASToolStripMenuItem.Size = new Size(320, 24);
             hORASEXTRASToolStripMenuItem.Text = "VER HORAS EXTRAS";
+            hORASEXTRASToolStripMenuItem.Click += hORASEXTRASToolStripMenuItem_Click;
             // 
             // vERHORARIOASIGNADOToolStripMenuItem
             // 
@@ -272,7 +273,7 @@
             btnMinimizar.Cursor = Cursors.Hand;
             btnMinimizar.Image = (Image)resources.GetObject("btnMinimizar.Image");
             btnMinimizar.Location = new Point(934, 3);
-            btnMinimizar.Margin = new Padding(2, 2, 2, 2);
+            btnMinimizar.Margin = new Padding(2);
             btnMinimizar.Name = "btnMinimizar";
             btnMinimizar.Size = new Size(23, 20);
             btnMinimizar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -287,7 +288,7 @@
             btnMaximizar.Cursor = Cursors.Hand;
             btnMaximizar.Image = (Image)resources.GetObject("btnMaximizar.Image");
             btnMaximizar.Location = new Point(974, 3);
-            btnMaximizar.Margin = new Padding(2, 2, 2, 2);
+            btnMaximizar.Margin = new Padding(2);
             btnMaximizar.Name = "btnMaximizar";
             btnMaximizar.Size = new Size(23, 20);
             btnMaximizar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -302,7 +303,7 @@
             btnCerrar.Cursor = Cursors.Hand;
             btnCerrar.Image = (Image)resources.GetObject("btnCerrar.Image");
             btnCerrar.Location = new Point(1013, 3);
-            btnCerrar.Margin = new Padding(2, 2, 2, 2);
+            btnCerrar.Margin = new Padding(2);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(23, 20);
             btnCerrar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -315,7 +316,7 @@
             pictureBox1.Anchor = AnchorStyles.Bottom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(30, -68);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(960, 781);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -335,7 +336,7 @@
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "Menu_Strip";
             StartPosition = FormStartPosition.Manual;
             Text = " ";
