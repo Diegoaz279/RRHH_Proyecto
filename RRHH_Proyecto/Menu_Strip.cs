@@ -85,5 +85,11 @@ namespace RRHH_Proyecto
             Pase_Empleado pase_Empleado = new Pase_Empleado();
             pase_Empleado.ShowDialog();
         }
+
+        private void rETRASOToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Agregar_Retraso retraso = new Agregar_Retraso();
+            retraso.ShowDialog();
+        }
     }
 }
