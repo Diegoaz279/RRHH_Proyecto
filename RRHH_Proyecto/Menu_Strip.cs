@@ -121,5 +121,29 @@ namespace RRHH_Proyecto
             Agregar_HorasExtras agregar_HorasExtras = new Agregar_HorasExtras();
             agregar_HorasExtras.ShowDialog();
         }
+
+        private void vERDEPARTAMENTOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ver_Departamento ver_Departamentos = new Ver_Departamento();
+            ver_Departamentos.ShowDialog();
+        }
+
+        private void mOTIVODEPASEToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Ver_MotivoPase ver_MotivoPase = new Ver_MotivoPase();
+            ver_MotivoPase.ShowDialog();
+        }
+
+        private void vERLOSTIPOSDERETRASOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ver_TipoRetraso ver_TipoRetraso = new Ver_TipoRetraso();
+            ver_TipoRetraso.ShowDialog();
+        }
+
+        private void vERAUSENCIADEUNEMPLEADOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ver_TiposAusencia ver_TIPO = new Ver_TiposAusencia();
+            ver_TIPO.ShowDialog();
+        }
     }
 }

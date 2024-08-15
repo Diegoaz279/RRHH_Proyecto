@@ -11,26 +11,25 @@ using System.Windows.Forms;
 
 namespace RRHH_Proyecto
 {
-    public partial class VerHorarioAsignado : Form
+    public partial class Ver_Departamento : Form
     {
         SqlConnection conexion = new SqlConnection("Server=.;DataBase=RRHH;Integrated Security=true");
         SqlDataAdapter adaptador;
         DataTable dt;
-        public VerHorarioAsignado()
+
+        public Ver_Departamento()
         {
             InitializeComponent();
-            CargarDatosHorarioAsignado();
-
-            // Deshabilitar campos y botones al inicio
+            CargarDatosDepartamentos();
             DeshabilitarCampos();
         }
 
-        private void CargarDatosHorarioAsignado()
+        private void CargarDatosDepartamentos()
         {
             try
             {
                 conexion.Open();
-                string query = "SELECT IdHorario, IdNombre, Nombre, HEntrada, HSalida FROM Horario";
+                string query = "SELECT IdDpto, NombreDpto, IDJefe, NombreJefe, CorreoElectronicoDpto FROM Departamento";
                 adaptador = new SqlDataAdapter(query, conexion);
                 dt = new DataTable();
                 adaptador.Fill(dt);
@@ -46,14 +45,15 @@ namespace RRHH_Proyecto
             }
         }
 
-        private void VerHorarioAsignado_Load(object sender, EventArgs e)
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void buttonEditar_Click(object sender, EventArgs e)
+        private void Ver_Departamento_Load(object sender, EventArgs e)
         {
-            HabilitarCampos();
 
         }
 
@@ -68,13 +68,13 @@ namespace RRHH_Proyecto
                     {
                         if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "UPDATE Horario SET IdNombre = @IdNombre, Nombre = @Nombre, HEntrada = @HEntrada, HSalida = @HSalida WHERE IdHorario = @IdHorario";
+                            string query = "UPDATE Departamento SET NombreDpto = @NombreDpto, IDJefe = @IDJefe, NombreJefe = @NombreJefe, CorreoElectronicoDpto = @CorreoElectronicoDpto WHERE IdDpto = @IdDpto";
                             SqlCommand cmd = new SqlCommand(query, conexion);
-                            cmd.Parameters.AddWithValue("@IdNombre", row["IdNombre"]);
-                            cmd.Parameters.AddWithValue("@Nombre", row["Nombre"]);
-                            cmd.Parameters.AddWithValue("@HEntrada", row["HEntrada"]);
-                            cmd.Parameters.AddWithValue("@HSalida", row["HSalida"]);
-                            cmd.Parameters.AddWithValue("@IdHorario", row["IdHorario"]);
+                            cmd.Parameters.AddWithValue("@NombreDpto", row["NombreDpto"]);
+                            cmd.Parameters.AddWithValue("@IDJefe", row["IDJefe"]);
+                            cmd.Parameters.AddWithValue("@NombreJefe", row["NombreJefe"]);
+                            cmd.Parameters.AddWithValue("@CorreoElectronicoDpto", row["CorreoElectronicoDpto"]);
+                            cmd.Parameters.AddWithValue("@IdDpto", row["IdDpto"]);
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -106,10 +106,10 @@ namespace RRHH_Proyecto
                     conexion.Open();
                     foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     {
-                        int idHorario = Convert.ToInt32(row.Cells["IdHorario"].Value);
-                        string query = "DELETE FROM Horario WHERE IdHorario = @IdHorario";
+                        int idDpto = Convert.ToInt32(row.Cells["IdDpto"].Value);
+                        string query = "DELETE FROM Departamento WHERE IdDpto = @IdDpto";
                         SqlCommand cmd = new SqlCommand(query, conexion);
-                        cmd.Parameters.AddWithValue("@IdHorario", idHorario);
+                        cmd.Parameters.AddWithValue("@IdDpto", idDpto);
                         cmd.ExecuteNonQuery();
                         dataGridView1.Rows.RemoveAt(row.Index);
                     }
@@ -128,8 +128,11 @@ namespace RRHH_Proyecto
             {
                 MessageBox.Show("Selecciona un registro para eliminar.");
             }
+        }
 
-
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            HabilitarCampos();
         }
 
         private bool ValidarCampos()
@@ -137,12 +140,12 @@ namespace RRHH_Proyecto
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.IsNewRow) continue;
-                if (row.Cells["Nombre"].Value == DBNull.Value ||
-                    string.IsNullOrWhiteSpace(row.Cells["Nombre"].Value.ToString()) ||
-                    row.Cells["HEntrada"].Value == DBNull.Value ||
-                    string.IsNullOrWhiteSpace(row.Cells["HEntrada"].Value.ToString()) ||
-                    row.Cells["HSalida"].Value == DBNull.Value ||
-                    string.IsNullOrWhiteSpace(row.Cells["HSalida"].Value.ToString()))
+                if (row.Cells["NombreDpto"].Value == DBNull.Value ||
+                    string.IsNullOrWhiteSpace(row.Cells["NombreDpto"].Value.ToString()) ||
+                    row.Cells["NombreJefe"].Value == DBNull.Value ||
+                    string.IsNullOrWhiteSpace(row.Cells["NombreJefe"].Value.ToString()) ||
+                    row.Cells["CorreoElectronicoDpto"].Value == DBNull.Value ||
+                    string.IsNullOrWhiteSpace(row.Cells["CorreoElectronicoDpto"].Value.ToString()))
                 {
                     return false;
                 }
@@ -164,5 +167,4 @@ namespace RRHH_Proyecto
             dataGridView1.AllowUserToDeleteRows = false;
         }
     }
-    
 }

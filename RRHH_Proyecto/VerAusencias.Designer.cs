@@ -40,6 +40,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(231, 61);
             dataGridView1.Name = "dataGridView1";
@@ -119,7 +120,7 @@
             Controls.Add(comboBoxAusencia);
             Controls.Add(dataGridView1);
             Name = "VerAusencias";
-            Text = "VerAusencias";
+            Text = " n  ";
             Load += VerAusencias_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

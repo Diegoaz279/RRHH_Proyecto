@@ -50,7 +50,6 @@
             vERHORARIOASIGNADOToolStripMenuItem = new ToolStripMenuItem();
             vERAUSENCIADEUNEMPLEADOToolStripMenuItem = new ToolStripMenuItem();
             vERLOSTIPOSDERETRASOToolStripMenuItem = new ToolStripMenuItem();
-            mOTIVODEPASEToolStripMenuItem = new ToolStripMenuItem();
             dEPARTAMENTOToolStripMenuItem1 = new ToolStripMenuItem();
             vERDEPARTAMENTOSToolStripMenuItem = new ToolStripMenuItem();
             mOTIVODEPASEToolStripMenuItem1 = new ToolStripMenuItem();
@@ -174,7 +173,7 @@
             // 
             // eDITAREMPLEADOToolStripMenuItem
             // 
-            eDITAREMPLEADOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vEREMPLEADOSToolStripMenuItem, vERRETRASOSToolStripMenuItem, vERAUSENCIASToolStripMenuItem, hORASEXTRASToolStripMenuItem, vERHORARIOASIGNADOToolStripMenuItem, vERAUSENCIADEUNEMPLEADOToolStripMenuItem, vERLOSTIPOSDERETRASOToolStripMenuItem, mOTIVODEPASEToolStripMenuItem });
+            eDITAREMPLEADOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vEREMPLEADOSToolStripMenuItem, vERRETRASOSToolStripMenuItem, vERAUSENCIASToolStripMenuItem, hORASEXTRASToolStripMenuItem, vERHORARIOASIGNADOToolStripMenuItem, vERAUSENCIADEUNEMPLEADOToolStripMenuItem, vERLOSTIPOSDERETRASOToolStripMenuItem });
             eDITAREMPLEADOToolStripMenuItem.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
             eDITAREMPLEADOToolStripMenuItem.Name = "eDITAREMPLEADOToolStripMenuItem";
             eDITAREMPLEADOToolStripMenuItem.Size = new Size(204, 24);
@@ -183,55 +182,51 @@
             // vEREMPLEADOSToolStripMenuItem
             // 
             vEREMPLEADOSToolStripMenuItem.Name = "vEREMPLEADOSToolStripMenuItem";
-            vEREMPLEADOSToolStripMenuItem.Size = new Size(320, 24);
+            vEREMPLEADOSToolStripMenuItem.Size = new Size(263, 24);
             vEREMPLEADOSToolStripMenuItem.Text = "VER EMPLEADOS";
             vEREMPLEADOSToolStripMenuItem.Click += vEREMPLEADOSToolStripMenuItem_Click;
             // 
             // vERRETRASOSToolStripMenuItem
             // 
             vERRETRASOSToolStripMenuItem.Name = "vERRETRASOSToolStripMenuItem";
-            vERRETRASOSToolStripMenuItem.Size = new Size(320, 24);
+            vERRETRASOSToolStripMenuItem.Size = new Size(263, 24);
             vERRETRASOSToolStripMenuItem.Text = "VER RETRASOS ";
             vERRETRASOSToolStripMenuItem.Click += vERRETRASOSToolStripMenuItem_Click;
             // 
             // vERAUSENCIASToolStripMenuItem
             // 
             vERAUSENCIASToolStripMenuItem.Name = "vERAUSENCIASToolStripMenuItem";
-            vERAUSENCIASToolStripMenuItem.Size = new Size(320, 24);
+            vERAUSENCIASToolStripMenuItem.Size = new Size(263, 24);
             vERAUSENCIASToolStripMenuItem.Text = "VER AUSENCIAS";
             vERAUSENCIASToolStripMenuItem.Click += vERAUSENCIASToolStripMenuItem_Click;
             // 
             // hORASEXTRASToolStripMenuItem
             // 
             hORASEXTRASToolStripMenuItem.Name = "hORASEXTRASToolStripMenuItem";
-            hORASEXTRASToolStripMenuItem.Size = new Size(320, 24);
+            hORASEXTRASToolStripMenuItem.Size = new Size(263, 24);
             hORASEXTRASToolStripMenuItem.Text = "VER HORAS EXTRAS";
             hORASEXTRASToolStripMenuItem.Click += hORASEXTRASToolStripMenuItem_Click;
             // 
             // vERHORARIOASIGNADOToolStripMenuItem
             // 
             vERHORARIOASIGNADOToolStripMenuItem.Name = "vERHORARIOASIGNADOToolStripMenuItem";
-            vERHORARIOASIGNADOToolStripMenuItem.Size = new Size(320, 24);
+            vERHORARIOASIGNADOToolStripMenuItem.Size = new Size(263, 24);
             vERHORARIOASIGNADOToolStripMenuItem.Text = "VER HORARIO ASIGNADO";
             vERHORARIOASIGNADOToolStripMenuItem.Click += vERHORARIOASIGNADOToolStripMenuItem_Click;
             // 
             // vERAUSENCIADEUNEMPLEADOToolStripMenuItem
             // 
             vERAUSENCIADEUNEMPLEADOToolStripMenuItem.Name = "vERAUSENCIADEUNEMPLEADOToolStripMenuItem";
-            vERAUSENCIADEUNEMPLEADOToolStripMenuItem.Size = new Size(320, 24);
-            vERAUSENCIADEUNEMPLEADOToolStripMenuItem.Text = "VER AUSENCIA DE UN EMPLEADO";
+            vERAUSENCIADEUNEMPLEADOToolStripMenuItem.Size = new Size(262, 24);
+            vERAUSENCIADEUNEMPLEADOToolStripMenuItem.Text = "VER TIPOS DE AUSENCIA";
+            vERAUSENCIADEUNEMPLEADOToolStripMenuItem.Click += vERAUSENCIADEUNEMPLEADOToolStripMenuItem_Click;
             // 
             // vERLOSTIPOSDERETRASOToolStripMenuItem
             // 
             vERLOSTIPOSDERETRASOToolStripMenuItem.Name = "vERLOSTIPOSDERETRASOToolStripMenuItem";
-            vERLOSTIPOSDERETRASOToolStripMenuItem.Size = new Size(320, 24);
+            vERLOSTIPOSDERETRASOToolStripMenuItem.Size = new Size(263, 24);
             vERLOSTIPOSDERETRASOToolStripMenuItem.Text = "TIPOS DE RETRASO";
-            // 
-            // mOTIVODEPASEToolStripMenuItem
-            // 
-            mOTIVODEPASEToolStripMenuItem.Name = "mOTIVODEPASEToolStripMenuItem";
-            mOTIVODEPASEToolStripMenuItem.Size = new Size(320, 24);
-            mOTIVODEPASEToolStripMenuItem.Text = "MOTIVO DE PASE";
+            vERLOSTIPOSDERETRASOToolStripMenuItem.Click += vERLOSTIPOSDERETRASOToolStripMenuItem_Click;
             // 
             // dEPARTAMENTOToolStripMenuItem1
             // 
@@ -246,12 +241,14 @@
             vERDEPARTAMENTOSToolStripMenuItem.Name = "vERDEPARTAMENTOSToolStripMenuItem";
             vERDEPARTAMENTOSToolStripMenuItem.Size = new Size(244, 24);
             vERDEPARTAMENTOSToolStripMenuItem.Text = "VER DEPARTAMENTOS";
+            vERDEPARTAMENTOSToolStripMenuItem.Click += vERDEPARTAMENTOSToolStripMenuItem_Click;
             // 
             // mOTIVODEPASEToolStripMenuItem1
             // 
             mOTIVODEPASEToolStripMenuItem1.Name = "mOTIVODEPASEToolStripMenuItem1";
             mOTIVODEPASEToolStripMenuItem1.Size = new Size(244, 24);
             mOTIVODEPASEToolStripMenuItem1.Text = "MOTIVO DE PASE";
+            mOTIVODEPASEToolStripMenuItem1.Click += mOTIVODEPASEToolStripMenuItem1_Click;
             // 
             // sISTEMAToolStripMenuItem
             // 
@@ -385,7 +382,6 @@
         private ToolStripMenuItem vERHORARIOASIGNADOToolStripMenuItem;
         private ToolStripMenuItem vERAUSENCIADEUNEMPLEADOToolStripMenuItem;
         private ToolStripMenuItem vERLOSTIPOSDERETRASOToolStripMenuItem;
-        private ToolStripMenuItem mOTIVODEPASEToolStripMenuItem;
         private ToolStripMenuItem mOTIVODEPASEToolStripMenuItem1;
         private ToolStripMenuItem pASEEMPLEADOToolStripMenuItem;
     }
