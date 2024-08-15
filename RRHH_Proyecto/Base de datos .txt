@@ -40,11 +40,12 @@ GO
 
 -- CREACION DE Tabla: TrabExtraboLaboral
 CREATE TABLE TrabExtraboLaboral (
-    IdTrabajoExtrabLaboral INT PRIMARY KEY,
+    IdTrabajoExtrabLaboral INT IDENTITY PRIMARY KEY,
     DescripcionTrabajo VARCHAR(255),
     HInicio VARCHAR(50),
     HFin VARCHAR(50),
     Empleado_ID INT,
+	Empleado VARCHAR (50),
     CONSTRAINT FK_TrabExtraboLaboral_Empleados
         FOREIGN KEY (Empleado_ID) REFERENCES Empleados(ID)
         ON DELETE CASCADE ON UPDATE CASCADE
@@ -53,14 +54,15 @@ GO
 
 -- CREACION DE Tabla: Horario
 CREATE TABLE Horario (
-    IdHorario INT PRIMARY KEY,
+    IdHorario INT IDENTITY PRIMARY KEY,
+	IdNombre INT,
     Nombre VARCHAR(100) NOT NULL,
     HEntrada VARCHAR(50),
-    HSalida VARCHAR(50),
-    HEnt VARCHAR(50),
-    HSal VARCHAR(50)
+    HSalida VARCHAR(50)
+    
 );
 GO
+
 
 -- CREACION DE Tabla: EntradaSalida
 CREATE TABLE EntradaSalida (
@@ -130,7 +132,7 @@ CREATE TABLE EmpleadoAusencia (
 );
 GO--------------------------------------------------------------------------------------------------------------------------------
 
-drop table MotivoPase
+
 -- CREACION DE Tabla: MotivoPase
 CREATE TABLE MotivoPase (
     IdMotivoPase INT identity PRIMARY KEY,
@@ -139,11 +141,21 @@ CREATE TABLE MotivoPase (
 
 insert into MotivoPase (MotivoPase)
 Values ('Limpieza');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Reunión');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Visita a Cliente');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Capacitación');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Cita Médica');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Trabajo en Casa');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Feriado');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Emergencia Familiar');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Evento Corporativo');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Permiso Personal');
+INSERT INTO MotivoPase (MotivoPase) VALUES ('Descanso');
 
 select * from MotivoPase;
 GO
 
-drop table PaseEmpleado;
+
 -- CREACION DE Tabla: PaseEmpleado
 CREATE TABLE PaseEmpleado (
     IdPaseEmpleado INT  identity PRIMARY KEY,
@@ -162,35 +174,22 @@ CREATE TABLE PaseEmpleado (
 );
 GO
 
+
 -- CREACION DE Tabla: TipoRetraso
 CREATE TABLE TipoRetraso (
-    IdTipoRetraso INT PRIMARY KEY,
+    IdTipoRetraso INT IDENTITY(1,1) PRIMARY KEY,
     TipoDeRetraso VARCHAR(50),
-    Tipo_Retraso INT
+   
 );
 GO
  
 
-INSERT INTO TipoRetraso (IdTipoRetraso, TipoDeRetraso, Tipo_Retraso)
-VALUES 
-(1, 'Retraso leve', 10),
-(2, 'Retraso moderado', 20),
-(3, 'Retraso grave', 30),
-(4, 'Retraso crítico', 40);
-
-GO
-
-select * from TipoRetraso;
-
 select * from Retraso;
-
-DROP TABLE IF EXISTS Retraso;
-
---cambie esto decirle a diego identity 
 -- CREACION DE Tabla: Retraso
 CREATE TABLE Retraso (
     IdRetraso INT IDENTITY(1,1) PRIMARY KEY,
     ID INT,
+	Empleado Varchar(50),
     IdTipoRetraso INT,
     Fecha VARCHAR(50),
     Minutos INT,
@@ -204,4 +203,3 @@ CREATE TABLE Retraso (
 );
 go
 
-select * from Empleados;
