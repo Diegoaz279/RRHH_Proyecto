@@ -19,10 +19,6 @@ namespace RRHH_Proyecto
             dataGridView1.ReadOnly = true;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-
-            textBox1.Enabled = false;
-            maskedTextBoxfinhora.Enabled = false;
-            maskedTextBoxiniciohora.Enabled = false;
         }
 
         private void CargarDatosHorasExtras()
@@ -81,15 +77,7 @@ namespace RRHH_Proyecto
             }
         }
 
-        private void button2_Click(object sender, EventArgs e) // Botón Editar
-        {
-            dataGridView1.ReadOnly = false;
-
-            textBox1.Enabled = true;
-            maskedTextBoxfinhora.Enabled = true;
-            maskedTextBoxiniciohora.Enabled = true;
-        }
-
+       
         private void button3_Click(object sender, EventArgs e) // Botón Guardar
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -103,11 +91,9 @@ namespace RRHH_Proyecto
                             conexion.Open();
 
                             int idTrabajoExtrabLaboral = Convert.ToInt32(row.Cells["IdTrabajoExtrabLaboral"].Value);
-
-                            // Captura los valores de los TextBox y MaskedTextBox
-                            string descripcionTrabajo = textBox1.Text;
-                            string hInicio = maskedTextBoxiniciohora.Text;
-                            string hFin = maskedTextBoxfinhora.Text;
+                            string descripcionTrabajo = row.Cells["DescripcionTrabajo"].Value.ToString();
+                            string hInicio = row.Cells["HInicio"].Value.ToString();
+                            string hFin = row.Cells["HFin"].Value.ToString();
 
                             string query = "UPDATE TrabExtraboLaboral SET DescripcionTrabajo = @DescripcionTrabajo, HInicio = @HInicio, HFin = @HFin WHERE IdTrabajoExtrabLaboral = @IdTrabajoExtrabLaboral";
                             SqlCommand cmd = new SqlCommand(query, conexion);
