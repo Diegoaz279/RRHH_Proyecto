@@ -63,7 +63,7 @@ namespace RRHH_Proyecto
         private void Ver_MotivoPase_Load(object sender, EventArgs e)
         {
 
-        }  
+        }
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -173,5 +173,9 @@ namespace RRHH_Proyecto
             dataGridView1.ReadOnly = true;
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

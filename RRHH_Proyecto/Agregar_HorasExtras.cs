@@ -66,8 +66,8 @@ namespace RRHH_Proyecto
                 return;
 
             }
-        
-            
+
+
 
             Conexion0 conexion = new Conexion0();
             SqlConnection conexion_bd = null;
@@ -91,7 +91,7 @@ namespace RRHH_Proyecto
             }
 
             catch (Exception ex)
-            {   
+            {
                 //muestra el error por el cual no se pudo guardar la hora extra
                 MessageBox.Show($"Error al agregar la Hora extra: {ex.Message}", "Error");
             }
@@ -99,11 +99,16 @@ namespace RRHH_Proyecto
             finally
             {
                 //cierre de conexion
-                conexion.CloseConnection(); 
+                conexion.CloseConnection();
             }
 
 
 
+        }
+
+        private void btn_Cerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

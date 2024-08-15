@@ -56,7 +56,7 @@
             panel1.BackColor = Color.PowderBlue;
             panel1.Controls.Add(btn_Cerrar);
             panel1.Location = new Point(-4, -1);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(566, 38);
             panel1.TabIndex = 37;
@@ -67,7 +67,7 @@
             btn_Cerrar.Cursor = Cursors.Hand;
             btn_Cerrar.Image = (Image)resources.GetObject("btn_Cerrar.Image");
             btn_Cerrar.Location = new Point(520, 8);
-            btn_Cerrar.Margin = new Padding(2, 2, 2, 2);
+            btn_Cerrar.Margin = new Padding(2);
             btn_Cerrar.Name = "btn_Cerrar";
             btn_Cerrar.Size = new Size(30, 24);
             btn_Cerrar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -144,30 +144,39 @@
             // 
             // cmb_Empleado
             // 
+            cmb_Empleado.BackColor = Color.LightBlue;
             cmb_Empleado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb_Empleado.FlatStyle = FlatStyle.Popup;
+            cmb_Empleado.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            cmb_Empleado.ForeColor = SystemColors.WindowFrame;
             cmb_Empleado.FormattingEnabled = true;
             cmb_Empleado.Location = new Point(286, 163);
-            cmb_Empleado.Margin = new Padding(2, 2, 2, 2);
+            cmb_Empleado.Margin = new Padding(2);
             cmb_Empleado.Name = "cmb_Empleado";
-            cmb_Empleado.Size = new Size(204, 23);
+            cmb_Empleado.Size = new Size(204, 25);
             cmb_Empleado.TabIndex = 45;
             // 
             // cmb_MotivoPase
             // 
+            cmb_MotivoPase.BackColor = Color.LightBlue;
             cmb_MotivoPase.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb_MotivoPase.FlatStyle = FlatStyle.Popup;
             cmb_MotivoPase.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            cmb_MotivoPase.ForeColor = SystemColors.WindowFrame;
             cmb_MotivoPase.FormattingEnabled = true;
             cmb_MotivoPase.Location = new Point(286, 370);
-            cmb_MotivoPase.Margin = new Padding(2, 2, 2, 2);
+            cmb_MotivoPase.Margin = new Padding(2);
             cmb_MotivoPase.Name = "cmb_MotivoPase";
             cmb_MotivoPase.Size = new Size(204, 25);
             cmb_MotivoPase.TabIndex = 46;
             // 
             // masked_Fecha
             // 
+            masked_Fecha.BackColor = Color.LightBlue;
             masked_Fecha.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            masked_Fecha.ForeColor = SystemColors.WindowFrame;
             masked_Fecha.Location = new Point(286, 203);
-            masked_Fecha.Margin = new Padding(2, 2, 2, 2);
+            masked_Fecha.Margin = new Padding(2);
             masked_Fecha.Mask = "00/00/0000";
             masked_Fecha.Name = "masked_Fecha";
             masked_Fecha.Size = new Size(83, 24);
@@ -175,9 +184,11 @@
             // 
             // masked_Hentrada
             // 
+            masked_Hentrada.BackColor = Color.LightBlue;
             masked_Hentrada.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            masked_Hentrada.ForeColor = SystemColors.WindowFrame;
             masked_Hentrada.Location = new Point(286, 243);
-            masked_Hentrada.Margin = new Padding(2, 2, 2, 2);
+            masked_Hentrada.Margin = new Padding(2);
             masked_Hentrada.Mask = "00:00";
             masked_Hentrada.Name = "masked_Hentrada";
             masked_Hentrada.Size = new Size(49, 24);
@@ -185,9 +196,11 @@
             // 
             // masked_Hsalida
             // 
+            masked_Hsalida.BackColor = Color.LightBlue;
             masked_Hsalida.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            masked_Hsalida.ForeColor = SystemColors.WindowFrame;
             masked_Hsalida.Location = new Point(286, 283);
-            masked_Hsalida.Margin = new Padding(2, 2, 2, 2);
+            masked_Hsalida.Margin = new Padding(2);
             masked_Hsalida.Mask = "00:00";
             masked_Hsalida.Name = "masked_Hsalida";
             masked_Hsalida.Size = new Size(49, 24);
@@ -195,9 +208,11 @@
             // 
             // masked_Clave
             // 
+            masked_Clave.BackColor = Color.LightBlue;
             masked_Clave.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            masked_Clave.ForeColor = SystemColors.WindowFrame;
             masked_Clave.Location = new Point(286, 328);
-            masked_Clave.Margin = new Padding(2, 2, 2, 2);
+            masked_Clave.Margin = new Padding(2);
             masked_Clave.Mask = "99999";
             masked_Clave.Name = "masked_Clave";
             masked_Clave.Size = new Size(49, 24);
@@ -205,26 +220,28 @@
             // 
             // btn_Agregar
             // 
+            btn_Agregar.BackColor = Color.LightCyan;
             btn_Agregar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btn_Agregar.Location = new Point(321, 450);
-            btn_Agregar.Margin = new Padding(2, 2, 2, 2);
+            btn_Agregar.Location = new Point(321, 451);
+            btn_Agregar.Margin = new Padding(2);
             btn_Agregar.Name = "btn_Agregar";
-            btn_Agregar.Size = new Size(108, 39);
+            btn_Agregar.Size = new Size(108, 48);
             btn_Agregar.TabIndex = 52;
             btn_Agregar.Text = "AGREGAR";
-            btn_Agregar.UseVisualStyleBackColor = true;
+            btn_Agregar.UseVisualStyleBackColor = false;
             btn_Agregar.Click += btn_Agregar_Click;
             // 
             // btn_Canclar
             // 
+            btn_Canclar.BackColor = Color.LightCyan;
             btn_Canclar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btn_Canclar.Location = new Point(118, 450);
-            btn_Canclar.Margin = new Padding(2, 2, 2, 2);
+            btn_Canclar.Location = new Point(118, 451);
+            btn_Canclar.Margin = new Padding(2);
             btn_Canclar.Name = "btn_Canclar";
-            btn_Canclar.Size = new Size(107, 39);
+            btn_Canclar.Size = new Size(107, 48);
             btn_Canclar.TabIndex = 53;
             btn_Canclar.Text = "CANCELAR";
-            btn_Canclar.UseVisualStyleBackColor = true;
+            btn_Canclar.UseVisualStyleBackColor = false;
             btn_Canclar.Click += btn_Canclar_Click;
             // 
             // label8
@@ -260,7 +277,7 @@
             Controls.Add(label1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "Pase_Empleado";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Agregar_Horario";

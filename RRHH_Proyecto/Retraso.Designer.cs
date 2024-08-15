@@ -40,9 +40,11 @@
             label2 = new Label();
             cmb_Empleado = new ComboBox();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txt_Observacion = new TextBox();
             btn_Cerrar = new PictureBox();
             panel1 = new Panel();
+            maskedText_Minutos = new MaskedTextBox();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -54,7 +56,7 @@
             mb_Fecha.BorderStyle = BorderStyle.FixedSingle;
             mb_Fecha.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             mb_Fecha.ForeColor = SystemColors.WindowFrame;
-            mb_Fecha.Location = new Point(189, 274);
+            mb_Fecha.Location = new Point(195, 274);
             mb_Fecha.Margin = new Padding(2);
             mb_Fecha.Mask = "00/00/0000";
             mb_Fecha.Name = "mb_Fecha";
@@ -69,7 +71,7 @@
             btn_Cancelar.Cursor = Cursors.Hand;
             btn_Cancelar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             btn_Cancelar.ForeColor = SystemColors.ActiveCaptionText;
-            btn_Cancelar.Location = new Point(100, 428);
+            btn_Cancelar.Location = new Point(106, 484);
             btn_Cancelar.Margin = new Padding(2);
             btn_Cancelar.Name = "btn_Cancelar";
             btn_Cancelar.Size = new Size(103, 45);
@@ -80,12 +82,13 @@
             // 
             // txt_OtroRetraso
             // 
+            txt_OtroRetraso.AllowDrop = true;
             txt_OtroRetraso.Anchor = AnchorStyles.Top;
             txt_OtroRetraso.BackColor = Color.LightBlue;
             txt_OtroRetraso.BorderStyle = BorderStyle.FixedSingle;
             txt_OtroRetraso.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_OtroRetraso.ForeColor = SystemColors.WindowFrame;
-            txt_OtroRetraso.Location = new Point(189, 229);
+            txt_OtroRetraso.Location = new Point(195, 229);
             txt_OtroRetraso.Margin = new Padding(2);
             txt_OtroRetraso.Name = "txt_OtroRetraso";
             txt_OtroRetraso.Size = new Size(249, 24);
@@ -100,7 +103,7 @@
             label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
             label5.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(39, 336);
+            label5.Location = new Point(44, 396);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(115, 18);
@@ -112,7 +115,7 @@
             label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
             label4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(39, 274);
+            label4.Location = new Point(45, 274);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(63, 18);
@@ -124,7 +127,7 @@
             label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(38, 207);
+            label3.Location = new Point(44, 207);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(115, 18);
@@ -141,7 +144,7 @@
             cmb_TipoRetraso.ForeColor = SystemColors.WindowFrame;
             cmb_TipoRetraso.FormattingEnabled = true;
             cmb_TipoRetraso.Items.AddRange(new object[] { "Tráfico o problemas de transporte", "Problemas de salud", "Compromisos familiares", "Problemas técnicos", "Desorganización personal", "Otros" });
-            cmb_TipoRetraso.Location = new Point(189, 205);
+            cmb_TipoRetraso.Location = new Point(195, 205);
             cmb_TipoRetraso.Margin = new Padding(2);
             cmb_TipoRetraso.Name = "cmb_TipoRetraso";
             cmb_TipoRetraso.Size = new Size(249, 25);
@@ -155,7 +158,7 @@
             btn_Agregar.Cursor = Cursors.Hand;
             btn_Agregar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             btn_Agregar.ForeColor = SystemColors.ActiveCaptionText;
-            btn_Agregar.Location = new Point(251, 428);
+            btn_Agregar.Location = new Point(257, 484);
             btn_Agregar.Margin = new Padding(2);
             btn_Agregar.Name = "btn_Agregar";
             btn_Agregar.Size = new Size(103, 45);
@@ -169,7 +172,7 @@
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(39, 144);
+            label2.Location = new Point(44, 144);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(92, 18);
@@ -185,7 +188,7 @@
             cmb_Empleado.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             cmb_Empleado.ForeColor = SystemColors.WindowFrame;
             cmb_Empleado.FormattingEnabled = true;
-            cmb_Empleado.Location = new Point(189, 144);
+            cmb_Empleado.Location = new Point(195, 144);
             cmb_Empleado.Margin = new Padding(2);
             cmb_Empleado.Name = "cmb_Empleado";
             cmb_Empleado.Size = new Size(249, 25);
@@ -196,26 +199,26 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Stencil", 22F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(90, 72);
+            label1.Location = new Point(96, 72);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(292, 35);
             label1.TabIndex = 51;
             label1.Text = "AGREGAR RETRASO";
             // 
-            // textBox1
+            // txt_Observacion
             // 
-            textBox1.Anchor = AnchorStyles.Top;
-            textBox1.BackColor = Color.LightBlue;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
-            textBox1.ForeColor = SystemColors.WindowFrame;
-            textBox1.Location = new Point(189, 335);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(249, 47);
-            textBox1.TabIndex = 62;
+            txt_Observacion.Anchor = AnchorStyles.Top;
+            txt_Observacion.BackColor = Color.LightBlue;
+            txt_Observacion.BorderStyle = BorderStyle.FixedSingle;
+            txt_Observacion.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            txt_Observacion.ForeColor = SystemColors.WindowFrame;
+            txt_Observacion.Location = new Point(195, 396);
+            txt_Observacion.Margin = new Padding(3, 2, 3, 2);
+            txt_Observacion.Multiline = true;
+            txt_Observacion.Name = "txt_Observacion";
+            txt_Observacion.Size = new Size(249, 47);
+            txt_Observacion.TabIndex = 62;
             // 
             // btn_Cerrar
             // 
@@ -223,7 +226,7 @@
             btn_Cerrar.BackColor = Color.Transparent;
             btn_Cerrar.Cursor = Cursors.Hand;
             btn_Cerrar.Image = (Image)resources.GetObject("btn_Cerrar.Image");
-            btn_Cerrar.Location = new Point(438, 8);
+            btn_Cerrar.Location = new Point(449, 8);
             btn_Cerrar.Margin = new Padding(2);
             btn_Cerrar.Name = "btn_Cerrar";
             btn_Cerrar.Size = new Size(28, 28);
@@ -240,16 +243,45 @@
             panel1.Location = new Point(-2, -1);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(478, 42);
+            panel1.Size = new Size(489, 42);
             panel1.TabIndex = 64;
+            // 
+            // maskedText_Minutos
+            // 
+            maskedText_Minutos.Anchor = AnchorStyles.Top;
+            maskedText_Minutos.BackColor = Color.LightBlue;
+            maskedText_Minutos.BorderStyle = BorderStyle.FixedSingle;
+            maskedText_Minutos.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            maskedText_Minutos.ForeColor = SystemColors.WindowFrame;
+            maskedText_Minutos.Location = new Point(196, 335);
+            maskedText_Minutos.Margin = new Padding(2);
+            maskedText_Minutos.Mask = "000";
+            maskedText_Minutos.Name = "maskedText_Minutos";
+            maskedText_Minutos.Size = new Size(32, 24);
+            maskedText_Minutos.TabIndex = 66;
+            maskedText_Minutos.ValidatingType = typeof(DateTime);
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top;
+            label6.AutoSize = true;
+            label6.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(44, 335);
+            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(147, 18);
+            label6.TabIndex = 65;
+            label6.Text = "Tiempo  Minutos):";
             // 
             // Agregar_Retraso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(473, 503);
+            ClientSize = new Size(484, 577);
+            Controls.Add(maskedText_Minutos);
+            Controls.Add(label6);
             Controls.Add(panel1);
-            Controls.Add(textBox1);
+            Controls.Add(txt_Observacion);
             Controls.Add(mb_Fecha);
             Controls.Add(btn_Cancelar);
             Controls.Add(txt_OtroRetraso);
@@ -285,8 +317,10 @@
         private Label label2;
         private ComboBox cmb_Empleado;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txt_Observacion;
         private PictureBox btn_Cerrar;
         private Panel panel1;
+        private MaskedTextBox maskedText_Minutos;
+        private Label label6;
     }
 }

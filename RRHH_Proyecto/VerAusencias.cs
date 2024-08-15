@@ -188,5 +188,10 @@ namespace RRHH_Proyecto
                 maskedTextBoxFin.Text = row.Cells["FFin"].Value.ToString();
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

@@ -59,7 +59,7 @@
             txt_Nombre.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Nombre.ForeColor = SystemColors.WindowFrame;
             txt_Nombre.Location = new Point(233, 141);
-            txt_Nombre.Margin = new Padding(2);
+            txt_Nombre.Margin = new Padding(2, 2, 2, 2);
             txt_Nombre.Name = "txt_Nombre";
             txt_Nombre.Size = new Size(257, 24);
             txt_Nombre.TabIndex = 8;
@@ -74,7 +74,7 @@
             txt_Apellido.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Apellido.ForeColor = SystemColors.WindowFrame;
             txt_Apellido.Location = new Point(233, 179);
-            txt_Apellido.Margin = new Padding(2);
+            txt_Apellido.Margin = new Padding(2, 2, 2, 2);
             txt_Apellido.Name = "txt_Apellido";
             txt_Apellido.Size = new Size(257, 24);
             txt_Apellido.TabIndex = 9;
@@ -89,7 +89,7 @@
             txt_Nacimiento.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Nacimiento.ForeColor = SystemColors.WindowFrame;
             txt_Nacimiento.Location = new Point(233, 254);
-            txt_Nacimiento.Margin = new Padding(2);
+            txt_Nacimiento.Margin = new Padding(2, 2, 2, 2);
             txt_Nacimiento.Name = "txt_Nacimiento";
             txt_Nacimiento.Size = new Size(257, 24);
             txt_Nacimiento.TabIndex = 11;
@@ -104,7 +104,7 @@
             txt_Correo.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Correo.ForeColor = SystemColors.WindowFrame;
             txt_Correo.Location = new Point(233, 325);
-            txt_Correo.Margin = new Padding(2);
+            txt_Correo.Margin = new Padding(2, 2, 2, 2);
             txt_Correo.Name = "txt_Correo";
             txt_Correo.Size = new Size(257, 24);
             txt_Correo.TabIndex = 14;
@@ -119,7 +119,7 @@
             mtb_Cedula.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             mtb_Cedula.ForeColor = SystemColors.WindowFrame;
             mtb_Cedula.Location = new Point(233, 217);
-            mtb_Cedula.Margin = new Padding(2);
+            mtb_Cedula.Margin = new Padding(2, 2, 2, 2);
             mtb_Cedula.Mask = "000-0000000-0";
             mtb_Cedula.Name = "mtb_Cedula";
             mtb_Cedula.Size = new Size(121, 24);
@@ -133,7 +133,7 @@
             mtb_Telefono.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             mtb_Telefono.ForeColor = SystemColors.WindowFrame;
             mtb_Telefono.Location = new Point(233, 290);
-            mtb_Telefono.Margin = new Padding(2);
+            mtb_Telefono.Margin = new Padding(2, 2, 2, 2);
             mtb_Telefono.Mask = "000-000-0000";
             mtb_Telefono.Name = "mtb_Telefono";
             mtb_Telefono.Size = new Size(112, 24);
@@ -146,7 +146,7 @@
             btn_Registrar.Cursor = Cursors.Hand;
             btn_Registrar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             btn_Registrar.Location = new Point(304, 451);
-            btn_Registrar.Margin = new Padding(2);
+            btn_Registrar.Margin = new Padding(2, 2, 2, 2);
             btn_Registrar.Name = "btn_Registrar";
             btn_Registrar.Size = new Size(127, 46);
             btn_Registrar.TabIndex = 18;
@@ -161,7 +161,7 @@
             btn_Cerrar.Cursor = Cursors.Hand;
             btn_Cerrar.Image = (Image)resources.GetObject("btn_Cerrar.Image");
             btn_Cerrar.Location = new Point(501, 7);
-            btn_Cerrar.Margin = new Padding(2);
+            btn_Cerrar.Margin = new Padding(2, 2, 2, 2);
             btn_Cerrar.Name = "btn_Cerrar";
             btn_Cerrar.Size = new Size(30, 24);
             btn_Cerrar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -177,7 +177,7 @@
             txt_Cargo.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
             txt_Cargo.ForeColor = SystemColors.WindowFrame;
             txt_Cargo.Location = new Point(233, 372);
-            txt_Cargo.Margin = new Padding(2);
+            txt_Cargo.Margin = new Padding(2, 2, 2, 2);
             txt_Cargo.Name = "txt_Cargo";
             txt_Cargo.Size = new Size(218, 24);
             txt_Cargo.TabIndex = 22;
@@ -285,7 +285,7 @@
             btn_Cancelar.Cursor = Cursors.Hand;
             btn_Cancelar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             btn_Cancelar.Location = new Point(95, 451);
-            btn_Cancelar.Margin = new Padding(2);
+            btn_Cancelar.Margin = new Padding(2, 2, 2, 2);
             btn_Cancelar.Name = "btn_Cancelar";
             btn_Cancelar.Size = new Size(127, 46);
             btn_Cancelar.TabIndex = 31;
@@ -298,7 +298,7 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.PowderBlue;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2);
+            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(541, 37);
             panel1.TabIndex = 35;
@@ -329,7 +329,7 @@
             Controls.Add(txt_Nombre);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Agregar_Empleado";
             Opacity = 0.95D;
             StartPosition = FormStartPosition.CenterScreen;

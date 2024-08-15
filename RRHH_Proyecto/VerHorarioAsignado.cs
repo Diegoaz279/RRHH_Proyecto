@@ -163,6 +163,11 @@ namespace RRHH_Proyecto
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Dispose(); 
+        }
     }
-    
+
 }

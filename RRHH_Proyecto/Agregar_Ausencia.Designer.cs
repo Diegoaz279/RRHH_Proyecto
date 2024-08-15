@@ -85,8 +85,11 @@
             // cmb_Empleado
             // 
             cmb_Empleado.Anchor = AnchorStyles.Top;
+            cmb_Empleado.BackColor = Color.LightBlue;
             cmb_Empleado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb_Empleado.FlatStyle = FlatStyle.Popup;
             cmb_Empleado.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            cmb_Empleado.ForeColor = SystemColors.WindowFrame;
             cmb_Empleado.FormattingEnabled = true;
             cmb_Empleado.Location = new Point(202, 143);
             cmb_Empleado.Margin = new Padding(2);
@@ -110,21 +113,26 @@
             // btn_Agregar
             // 
             btn_Agregar.Anchor = AnchorStyles.Top;
+            btn_Agregar.BackColor = Color.LightCyan;
+            btn_Agregar.Cursor = Cursors.Hand;
             btn_Agregar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btn_Agregar.Location = new Point(304, 418);
+            btn_Agregar.Location = new Point(278, 408);
             btn_Agregar.Margin = new Padding(2);
             btn_Agregar.Name = "btn_Agregar";
-            btn_Agregar.Size = new Size(104, 35);
+            btn_Agregar.Size = new Size(104, 45);
             btn_Agregar.TabIndex = 40;
             btn_Agregar.Text = "AGREGAR";
-            btn_Agregar.UseVisualStyleBackColor = true;
+            btn_Agregar.UseVisualStyleBackColor = false;
             btn_Agregar.Click += btn_Agregar_Click;
             // 
             // cmb_TipoAusencia
             // 
             cmb_TipoAusencia.Anchor = AnchorStyles.Top;
+            cmb_TipoAusencia.BackColor = Color.LightBlue;
             cmb_TipoAusencia.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb_TipoAusencia.FlatStyle = FlatStyle.Popup;
             cmb_TipoAusencia.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            cmb_TipoAusencia.ForeColor = SystemColors.WindowFrame;
             cmb_TipoAusencia.FormattingEnabled = true;
             cmb_TipoAusencia.Items.AddRange(new object[] { "Enfermedad", "Vacaciones", "Permiso Personal", "Licencia por Maternidad/Paternidad", "Licencia por Enfermedad Familiar", "Asuntos Legales", "Problemas de Salud", "Otras" });
             cmb_TipoAusencia.Location = new Point(204, 205);
@@ -173,8 +181,10 @@
             // txt_OtraAusencia
             // 
             txt_OtraAusencia.Anchor = AnchorStyles.Top;
+            txt_OtraAusencia.BackColor = Color.LightBlue;
             txt_OtraAusencia.BorderStyle = BorderStyle.FixedSingle;
             txt_OtraAusencia.Font = new Font("Arial", 11F, FontStyle.Italic, GraphicsUnit.Point);
+            txt_OtraAusencia.ForeColor = SystemColors.WindowFrame;
             txt_OtraAusencia.Location = new Point(204, 228);
             txt_OtraAusencia.Margin = new Padding(2);
             txt_OtraAusencia.Name = "txt_OtraAusencia";
@@ -189,20 +199,24 @@
             // btn_Cancelar
             // 
             btn_Cancelar.Anchor = AnchorStyles.Top;
+            btn_Cancelar.BackColor = Color.LightCyan;
+            btn_Cancelar.Cursor = Cursors.Hand;
             btn_Cancelar.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btn_Cancelar.Location = new Point(114, 418);
+            btn_Cancelar.Location = new Point(79, 408);
             btn_Cancelar.Margin = new Padding(2);
             btn_Cancelar.Name = "btn_Cancelar";
-            btn_Cancelar.Size = new Size(104, 35);
+            btn_Cancelar.Size = new Size(104, 45);
             btn_Cancelar.TabIndex = 48;
             btn_Cancelar.Text = "CANCELAR";
-            btn_Cancelar.UseVisualStyleBackColor = true;
+            btn_Cancelar.UseVisualStyleBackColor = false;
             btn_Cancelar.Click += btn_Cancelar_Click;
             // 
             // mb_FechaInicio
             // 
             mb_FechaInicio.Anchor = AnchorStyles.Top;
+            mb_FechaInicio.BackColor = Color.LightBlue;
             mb_FechaInicio.BorderStyle = BorderStyle.FixedSingle;
+            mb_FechaInicio.ForeColor = SystemColors.WindowFrame;
             mb_FechaInicio.Location = new Point(204, 273);
             mb_FechaInicio.Margin = new Padding(2);
             mb_FechaInicio.Mask = "00/00/0000";
@@ -214,7 +228,9 @@
             // mb_FechaFinal
             // 
             mb_FechaFinal.Anchor = AnchorStyles.Top;
+            mb_FechaFinal.BackColor = Color.LightBlue;
             mb_FechaFinal.BorderStyle = BorderStyle.FixedSingle;
+            mb_FechaFinal.ForeColor = SystemColors.WindowFrame;
             mb_FechaFinal.Location = new Point(204, 334);
             mb_FechaFinal.Margin = new Padding(2);
             mb_FechaFinal.Mask = "00/00/0000";
@@ -227,7 +243,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(489, 487);
+            ClientSize = new Size(489, 499);
             Controls.Add(mb_FechaFinal);
             Controls.Add(mb_FechaInicio);
             Controls.Add(btn_Cancelar);

@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerHorasExtras));
             dataGridView1 = new DataGridView();
-            maskedTextBoxiniciohora = new MaskedTextBox();
-            label1 = new Label();
-            label2 = new Label();
-            maskedTextBoxfinhora = new MaskedTextBox();
-            textBox1 = new TextBox();
-            label3 = new Label();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            label4 = new Label();
+            panel1 = new Panel();
+            pictureBox2 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            btn_Cerrar = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btn_Cerrar).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
@@ -46,127 +50,150 @@
             dataGridView1.Anchor = AnchorStyles.Top;
             dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(107, 12);
+            dataGridView1.Location = new Point(47, 147);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(671, 180);
+            dataGridView1.Size = new Size(568, 180);
             dataGridView1.TabIndex = 15;
-            // 
-            // maskedTextBoxiniciohora
-            // 
-            maskedTextBoxiniciohora.Location = new Point(198, 208);
-            maskedTextBoxiniciohora.Mask = "90:00";
-            maskedTextBoxiniciohora.Name = "maskedTextBoxiniciohora";
-            maskedTextBoxiniciohora.Size = new Size(100, 23);
-            maskedTextBoxiniciohora.TabIndex = 19;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(129, 216);
-            label1.Name = "label1";
-            label1.Size = new Size(63, 15);
-            label1.TabIndex = 20;
-            label1.Text = "Inicio hora";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(129, 261);
-            label2.Name = "label2";
-            label2.Size = new Size(53, 15);
-            label2.TabIndex = 21;
-            label2.Text = "Fin  hora";
-            // 
-            // maskedTextBoxfinhora
-            // 
-            maskedTextBoxfinhora.Location = new Point(198, 253);
-            maskedTextBoxfinhora.Mask = "90:00";
-            maskedTextBoxfinhora.Name = "maskedTextBoxfinhora";
-            maskedTextBoxfinhora.Size = new Size(100, 23);
-            maskedTextBoxfinhora.TabIndex = 22;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(156, 320);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(142, 84);
-            textBox1.TabIndex = 23;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(81, 345);
-            label3.Name = "label3";
-            label3.Size = new Size(69, 15);
-            label3.TabIndex = 24;
-            label3.Text = "Descripcion";
             // 
             // button1
             // 
-            button1.Location = new Point(421, 388);
+            button1.BackColor = Color.LightCyan;
+            button1.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            button1.Location = new Point(273, 374);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(93, 43);
             button1.TabIndex = 25;
-            button1.Text = "Eliminar";
-            button1.UseVisualStyleBackColor = true;
+            button1.Text = "ELIMINAR";
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(363, 214);
+            button2.BackColor = Color.LightCyan;
+            button2.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            button2.Location = new Point(130, 374);
             button2.Name = "button2";
-            button2.Size = new Size(75, 23);
+            button2.Size = new Size(93, 43);
             button2.TabIndex = 26;
-            button2.Text = "Editar";
-            button2.UseVisualStyleBackColor = true;
+            button2.Text = "EDITAR";
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button3
             // 
-            button3.Location = new Point(461, 216);
+            button3.BackColor = Color.LightCyan;
+            button3.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            button3.Location = new Point(405, 374);
             button3.Name = "button3";
-            button3.Size = new Size(75, 23);
+            button3.Size = new Size(93, 43);
             button3.TabIndex = 27;
-            button3.Text = "Guardar";
-            button3.UseVisualStyleBackColor = true;
+            button3.Text = "GUARDAR";
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top;
+            label4.AutoSize = true;
+            label4.Font = new Font("Stencil", 22F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(182, 83);
+            label4.Name = "label4";
+            label4.Size = new Size(298, 35);
+            label4.TabIndex = 28;
+            label4.Text = "VER HORAS EXTRAS";
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BackColor = Color.PowderBlue;
+            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(btn_Cerrar);
+            panel1.Location = new Point(0, -1);
+            panel1.Margin = new Padding(2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(662, 38);
+            panel1.TabIndex = 41;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Cursor = Cursors.Hand;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(622, 8);
+            pictureBox2.Margin = new Padding(2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(27, 25);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 42;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Cursor = Cursors.Hand;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(836, 8);
+            pictureBox1.Margin = new Padding(2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(27, 25);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 41;
+            pictureBox1.TabStop = false;
+            // 
+            // btn_Cerrar
+            // 
+            btn_Cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_Cerrar.BackColor = Color.Transparent;
+            btn_Cerrar.Cursor = Cursors.Hand;
+            btn_Cerrar.Image = (Image)resources.GetObject("btn_Cerrar.Image");
+            btn_Cerrar.Location = new Point(1577, 8);
+            btn_Cerrar.Margin = new Padding(2);
+            btn_Cerrar.Name = "btn_Cerrar";
+            btn_Cerrar.Size = new Size(27, 25);
+            btn_Cerrar.SizeMode = PictureBoxSizeMode.StretchImage;
+            btn_Cerrar.TabIndex = 36;
+            btn_Cerrar.TabStop = false;
             // 
             // VerHorasExtras
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(658, 447);
+            Controls.Add(panel1);
+            Controls.Add(label4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(label3);
-            Controls.Add(textBox1);
-            Controls.Add(maskedTextBoxfinhora);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(maskedTextBoxiniciohora);
             Controls.Add(dataGridView1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "VerHorasExtras";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VerHorasExtras";
             Load += VerHorasExtras_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btn_Cerrar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private DataGridView dataGridView1;
-        private MaskedTextBox maskedTextBoxiniciohora;
-        private Label label1;
-        private Label label2;
-        private MaskedTextBox maskedTextBoxfinhora;
-        private TextBox textBox1;
-        private Label label3;
         private Button button1;
         private Button button2;
         private Button button3;
+        private Label label4;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private PictureBox btn_Cerrar;
+        private PictureBox pictureBox2;
     }
 }

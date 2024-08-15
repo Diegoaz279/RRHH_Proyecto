@@ -17,8 +17,9 @@ namespace RRHH_Proyecto
 
     public partial class Agregar_Retraso : Form
     {
-        //Aqui se instancia la clase de conexion 
+        // Instancia de la clase de conexión
         Conexion0 conexion = new Conexion0();
+
 
         //Aqui se iniziliazan los componentes
         public Agregar_Retraso()
@@ -51,120 +52,6 @@ namespace RRHH_Proyecto
             }
         }
 
-
-        private void btn_Agregar_Click(object sender, EventArgs e)
-        {
-            if (cmb_Empleado.SelectedItem == null)
-            {
-                MessageBox.Show("Por favor, seleccione un empleado.", "Error");
-                return;
-            }
-
-            string tipoRetraso = cmb_TipoRetraso.Text;
-            string descripcionTipoRetraso = tipoRetraso == "Otros" ? txt_OtroRetraso.Text : tipoRetraso;
-
-            if (string.IsNullOrWhiteSpace(descripcionTipoRetraso))
-            {
-                MessageBox.Show("Por favor, seleccione un tipo de retraso.", "Error");
-                return;
-            }
-
-            int empleadoID = (int)cmb_Empleado.SelectedValue;
-            string empleadoNombre = cmb_Empleado.Text;
-
-            SqlConnection conexion_bd = null;
-            try
-            {
-                conexion_bd = conexion.GetConnection();
-                conexion_bd.Open();
-
-                int idTipoRetraso;
-
-                // Verifica si el tipo de retraso ya existe
-                string queryCheck = "SELECT IdTipoRetraso FROM TipoRetraso WHERE TipoDeRetraso = @TipoDeRetraso";
-                using (SqlCommand comandoCheck = new SqlCommand(queryCheck, conexion_bd))
-                {
-                    comandoCheck.Parameters.AddWithValue("@TipoDeRetraso", descripcionTipoRetraso);
-                    object result = comandoCheck.ExecuteScalar();
-
-                    if (result == null)
-                    {
-                        // Si no existe, insertamos el nuevo tipo de retraso
-                        string queryInsertTipoRetraso = "INSERT INTO TipoRetraso (TipoDeRetraso) VALUES (@TipoDeRetraso); SELECT SCOPE_IDENTITY();";
-                        using (SqlCommand comandoInsertTipoRetraso = new SqlCommand(queryInsertTipoRetraso, conexion_bd))
-                        {
-                            comandoInsertTipoRetraso.Parameters.AddWithValue("@TipoDeRetraso", descripcionTipoRetraso);
-                            idTipoRetraso = Convert.ToInt32(comandoInsertTipoRetraso.ExecuteScalar());
-                        }
-                    }
-                    else
-                    {
-                        idTipoRetraso = Convert.ToInt32(result);
-                    }
-                }
-
-                // Inserta el retraso en la tabla Retraso
-                string queryInsertRetraso = "INSERT INTO Retraso (ID, IdTipoRetraso, Fecha, Minutos, Observacion) VALUES (@ID, @IdTipoRetraso, @Fecha, @Minutos, @Observacion)";
-                using (SqlCommand comandoInsertRetraso = new SqlCommand(queryInsertRetraso, conexion_bd))
-                {
-                    comandoInsertRetraso.Parameters.AddWithValue("@ID", empleadoID);
-                    comandoInsertRetraso.Parameters.AddWithValue("@IdTipoRetraso", idTipoRetraso);
-                    comandoInsertRetraso.Parameters.AddWithValue("@Fecha", DateTime.Now.ToString("yyyy-MM-dd"));
-                    comandoInsertRetraso.Parameters.AddWithValue("@Minutos", 0); // Ajusta según la lógica de tu aplicación
-                    comandoInsertRetraso.Parameters.AddWithValue("@Observacion", txt_OtroRetraso.Text);
-
-                    comandoInsertRetraso.ExecuteNonQuery();
-                    MessageBox.Show("Retraso agregado exitosamente.", "Éxito");
-
-                    // Reinicia el formulario para que no se quede con los datos ya ingresados
-                    this.Controls.Clear();
-                    InitializeComponent();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al agregar retraso: {ex.Message}", "Error");
-            }
-            finally
-            {
-                if (conexion_bd != null && conexion_bd.State == ConnectionState.Open)
-                {
-                    conexion_bd.Close();
-                }
-            }
-        }
-
-        private int ObtenerIdTipoRetraso(SqlConnection conexion_bd, string descripcionRetraso)
-        {
-            string query = "SELECT IdRetraso FROM TipoRetraso WHERE TipoRetraso = @TipoRetraso";
-            using (SqlCommand comando = new SqlCommand(query, conexion_bd))
-            {
-                comando.Parameters.AddWithValue("@TipoRetraso", descripcionRetraso);
-                object result = comando.ExecuteScalar();
-                return result != null ? Convert.ToInt32(result) : -1;
-            }
-        }
-
-        private void LimpiarFormulario()
-        {
-            cmb_Empleado.SelectedIndex = -1;
-            cmb_TipoRetraso.SelectedIndex = -1;
-            txt_OtroRetraso.Text = "";
-            txt_OtroRetraso.Visible = false;
-        }
-
-        private void cmb_Empleado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Retraso_Load(object sender, EventArgs e)
-        {
-            label2.Focus();
-            CargarEmpleados();
-            cmb_Empleado.SelectedIndex = -1;
-        }
-
         private void btn_Cancelar_Click_1(object sender, EventArgs e)
         {
             this.Dispose();
@@ -174,20 +61,142 @@ namespace RRHH_Proyecto
         {
             this.Dispose();
         }
+        private void Retraso_Load(object sender, EventArgs e)
+        {
+            label2.Focus();
+            CargarEmpleados();
+            cmb_Empleado.SelectedIndex = -1;
+        }
 
+       
         private void cmb_TipoRetraso_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (cmb_TipoRetraso.SelectedItem.ToString() == "Otros")
+            if (cmb_TipoRetraso.SelectedItem != null)
             {
-                txt_OtroRetraso.Visible = true; // Muestra el TextBox
-                txt_OtroRetraso.Focus(); // Opcional: Enfoca el TextBox
+                if (cmb_TipoRetraso.SelectedItem.ToString() == "Otros") 
+                {
+                    txt_OtroRetraso.Visible = true; // Muestra el TextBox para tipo de retraso personalizado
+                    txt_OtroRetraso.Focus(); // Enfoca el TextBox
+                }
+           
+                else
+                {
+                    txt_OtroRetraso.Visible = false; // Oculta el TextBox si no se selecciona "Otros"
+                    txt_OtroRetraso.Text = ""; // Limpia el TextBox
+                }
+            }    
+        }
+        private void btn_Agregar_Click(object sender, EventArgs e)
+        {
+            if (cmb_Empleado.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un empleado.", "Error");
+                return;
+            }
+
+            //Aqui se determina el tipo de ausencia a insertar
+            string TipoRetraso;
+            if (cmb_TipoRetraso.SelectedItem.ToString() == "Otras" && !string.IsNullOrWhiteSpace(txt_OtroRetraso.Text))
+            {
+                TipoRetraso = txt_OtroRetraso.Text; //Usa el texto personalizado si se selecciono  la opcion otra
             }
             else
             {
-                txt_OtroRetraso.Visible = false; // Oculta el TextBox
-                txt_OtroRetraso.Text = "";
+                TipoRetraso = cmb_TipoRetraso.Text; //Usa el tipo de ausencia seleccionado del ComboBox
+            }
+
+            //Captura el error de que si no se selecciona un tipo de ausencia, osea que no se dejen campos vacios
+            if (string.IsNullOrWhiteSpace(TipoRetraso))
+            {
+                MessageBox.Show("Por favor, seleccione un tipo de Retraso.", "Error");
+                return;
+            }
+
+            // Aqui se obtiene el ID y nombre del empleado
+            int empleadoID = (int)cmb_Empleado.SelectedValue;
+            string empleadoNombre = cmb_Empleado.Text; //Esto obtiene el nombre completo mostrado en el ComboBox
+
+            //Obtiene las fechas como texto desde los maskedtextbox
+            string fecha = mb_Fecha.Text;
+            string Oservacion = txt_Observacion.Text;
+            string minutos = maskedText_Minutos.Text;
+           
+
+            //Aqui se instancia la clase de conexion y la almacenamos en una variable
+            Conexion0 conexion = new Conexion0();
+            SqlConnection conexion_bd = null;
+
+            try
+            {
+                conexion_bd = conexion.GetConnection();
+
+                // Inserción del tipo de retraso en la tabla TipoRetraso
+                string queryInsertTipoRetraso = "INSERT INTO TipoRetraso (TipoDeRetraso) VALUES (@TipoDeRetraso); SELECT SCOPE_IDENTITY();";
+                SqlCommand comandoInsertTipoRetraso = new SqlCommand(queryInsertTipoRetraso, conexion_bd);
+                comandoInsertTipoRetraso.Parameters.AddWithValue("@TipoDeRetraso", TipoRetraso);
+                int idTipoRetraso = Convert.ToInt32(comandoInsertTipoRetraso.ExecuteScalar());
+
+                if (idTipoRetraso > 0)
+                {
+                    // Inserción en la tabla Retraso, incluyendo la información del empleado
+                    string queryInsertRetraso = "INSERT INTO Retraso (ID, Empleado, IdTipoRetraso, Fecha, Minutos, Observacion) VALUES (@ID, @Empleado, @IdTipoRetraso, @Fecha, @Minutos, @Observacion)";
+                    SqlCommand comandoInsertRetraso = new SqlCommand(queryInsertRetraso, conexion_bd);
+
+                    // Asigna los valores a los parámetros
+                    comandoInsertRetraso.Parameters.AddWithValue("@ID", empleadoID); // ID del empleado
+                    comandoInsertRetraso.Parameters.AddWithValue("@Empleado", empleadoNombre); // Nombre completo del empleado
+                    comandoInsertRetraso.Parameters.AddWithValue("@IdTipoRetraso", idTipoRetraso); // ID del tipo de retraso
+                    comandoInsertRetraso.Parameters.AddWithValue("@Fecha", mb_Fecha.Text); // Fecha desde MaskedTextBox
+                    comandoInsertRetraso.Parameters.AddWithValue("@Minutos", minutos); // Ajusta este valor según sea necesario
+                    comandoInsertRetraso.Parameters.AddWithValue("@Observacion", Oservacion); // Observación o motivo del retraso
+
+                    // Ejecuta la consulta para insertar el registro en la base de datos
+                    comandoInsertRetraso.ExecuteNonQuery();
+                    MessageBox.Show("Retraso agregado exitosamente.", "Éxito");
+
+                    // Reinicia el formulario para que no se quede con los datos ya ingresados
+                    this.Dispose();
+                }
+
+                else 
+                {
+                    MessageBox.Show("Error al obtener el Id del tipo de retraso.", "Error");
+                }
+
+            }
+            catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al agregar retraso: {ex.Message}", "Error");
+                }
+                finally
+                {
+                    conexion.CloseConnection();
+                }
+            
+        }
+
+
+
+        private int ObtenerIdTipoRetraso(SqlConnection conexion_bd, string descripcionRetraso)
+        {
+            string query = "SELECT IdTipoRetraso FROM TipoRetraso WHERE TipoDeRetraso = @TipoDeRetraso";
+            using (SqlCommand comando = new SqlCommand(query, conexion_bd))
+            {
+                comando.Parameters.AddWithValue("@TipoDeRetraso", descripcionRetraso);
+                object result = comando.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : -1;
             }
         }
+        
+
+      
+
+        private void cmb_Empleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
 
         private void txt_OtroRetraso_Enter(object sender, EventArgs e)
         {

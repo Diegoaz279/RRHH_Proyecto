@@ -161,9 +161,8 @@ namespace RRHH_Proyecto
                     comandoInsertEmpleadoAusencia.ExecuteNonQuery();
                     MessageBox.Show("Ausencia agregada exitosamente.", "Éxito");
 
-                    // Reinicia el formulario para que no se quede con los datos ya ingresados
-                    this.Controls.Clear();
-                    InitializeComponent();
+
+                    this.Dispose(); //cierra el form
                 }
                 else ////Esto muestra un mensaje de error si no se pudo obtener el ID del tipo de ausencia
                 {

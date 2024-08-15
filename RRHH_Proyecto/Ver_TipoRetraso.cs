@@ -29,7 +29,8 @@ namespace RRHH_Proyecto
             try
             {
                 conexion.Open();
-                string query = "SELECT IdTipoRetraso, TipoDeRetraso, Tipo_Retraso FROM TipoRetraso";
+                // Selecciona solo las columnas que existen en la tabla
+                string query = "SELECT IdTipoRetraso, TipoDeRetraso FROM TipoRetraso";
                 adaptador = new SqlDataAdapter(query, conexion);
                 dt = new DataTable();
                 adaptador.Fill(dt);
@@ -63,39 +64,36 @@ namespace RRHH_Proyecto
         }
         private void buttonEditar_Click(object sender, EventArgs e)
         {
+            // Habilitar la edición en el DataGridView
             dataGridView1.ReadOnly = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = true;
+
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.ReadOnly = column.Name == "ID"; // Configurar solo la columna ID como no editable
+            }
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            try
             {
-                try
-                {
-                    conexion.Open();
-                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                    {
-                        int idTipoRetraso = Convert.ToInt32(row.Cells["IdTipoRetraso"].Value);
-                        string query = "DELETE FROM TipoRetraso WHERE IdTipoRetraso = @IdTipoRetraso";
-                        SqlCommand cmd = new SqlCommand(query, conexion);
-                        cmd.Parameters.AddWithValue("@IdTipoRetraso", idTipoRetraso);
-                        cmd.ExecuteNonQuery();
-                        dataGridView1.Rows.RemoveAt(row.Index);
-                    }
-                    MessageBox.Show("Registro(s) eliminado(s) correctamente.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al eliminar el registro: " + ex.Message);
-                }
-                finally
-                {
-                    conexion.Close();
-                }
+                conexion.Open();
+                string query = "SELECT IdTipoRetraso, TipoDeRetraso FROM TipoRetraso";
+                adaptador = new SqlDataAdapter(query, conexion);
+                dt = new DataTable();
+                adaptador.Fill(dt);
+                dataGridView1.DataSource = dt;
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecciona un registro para eliminar.");
+                MessageBox.Show("Error al cargar los datos: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -109,11 +107,10 @@ namespace RRHH_Proyecto
                     {
                         if (row.RowState == DataRowState.Modified)
                         {
-                            string query = "UPDATE TipoRetraso SET TipoDeRetraso = @TipoDeRetraso, Tipo_Retraso = @Tipo_Retraso WHERE IdTipoRetraso = @IdTipoRetraso";
+                            string query = "UPDATE TipoRetraso SET TipoDeRetraso = @TipoDeRetraso WHERE IdTipoRetraso = @IdTipoRetraso";
                             SqlCommand cmd = new SqlCommand(query, conexion);
                             cmd.Parameters.AddWithValue("@IdTipoRetraso", row["IdTipoRetraso"]);
                             cmd.Parameters.AddWithValue("@TipoDeRetraso", row["TipoDeRetraso"]);
-                            cmd.Parameters.AddWithValue("@Tipo_Retraso", row["Tipo_Retraso"]);
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -129,7 +126,12 @@ namespace RRHH_Proyecto
                 {
                     conexion.Close();
                 }
-            } 
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
