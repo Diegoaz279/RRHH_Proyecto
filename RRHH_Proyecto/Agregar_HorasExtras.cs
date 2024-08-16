@@ -54,7 +54,7 @@ namespace RRHH_Proyecto
                 return;
             }
 
-            string hentrada = masked_Hentrada.Text;
+        //    string hentrada = masked_Hentrada.Text;
             string hsalida = masked_Hsalida.Text;
             string descripcion = txt_DescripcionTrabajo.Text;
             int empleadoID = (int)cmb_Empleado.SelectedValue;

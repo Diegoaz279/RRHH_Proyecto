@@ -23,11 +23,14 @@ namespace RRHH_Proyecto
 
         private void aCERToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            Creadores creadores = new Creadores();
+            creadores.ShowDialog();
         }
 
         private void Menu_Strip_Load(object sender, EventArgs e)
         {
-            //hola
+           
         }
 
         private void aGREGARUSUARIOToolStripMenuItem_Click(object sender, EventArgs e)
@@ -62,6 +65,9 @@ namespace RRHH_Proyecto
             this.WindowState = FormWindowState.Minimized;
         }
 
+
+
+        // En este apartado hacemos que cuando le demos a ese boton en el menustrip lo redireccione a los formularios determinados 
         private void aGREGARDEPARTAMENTOToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Agregar_Departamento principal = new Agregar_Departamento();

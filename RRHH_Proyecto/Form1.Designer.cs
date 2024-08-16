@@ -51,10 +51,9 @@
             btn_Cancelar.FlatAppearance.BorderColor = Color.Black;
             btn_Cancelar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Cancelar.ForeColor = SystemColors.ActiveCaptionText;
-            btn_Cancelar.Location = new Point(60, 452);
-            btn_Cancelar.Margin = new Padding(2);
+            btn_Cancelar.Location = new Point(124, 753);
             btn_Cancelar.Name = "btn_Cancelar";
-            btn_Cancelar.Size = new Size(110, 43);
+            btn_Cancelar.Size = new Size(157, 72);
             btn_Cancelar.TabIndex = 0;
             btn_Cancelar.Text = "CANCELAR";
             btn_Cancelar.UseVisualStyleBackColor = false;
@@ -68,10 +67,9 @@
             btn_Ingresar.FlatAppearance.BorderColor = Color.Black;
             btn_Ingresar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Ingresar.ForeColor = SystemColors.ActiveCaptionText;
-            btn_Ingresar.Location = new Point(198, 452);
-            btn_Ingresar.Margin = new Padding(2);
+            btn_Ingresar.Location = new Point(321, 753);
             btn_Ingresar.Name = "btn_Ingresar";
-            btn_Ingresar.Size = new Size(110, 43);
+            btn_Ingresar.Size = new Size(157, 72);
             btn_Ingresar.TabIndex = 1;
             btn_Ingresar.Text = "INGRESAR";
             btn_Ingresar.UseVisualStyleBackColor = false;
@@ -84,10 +82,9 @@
             txt_Usuario.BorderStyle = BorderStyle.FixedSingle;
             txt_Usuario.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txt_Usuario.ForeColor = Color.DimGray;
-            txt_Usuario.Location = new Point(60, 336);
-            txt_Usuario.Margin = new Padding(2);
+            txt_Usuario.Location = new Point(124, 560);
             txt_Usuario.Name = "txt_Usuario";
-            txt_Usuario.Size = new Size(248, 29);
+            txt_Usuario.Size = new Size(353, 40);
             txt_Usuario.TabIndex = 4;
             txt_Usuario.Text = "USUARIO";
             txt_Usuario.TextChanged += txt_Usuario_TextChanged;
@@ -101,10 +98,9 @@
             txt_Contraseña.BorderStyle = BorderStyle.FixedSingle;
             txt_Contraseña.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txt_Contraseña.ForeColor = Color.DimGray;
-            txt_Contraseña.Location = new Point(60, 390);
-            txt_Contraseña.Margin = new Padding(2);
+            txt_Contraseña.Location = new Point(124, 650);
             txt_Contraseña.Name = "txt_Contraseña";
-            txt_Contraseña.Size = new Size(248, 29);
+            txt_Contraseña.Size = new Size(353, 40);
             txt_Contraseña.TabIndex = 5;
             txt_Contraseña.Text = "CONTRASEÑA";
             txt_Contraseña.TextChanged += txt_Contraseña_TextChanged;
@@ -116,10 +112,9 @@
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Stencil", 22F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(30, 52);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(81, 87);
             label2.Name = "label2";
-            label2.Size = new Size(302, 35);
+            label2.Size = new Size(441, 52);
             label2.TabIndex = 7;
             label2.Text = "INGRESE SUS DATOS";
             // 
@@ -128,10 +123,9 @@
             btn_Cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Cerrar.Cursor = Cursors.Hand;
             btn_Cerrar.Image = (Image)resources.GetObject("btn_Cerrar.Image");
-            btn_Cerrar.Location = new Point(312, 7);
-            btn_Cerrar.Margin = new Padding(2);
+            btn_Cerrar.Location = new Point(521, 12);
             btn_Cerrar.Name = "btn_Cerrar";
-            btn_Cerrar.Size = new Size(30, 24);
+            btn_Cerrar.Size = new Size(43, 40);
             btn_Cerrar.SizeMode = PictureBoxSizeMode.StretchImage;
             btn_Cerrar.TabIndex = 8;
             btn_Cerrar.TabStop = false;
@@ -142,10 +136,9 @@
             btn_Minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Minimizar.Cursor = Cursors.Hand;
             btn_Minimizar.Image = (Image)resources.GetObject("btn_Minimizar.Image");
-            btn_Minimizar.Location = new Point(270, 7);
-            btn_Minimizar.Margin = new Padding(2);
+            btn_Minimizar.Location = new Point(461, 12);
             btn_Minimizar.Name = "btn_Minimizar";
-            btn_Minimizar.Size = new Size(30, 24);
+            btn_Minimizar.Size = new Size(43, 40);
             btn_Minimizar.SizeMode = PictureBoxSizeMode.StretchImage;
             btn_Minimizar.TabIndex = 10;
             btn_Minimizar.TabStop = false;
@@ -155,20 +148,19 @@
             // 
             pictureBox4.Anchor = AnchorStyles.Top;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(52, 100);
-            pictureBox4.Margin = new Padding(2);
+            pictureBox4.Location = new Point(112, 167);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(247, 217);
+            pictureBox4.Size = new Size(353, 362);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 11;
             pictureBox4.TabStop = false;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
-            ClientSize = new Size(358, 518);
+            ClientSize = new Size(586, 886);
             Controls.Add(pictureBox4);
             Controls.Add(btn_Minimizar);
             Controls.Add(btn_Cerrar);
@@ -178,7 +170,6 @@
             Controls.Add(btn_Ingresar);
             Controls.Add(btn_Cancelar);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2);
             Name = "Form1";
             Opacity = 0.93D;
             StartPosition = FormStartPosition.CenterScreen;

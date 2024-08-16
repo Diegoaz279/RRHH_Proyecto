@@ -115,6 +115,19 @@ namespace RRHH_Proyecto
             comboBoxAusencia.Enabled = true;
             maskedTextBoxinicio.ReadOnly = false;
             maskedTextBoxFin.ReadOnly = false;
+
+            // Configurar columnas que no se pueden editar
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column.Name == "Empleado_ID" || column.Name == "IdAusencia")
+                {
+                    column.ReadOnly = true; // No permitir la edición de los ID
+                }
+                else
+                {
+                    column.ReadOnly = false; // Permitir la edición de las demás columnas
+                }
+            }
         }
 
         private void btnGuardar_Click_1(object sender, EventArgs e)
@@ -189,7 +202,7 @@ namespace RRHH_Proyecto
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }

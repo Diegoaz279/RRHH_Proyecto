@@ -259,10 +259,10 @@
             // 
             // aCERToolStripMenuItem
             // 
-            aCERToolStripMenuItem.Font = new Font("Sylfaen", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            aCERToolStripMenuItem.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
             aCERToolStripMenuItem.Name = "aCERToolStripMenuItem";
-            aCERToolStripMenuItem.Size = new Size(210, 36);
-            aCERToolStripMenuItem.Text = "Acerca de";
+            aCERToolStripMenuItem.Size = new Size(251, 38);
+            aCERToolStripMenuItem.Text = "ACERCA DE ";
             aCERToolStripMenuItem.Click += aCERToolStripMenuItem_Click;
             // 
             // btnMinimizar
@@ -311,9 +311,9 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Bottom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(119, -108);
+            pictureBox1.Location = new Point(94, -147);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1269, 1283);
+            pictureBox1.Size = new Size(1300, 1235);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 14;
             pictureBox1.TabStop = false;

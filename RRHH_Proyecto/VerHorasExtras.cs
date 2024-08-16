@@ -77,7 +77,7 @@ namespace RRHH_Proyecto
             }
         }
 
-       
+
         private void button3_Click(object sender, EventArgs e) // Botón Guardar
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -126,9 +126,28 @@ namespace RRHH_Proyecto
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void HabilitarCampos()
+        {
+            dataGridView1.ReadOnly = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+
+            // Deshabilitar edición en las columnas de ID
+            dataGridView1.Columns["IdTrabajoExtrabLaboral"].ReadOnly = true;
+            dataGridView1.Columns["Empleado_ID"].ReadOnly = true;
+
+            // Habilitar los botones de Guardar y Eliminar (si es necesario)
+            button3.Enabled = true;
+            button1.Enabled = true;
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            HabilitarCampos();
         }
     }
 }

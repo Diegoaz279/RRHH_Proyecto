@@ -127,78 +127,24 @@ namespace RRHH_Proyecto
             dataGridView1.AllowUserToAddRows = false; // No permitir agregar nuevas filas
             dataGridView1.AllowUserToDeleteRows = false; // 
 
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column.Name == "ID" || column.Name == "IdRetraso" || column.Name == "IdTipoRetraso")
+                {
+                    column.ReadOnly = true; // No permitir la edición de los ID
+                }
+                else
+                {
+                    column.ReadOnly = false; // Permitir la edición de las demás columnas
+                }
+            }
+
+
             LimpiarCampos();
         }
 
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection conexion = new SqlConnection("Server=.;DataBase=RRHH;Integrated Security=true"))
-            {
-                try
-                {
-                    // Validar que todos los campos estén completos
-                    if (comboBoxEmpleado.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("Debes seleccionar un empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    if (comboBox1.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("Debes seleccionar un Tipo de Retraso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(maskedTextBoxfecha.Text))
-                    {
-                        MessageBox.Show("El campo Fecha no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(maskedTextBoxminutos.Text))
-                    {
-                        MessageBox.Show("El campo Minutos no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(txtObservacion.Text))
-                    {
-                        MessageBox.Show("El campo Observación no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    conexion.Open();
-                    string query = "INSERT INTO Retraso (ID, IdTipoRetraso, Fecha, Minutos, Observacion) VALUES (@ID, @IdTipoRetraso, @Fecha, @Minutos, @Observacion)";
-                    SqlCommand cmd = new SqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@ID", (int)comboBoxEmpleado.SelectedValue);
-                    cmd.Parameters.AddWithValue("@IdTipoRetraso", (int)comboBox1.SelectedValue);
-                    cmd.Parameters.AddWithValue("@Fecha", maskedTextBoxfecha.Text);
-                    cmd.Parameters.AddWithValue("@Minutos", int.Parse(maskedTextBoxminutos.Text));
-                    cmd.Parameters.AddWithValue("@Observacion", txtObservacion.Text);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Registro agregado correctamente.");
-
-                    // Actualizar el DataGridView
-                    CargarDatosRetraso();
-                }
-                catch (FormatException ex)
-                {
-                    MessageBox.Show("Error de formato: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Error de SQL: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al agregar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                LimpiarCampos();
-            }
-        }
-
+    
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             // Guardar cambios cuando se termina de editar una celda

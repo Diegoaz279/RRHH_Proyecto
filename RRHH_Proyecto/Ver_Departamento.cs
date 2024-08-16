@@ -158,6 +158,10 @@ namespace RRHH_Proyecto
             dataGridView1.ReadOnly = false;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+
+            // Deshabilitar edición en la columna de ID (IdDpto)
+            dataGridView1.Columns["IdDpto"].ReadOnly = true;
+            dataGridView1.Columns["IDJefe"].ReadOnly = true;
         }
 
         private void DeshabilitarCampos()

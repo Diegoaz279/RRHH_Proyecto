@@ -155,6 +155,19 @@ namespace RRHH_Proyecto
             dataGridView1.ReadOnly = false;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+
+            // Configurar columnas que no se pueden editar
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column.Name == "IdHorario" || column.Name == "IdNombre")
+                {
+                    column.ReadOnly = true; // No permitir la edición de los ID
+                }
+                else
+                {
+                    column.ReadOnly = false; // Permitir la edición de las demás columnas
+                }
+            }
         }
 
         private void DeshabilitarCampos()
@@ -164,9 +177,10 @@ namespace RRHH_Proyecto
             dataGridView1.AllowUserToDeleteRows = false;
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+       
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Dispose(); 
+            this.Hide();    
         }
     }
 
